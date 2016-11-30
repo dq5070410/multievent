@@ -28,6 +28,7 @@ typedef int Result;
  * 
  */
 #ifdef LINUX
+
 	typedef long long				LONGLONG;
 	typedef unsigned long			ULONG;
 	typedef unsigned long long		ULONGLONG;
@@ -74,6 +75,8 @@ typedef int Result;
 #endif	// LINUX
 
 #ifdef WIN
+
+
 	#define EWOULDBLOCK             WSAEWOULDBLOCK
 	#define EINPROGRESS             WSAEINPROGRESS
 	#define EALREADY                WSAEALREADY
@@ -118,10 +121,6 @@ typedef int Result;
 
 #endif	// SC_WIN
 
-/**
-
-*/
-#ifdef WIN
 	struct iovec
 	{
 		DWORD iov_len;	
@@ -144,7 +143,6 @@ typedef int Result;
 	typedef HANDLE C_HANDLE;
 	typedef SOCKET C_SOCKET;
 	typedef int C_SOCK_LEN;
-
 	#define HIK_INVALID_HANDLE		INVALID_HANDLE_VALUE
 	#define HIK_SD_RECEIVE			SD_RECEIVE
 	#define HIK_SD_SEND				SD_SEND
@@ -171,15 +169,13 @@ typedef int Result;
 	typedef sockaddr_in C_SOCK_ADDR;
 #endif	// SUPPORT_IPV6
 
-/**
-* aync IO result 
-* on win32 OVERLAPPED，linux need redefine
-*/
+
 #ifdef HIK_WIN
 	typedef OVERLAPPED HIK_OVERLAPPED;
 
 #elif defined( LINUX )
 	/*  copy from winbase.h*/
+
 	typedef struct tagOVERLAPPED 
 	{
 		volatile ULONG Internal;
@@ -197,15 +193,9 @@ typedef int Result;
 		C_HANDLE  hEvent;
 	}C_OVERLAPPED;
 
-#endif	// WIN
 
-/**
-* inline的重定义
-* 在HikPlatform.h当中已经定义了vc 2005和gcc 4.4以上版本才能
-* 编译HikUtility，与inline相关的东西应该能够编译通过，但是，
-* 为了避免某种不可预知的原因还是会让inline的东西编译不通过，
-* 才搞了底下这个宏 -- 一旦发生这种事情，果断的定义HIK_NO_INLINE吧
-*/
+
+
 #ifndef _NO_INLINE
 	#ifndef _INLINE
 		#define _INLINE inline
@@ -225,6 +215,7 @@ typedef int Result;
 	#endif	// WIN
 #endif	// C_STDCALL
 
+
 /**
 * 时间存储结构
 */
@@ -239,6 +230,8 @@ typedef struct tagTimeValue
 #else
 	#define C_TIMER_LIMIT 0
 #endif	// C_TIMER_NO_LIMIT
+}C_TIME_VALUE;
+
 
 /**
 * 线程、锁相关定义
@@ -309,6 +302,7 @@ typedef struct tagTimeValue
 #endif	// C_WIN
 
 typedef struct tagMutex
+
 {
 	enum
 	{
@@ -326,10 +320,9 @@ typedef struct tagMutex
 } C_MUTEX_CS;
 
 /* 线程函数类型 */
-typedef C_THREAD_RETURN_TYPE (C_STDCALL *HIK_THREAD_FUNC)(void *);
+typedef C_THREAD_RETURN_TYPE (C_STDCALL *C_THREAD_FUNC)(void *);
 
 typedef std::string String;
 
 #endif	// __TYPE_DEFINES_H_
-
 
