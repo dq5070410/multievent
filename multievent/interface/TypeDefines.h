@@ -140,38 +140,38 @@ typedef int Result;
 * handle
 */
 #ifdef WIN
-	typedef HANDLE C_HANDLE;
-	typedef SOCKET C_SOCKET;
-	typedef int C_SOCK_LEN;
-	#define HIK_INVALID_HANDLE		INVALID_HANDLE_VALUE
-	#define HIK_SD_RECEIVE			SD_RECEIVE
-	#define HIK_SD_SEND				SD_SEND
-	#define HIK_SD_BOTH				SD_BOTH
+	typedef HANDLE ME_HANDLE;
+	typedef SOCKET ME_SOCKET;
+	typedef int ME_SOCK_LEN;
+	#define ME_INVALID_HANDLE		INVALID_HANDLE_VALUE
+	#define ME_SD_RECEIVE			SD_RECEIVE
+	#define ME_SD_SEND				SD_SEND
+	#define ME_SD_BOTH				SD_BOTH
 
-	#define C_INFINITE			INFINITE
+	#define ME_INFINITE			INFINITE
 
 #elif defined( LINUX )
-	typedef int C_HANDLE;
-	typedef int C_SOCKET;
-	typedef socklen_t C_SOCK_LEN;
+	typedef int ME_HANDLE;
+	typedef int ME_SOCKET;
+	typedef socklen_t ME_SOCK_LEN;
 
-	#define C_INVALID_HANDLE		-1
-	#define C_SD_RECEIVE			0
-	#define C_SD_SEND				1
-	#define C_SD_BOTH				2
+	#define ME_INVALID_HANDLE		-1
+	#define ME_SD_RECEIVE			0
+	#define ME_SD_SEND				1
+	#define ME_SD_BOTH				2
 
-	#define C_INFINITE			-1
+	#define ME_INFINITE			-1
 #endif	// WIN
 
 #ifdef SUPPORT_IPV6
-	typedef sockaddr_in6 C_SOCK_ADDR;
+	typedef sockaddr_in6 ME_SOCK_ADDR;
 #else
-	typedef sockaddr_in C_SOCK_ADDR;
+	typedef sockaddr_in ME_SOCK_ADDR;
 #endif	// SUPPORT_IPV6
 
 
-#ifdef HIK_WIN
-	typedef OVERLAPPED HIK_OVERLAPPED;
+#ifdef WIN
+	typedef OVERLAPPED ME_OVERLAPPED;
 
 #elif defined( LINUX )
 	/*  copy from winbase.h*/
@@ -190,8 +190,8 @@ typedef int Result;
 			void* Pointer;
 		} DUMMYUNIONNAME;
 
-		C_HANDLE  hEvent;
-	}C_OVERLAPPED;
+		ME_HANDLE  hEvent;
+	}ME_OVERLAPPED;
 
 
 
