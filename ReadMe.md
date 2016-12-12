@@ -1,0 +1,1 @@
+#A cross platform multievent framework, inclue win32 and linux(kernel 2.6.3 above)
