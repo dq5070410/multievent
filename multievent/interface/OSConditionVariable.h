@@ -5,8 +5,8 @@
 *
 */
 
-#ifndef __OS_CONDITION_VARIABLE_H_
-#define __OS_CONDITION_VARIABLE_H_
+#ifndef __OS_ME_CONDITION_VARIABLE_H_
+#define __OS_ME_CONDITION_VARIABLE_H_
 
 #include "Base.h"
 
@@ -22,10 +22,10 @@ NAME_SPACE_OS_BEGIN
 * <pszName>，condition variable name
 *
 * return value：
-*		R_OK is success；other is error
+*		ME_OK is success；other is error
 */
-Result OS_EXPORT ConditionVariableCreate( 
-	CONDITION_VARIABLE* pConditionVariable,
+ME_Result OS_EXPORT ConditionVariableCreate( 
+	ME_CONDITION_VARIABLE* pConditionVariable,
 	const char* pszName );
 
 /**
@@ -34,9 +34,9 @@ Result OS_EXPORT ConditionVariableCreate(
 * <pConditionVariable>，要删除哪个条件变量
 *
 * 返回值：
-*		R_OK为成功；其他失败
+*		ME_OK为成功；其他失败
 */
-Result OS_EXPORT ConditionVariableDestroy( CONDITION_VARIABLE* pConditionVariable );
+ME_Result OS_EXPORT ConditionVariableDestroy( ME_CONDITION_VARIABLE* pConditionVariable );
 
 /**
 * 使条件变量发出一个signal
@@ -44,9 +44,9 @@ Result OS_EXPORT ConditionVariableDestroy( CONDITION_VARIABLE* pConditionVariabl
 * <pConditionVariable>，哪一个条件变量
 *
 * 返回值：
-*		R_OK为成功；其他失败
+*		ME_OK为成功；其他失败
 */
-Result OS_EXPORT ConditionVariableSignal( CONDITION_VARIABLE* pConditionVariable );
+ME_Result OS_EXPORT ConditionVariableSignal( ME_CONDITION_VARIABLE* pConditionVariable );
 
 /**
 * 使条件变量广播
@@ -54,9 +54,9 @@ Result OS_EXPORT ConditionVariableSignal( CONDITION_VARIABLE* pConditionVariable
 * <pConditionVariable>，哪一个条件变量
 *
 * 返回值：
-*		R_OK为成功；其他失败
+*		ME_OK为成功；其他失败
 */
-Result OS_EXPORT ConditionVariableBroadcast( CONDITION_VARIABLE* pConditionVariable );
+ME_Result OS_EXPORT ConditionVariableBroadcast( ME_CONDITION_VARIABLE* pConditionVariable );
 
 /**
 * 等待条件变量有信号
@@ -68,14 +68,14 @@ Result OS_EXPORT ConditionVariableBroadcast( CONDITION_VARIABLE* pConditionVaria
 * <pTimeout>，等待超时时间
 *
 * 返回值：
-*		R_OK为成功；其他失败
+*		ME_OK为成功；其他失败
 */
-Result OS_EXPORT ConditionVariableWait( 
-	CONDITION_VARIABLE* pConditionVariable, 
+ME_Result OS_EXPORT ConditionVariableWait( 
+	ME_CONDITION_VARIABLE* pConditionVariable, 
 	THREAD_MUTEX* pMutex,
 	CTimeValue* pTimeout = NULL );
 
 NAME_SPACE_OS_END
 
-#endif	// __OS_CONDITION_VARIABLE_H_
+#endif	// __OS_ME_CONDITION_VARIABLE_H_
 
