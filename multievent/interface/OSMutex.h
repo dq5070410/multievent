@@ -26,9 +26,9 @@ HNAME_SPACE_OS_BEGIN
 * <pszName>，锁的名字
 *
 * 返回值：
-*		R_OK为成功；其他失败
+*		ME_OK为成功；其他失败
 */
-Result OS_EXPORT MutexCreate(
+ME_Result OS_EXPORT MutexCreate(
 	INT iType,
 	MUTEX_CS& hmcLock,
 	LPSTR pszName = NULL );
@@ -40,9 +40,9 @@ Result OS_EXPORT MutexCreate(
 * 这个方法会阻塞
 *
 * 返回值：
-*		R_OK为成功；R_ERROR_TIMEOUT为超时；其他失败
+*		ME_OK为成功；R_ERROR_TIMEOUT为超时；其他失败
 */
-Result OS_EXPORT MutexDestroy( MUTEX_CS& hmcLock );
+ME_Result OS_EXPORT MutexDestroy( MUTEX_CS& hmcLock );
 
 /**
 * 尝试获得一个互斥量
@@ -51,9 +51,9 @@ Result OS_EXPORT MutexDestroy( MUTEX_CS& hmcLock );
 * 这个方法会阻塞
 *
 * 返回值：
-*		R_OK为成功；R_ERROR_TIMEOUT为超时；其他失败
+*		ME_OK为成功；R_ERROR_TIMEOUT为超时；其他失败
 */
-Result OS_EXPORT MutexLock( MUTEX_CS& hmcLock );
+ME_Result OS_EXPORT MutexLock( MUTEX_CS& hmcLock );
 
 /**
 * 尝试获得一个互斥量
@@ -64,9 +64,9 @@ Result OS_EXPORT MutexLock( MUTEX_CS& hmcLock );
 * <htvTimeout>，最多尝试多长时间
 *
 * 返回值：
-*		R_OK为成功；R_ERROR_TIMEOUT为超时；其他失败
+*		ME_OK为成功；R_ERROR_TIMEOUT为超时；其他失败
 */
-Result OS_EXPORT MutexLock( 
+ME_Result OS_EXPORT MutexLock( 
 	MUTEX_CS& hmcLock,
 	const CTimeValue& htvTimeout );
 
@@ -76,9 +76,9 @@ Result OS_EXPORT MutexLock(
 * <hmcLock>，哪一个锁
 *
 * 返回值：
-*		R_OK为成功；其他失败
+*		ME_OK为成功；其他失败
 */
-Result OS_EXPORT MutexUnLock( MUTEX_CS& hmcLock );
+ME_Result OS_EXPORT MutexUnLock( MUTEX_CS& hmcLock );
 
 NAME_SPACE_OS_END
 
