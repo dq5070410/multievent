@@ -9,7 +9,7 @@
 #ifndef __TIME_H_
 #define __TIME_H_
 
-#include "HikBase.h"
+#include "Base.h"
 
 NAME_SPACE_BEGIN
 
