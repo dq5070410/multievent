@@ -18,9 +18,9 @@ NAME_SPACE_BEGIN
 * 毫秒之类的还是支持，但诸如时间格式化(什么年月日星期之类的)
 * 都不支持
 *
-* 它的最大用处在于作为CHikTimer的标准输入函数
+* 它的最大用处在于作为CTimer的标准输入函数
 */
-class OS_EXPORT CHikTimeValue
+class OS_EXPORT CTimeValue
 {
 public:
 	CTimeValue();
@@ -31,9 +31,9 @@ public:
 		LONGLONG llSecond,
 		LONG lMicrosecond = 0 );
 
-	CHikTimeValue( const ME_TIME_VALUE& htaTime );
+	CTimeValue( const ME_TIME_VALUE& htaTime );
 
-	CHikTimeValue( const timeval& tvTime );
+	CTimeValue( const timeval& tvTime );
 
 #ifdef WIN
 	CTimeValue( const FILETIME& ftTime );
@@ -53,7 +53,7 @@ public:
 	* 返回值：
 	*		无
 	*/
-	void Set( const CHikTimeValue& htvTime );
+	void Set( const CTimeValue& htvTime );
 
 	/**
 	* 根据<llSecond>、<lMicrosecond>来设置TimeValue
@@ -126,7 +126,7 @@ private:
 	ME_TIME_VALUE					m_Time;	// 实际存储的时间结构
 };
 
-ME_NAME_SPACE_END
+NAME_SPACE_END
 
 #endif	// __TIME_VALUE_H_
 
