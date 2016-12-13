@@ -136,11 +136,11 @@ private:
 };
 
 template<class ListNodeType> 
-class CHikNodeListDefaultSort 
+class CNodeListDefaultSort 
 {
 public:
 	/**
-	* 作为CHikNodeListT的默认排序
+	* 作为CNodeListT的默认排序
 	*
 	* 它的主要工作就是：什么都不做
 	*/
