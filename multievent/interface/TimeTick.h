@@ -23,7 +23,7 @@ typedef struct tagTimeTick
 /**
 * tick countµÄ·â×°Àà
 */
-class OS_EXPORT CHikTimeTick
+class OS_EXPORT CTimeTick
 {
 public:
 	static const DWORD MAX_TICK_COUNT;
