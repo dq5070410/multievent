@@ -70,7 +70,7 @@ public:
 	* 返回值：
 	*		无
 	*/
-	void SetTimeTick( const CHikTimeTick& httTimeTick );
+	void SetTimeTick( const CTimeTick& httTimeTick );
 
 	/**
 	* 设置time tick
