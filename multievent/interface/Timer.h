@@ -115,11 +115,11 @@ public:
 	* ·µ»ØÖµ:
 	*		ÎÞ
 	*/
-	virtual void OnTimer( CHikTimer* pTimerID ) = 0;
+	virtual void OnTimer( CTimer* pTimerID ) = 0;
 };
 
 
-ME_NAME_SPACE_END
+NAME_SPACE_END
 
 #endif	// __ME_TIME_H_
 
