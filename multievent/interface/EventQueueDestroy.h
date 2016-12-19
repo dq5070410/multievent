@@ -20,7 +20,7 @@ class CEventQueueDestroy : public ICustomizeEvent
 public:
     CEventQueueDestroy( CEventQueue* pEventQueue );
 
-    virtual ~CHikEventQueueDestroy();
+    virtual ~CEventQueueDestroy();
 
     virtual ME_Result OnEvent();
 
