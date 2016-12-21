@@ -66,7 +66,7 @@ Result ConditionVariableCreate(
 /*ME_INLINE */ME_Result ConditionVariableWait( 
 	ME_CONDITION_VARIABLE* pConditionVariable, 
 	ME_THREAD_MUTEX* pMutex,
-	CHikTimeValue* pTimeout /*= NULL */ )
+	CTimeValue* pTimeout /*= NULL */ )
 {
 #ifdef ME_WIN
 	return ME_ERROR_NOT_IMPLEMENTED;
@@ -87,7 +87,7 @@ Result ConditionVariableCreate(
 		*/
 
 		struct timespec tsTimeout;
-		CHikTimeValue tvAbs = CTimeValue::TimeOfDay() + *pTimeout;
+		CTimeValue tvAbs = CTimeValue::TimeOfDay() + *pTimeout;
 		tsTimeout.tv_sec = tvAbs.GetSecond();				// √Î
 		tsTimeout.tv_nsec = tvAbs.GetMicrosecond() * 1000;	// Œ¢√ÎªªÀ„≥…ƒ…√Î
 
