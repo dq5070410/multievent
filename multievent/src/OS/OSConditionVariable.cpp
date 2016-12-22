@@ -3,7 +3,7 @@
 
 NAME_SPACE_OS_BEGIN
 
-Result ConditionVariableCreate( 
+ME_Result ConditionVariableCreate( 
 	CONDITION_VARIABLE* pConditionVariable,
 	const char* pszName )
 {
