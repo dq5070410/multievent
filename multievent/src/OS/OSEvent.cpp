@@ -8,7 +8,7 @@ ME_INLINE ME_Result EventCreate(
 	BOOL bManualReset /* = FALSE */,
 	BOOL bSignaled /* = FALSE */ )
 {
-#ifdef WIN
+#ifdef ME_WIN
 	pEvent = ::CreateEventA(
 		NULL,
 		bManualReset,
@@ -25,7 +25,7 @@ ME_INLINE ME_Result EventCreate(
 
 ME_INLINE ME_Result EventDestroy( ME_EVENT& pEvent )
 {
-#ifdef WIN
+#ifdef ME_WIN
 	::CloseHandle( pEvent );
 
 	return ME_OK;
@@ -33,7 +33,7 @@ ME_INLINE ME_Result EventDestroy( ME_EVENT& pEvent )
 #else
 	return ME_ERROR_NOT_AVAILABLE;
 
-#endif	// WIN
+#endif	// ME_WIN
 }
 
 ME_INLINE ME_Result EventWait( ME_EVENT pEvent )
@@ -62,7 +62,7 @@ ME_INLINE ME_Result EventTimeWait(
 	ME_EVENT pEvent,
 	const CTimeValue& htvTime )
 {
-#ifdef WIN
+#ifdef ME_WIN
 	ME_Result hResult = ::WaitForSingleObject(
 		pEvent,
 		htvTime.GetMilliSecond() );
@@ -79,7 +79,7 @@ ME_INLINE ME_Result EventTimeWait(
 #else
 	return ME_ERROR_NOT_AVAILABLE;
 
-#endif	// WIN
+#endif	// ME_WIN
 }
 
 ME_INLINE ME_Result EventSignal( ME_EVENT pEvent )
@@ -98,12 +98,12 @@ ME_INLINE ME_Result EventSignal( ME_EVENT pEvent )
 #else
 	return ME_ERROR_NOT_AVAILABLE;
 
-#endif	// WIN
+#endif	// ME_WIN
 }
 
 ME_INLINE ME_Result EventReset( ME_EVENT pEvent )
 {
-#ifdef WIN
+#ifdef ME_WIN
 	ME_Result hResult = !::ResetEvent( pEvent );
 	if ( ME_SUCCEEDED(hResult) )
 	{
@@ -117,7 +117,7 @@ ME_INLINE ME_Result EventReset( ME_EVENT pEvent )
 #else
 	return ME_ERROR_NOT_AVAILABLE;
 
-#endif	// WIN
+#endif	// ME_WIN
 }
 
 NAME_SPACE_OS_END
