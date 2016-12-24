@@ -151,13 +151,13 @@ public:
 
 	/**
 	* == 运算符
-	* 判断两个CHikInetAddress对象是否相等
+	* 判断两个CInetAddress对象是否相等
 	*/
 	BOOL operator == ( const CInetAddress& DstAddress ) const;
 
 	/**
 	* < 运算符
-	* 判断当前CHikInetAddress对象小于目标对象
+	* 判断当前CInetAddress对象小于目标对象
 	* 通常用于std::map中的查找操作
 	*/
 	BOOL operator < ( const CInetAddress& DstAddress ) const;
