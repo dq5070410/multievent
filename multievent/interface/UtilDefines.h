@@ -111,31 +111,31 @@
 #endif	// ME_SUCCEEDED
 
 /**
-* HikUtility所使用的命名空间
+* MultiEvent所使用的命名空间
 * 
 * 同样，如果不想这个命名空间起作用，
 * 只要定义ME_NO_NAME_SPACE就行
 */
 #ifndef ME_NO_NAME_SPACE
 
-	/* HikUtility顶层命名空间HIK的预声明 */
+	/* MultiEvent顶层命名空间HIK的预声明 */
 	namespace HIK {}
 
-	/* HikUtility次级命名空间OS的预声明 */
+	/* MultiEvent次级命名空间OS的预声明 */
 	namespace HIK { namespace OS {} }
 
-    /* HIkUtility次级命名空间CRYPTO的预声明 */
+    /* MultiEvent次级命名空间CRYPTO的预声明 */
     namespace HIK { namespace CRYPTO {} }
 
-	/* HikUtility所用的顶层命名空间 HIK */
+	/* MultiEvent所用的顶层命名空间 HIK */
 	#define ME_NAME_SPACE_BEGIN namespace HIK {
 	#define ME_NAME_SPACE_END }
 
-	/* HikUtility封装与系统相关的C API使用的命名空间 */
+	/* MultiEvent封装与系统相关的C API使用的命名空间 */
 	#define ME_NAME_SPACE_OS_BEGIN namespace HIK { namespace OS {
 	#define ME_NAME_SPACE_OS_END } }
 
-    /* HikUtility封装与SSL，加解密以及摘要相关的模块使用的命名空间 */
+    /* MultiEvent封装与SSL，加解密以及摘要相关的模块使用的命名空间 */
     #define ME_NAME_SPACE_CRYPTO_BEGIN namespace HIK { namespace CRYPTO {
     #define ME_NAME_SPACE_CRYPTO_END } }
 
