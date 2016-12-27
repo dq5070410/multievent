@@ -2,7 +2,7 @@
 * IO封装接口类
 * 
 * History
-*	12/11/2012		Created
+*	12/11/2016		Created
 */
 
 #ifndef __IO_H_

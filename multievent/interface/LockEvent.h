@@ -6,7 +6,7 @@
 * 
 *
 * History
-*	2/18/2013		Created
+*	12/18/2016		Created
 */
 
 #ifndef __LOCK_EVENT_H_
