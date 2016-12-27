@@ -9,7 +9,7 @@
 *
 *
 * History
-*	12/12/2012		Created
+*	12/12/2016		Created
 */
 
 #ifndef __CUSTOMIZE_EVENT_H_

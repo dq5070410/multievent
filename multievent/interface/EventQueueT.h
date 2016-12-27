@@ -3,7 +3,7 @@
 * 
 *
 * History
-*	2/05/2012		Created
+*	12/05/2016		Created
 */
 
 #ifndef __EVENT_QUEUE_T_H_
