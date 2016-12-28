@@ -7,16 +7,16 @@
  */
 
 #ifndef __THREAD_INTERFACE_H_
-#define __HREAD_INTERFACE_H_
+#define __THREAD_INTERFACE_H_
 
 #include "Base.h"
 
 NAME_SPACE_BEGIN
 
 /* 预声明 */
-class IThread;
-class IThreadManager;
-class IThreadSink;
+class IMEThread;
+class IMEThreadManager;
+class IMEThreadSink;
 class ICustomizeEvent;
 
 
@@ -27,7 +27,7 @@ class ICustomizeEvent;
  *  信息的接口
  *
  */
-class OS_EXPORT IThread
+class OS_EXPORT IMEThread
 {
 public:
     /**
@@ -39,7 +39,7 @@ public:
      *      ME_OK表示成功; 非ME_OK表示失败
      *
      *  参考:
-     *      IThreadManager::CreateThread
+     *      IMEThreadManager::CreateThread
      */
     virtual ME_Result Run() = 0;
 
@@ -84,7 +84,7 @@ public:
      *      线程对象类型
      *
      *  参考:
-     *      IThreadManager::THREAD_OPTION
+     *      IMEThreadManager::THREAD_OPTION
      */
     virtual INT GetThreadType() const = 0;
 
@@ -97,9 +97,9 @@ protected:
      *      void
      *
      *  参考:
-     *      IThreadManager::DestroyThread
+     *      IMEThreadManager::DestroyThread
      */
-    virtual ~IThread() {}
+    virtual ~IMEThread() {}
 };
 
 /**
@@ -112,12 +112,12 @@ protected:
  *      如果是创建用户逻辑类型的线程对象，必须在创建时指定这样一个回调类给它
  *
  *  参考:
- *      IThreadManager::CreateThread
+ *      IMEThreadManager::CreateThread
  */
-class  IThreadSink
+class  IMEThreadSink
 {
 public:
-    virtual ~IThreadSink() {}
+    virtual ~IMEThreadSink() {}
 
     /**
      *  线程对象启动后执行的过程，如果创建了用户逻辑类型的线程对象，那么就应该在
@@ -145,7 +145,7 @@ public:
  *  只能通过线程对象管理器来做这些事情
  *
  */
-class OS_EXPORT IThreadManager
+class OS_EXPORT IMEThreadManager
 {
 public:
     /**
@@ -188,7 +188,7 @@ public:
      *  返回值:
      *      线程对象管理器单例指针
      */
-    static IThreadManager* Instance();
+    static IMEThreadManager* Instance();
 
     /**
      *  创建线程对象，通过这个接口创建的线程对象能够直接接受线程对象管理器的管理
@@ -211,8 +211,8 @@ public:
     virtual ME_Result CreateThread(
         BOOL bBlock,
         INT iType,
-        IThreadSink* pThreadSink,
-        IThread*& pThread ) = 0;
+        IMEThreadSink* pThreadSink,
+        IMEThread*& pThread ) = 0;
 
     /**
      *  销毁线程对象，如果线程对象已注册到管理器，那么销毁前还会将其注销
@@ -225,9 +225,9 @@ public:
      *      ME_OK表示成功; 非ME_OK表示失败
      *
      *  参考:
-     *      IThreadManager::Join
+     *      IMEThreadManager::Join
      */
-    virtual ME_Result DestroyThread( IThread* pThread ) = 0;
+    virtual ME_Result DestroyThread( IMEThread* pThread ) = 0;
 
     /**
      *  等待线程对象停止
@@ -239,9 +239,9 @@ public:
      *      ME_OK表示成功; 非ME_OK表示失败
      *
      *  参考:
-     *      IThreadManager::DestroyThread
+     *      IMEThreadManager::DestroyThread
      */
-    virtual ME_Result Join( IThread* pThread ) = 0;
+    virtual ME_Result Join( IMEThread* pThread ) = 0;
 
     /**
      *  获得当前所在的线程对象
@@ -249,7 +249,7 @@ public:
      *  返回值:
      *      非空表示当前所在的线程对象实例指针; NULL表示没有找到
      */
-    virtual IThread* GetCurrentThread() = 0;
+    virtual IMEThread* GetCurrentThread() = 0;
 
     /**
      *  获得可用的网络线程对象
@@ -257,7 +257,7 @@ public:
      *  返回值:
      *      非空表示网络线程对象实例指针; NULL表示没有找到
      */
-    virtual IThread* GetNetworkThread() = 0;
+    virtual IMEThread* GetNetworkThread() = 0;
 
     /**
      *  获得可用的用户线程对象
@@ -265,7 +265,7 @@ public:
      *  返回值:
      *      非空表示用户线程对象实例指针; NULL表示没有找到
      */
-    virtual IThread* GetUserThread() = 0;
+    virtual IMEThread* GetUserThread() = 0;
 
 protected:
     /**
@@ -274,7 +274,7 @@ protected:
      *  返回值:
      *      无
      */
-    virtual ~IThreadManager() {}
+    virtual ~IMEThreadManager() {}
 };
 
 NAME_SPACE_END
