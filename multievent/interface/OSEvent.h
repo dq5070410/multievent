@@ -3,7 +3,7 @@
 * 
 *
 * History
-*	2/18/2013		Created
+*	2/18/2016		Created
 */
 
 #ifndef __OS_EVENT_H_

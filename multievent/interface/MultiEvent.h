@@ -6,7 +6,7 @@
 * 
 *
 * History
-*	2/26/2013		Created
+*	12/26/2016		Created
 */
 
 #ifndef __MULTI_EVENT_H_

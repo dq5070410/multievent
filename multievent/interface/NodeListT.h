@@ -3,7 +3,7 @@
 * 
 *
 * History
-*	2/05/2012		Created
+*	2/05/2016		Created
 */
 #ifndef __NODE_LIST_T_H_
 #define __NODE_LIST_T_H_

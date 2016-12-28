@@ -5,7 +5,7 @@
 *
 *
 * History
-*	12/02/2012		Created
+*	12/02/2016		Created
 */
 
 #ifndef __PLATFORM_H_
