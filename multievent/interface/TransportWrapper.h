@@ -238,7 +238,7 @@ private:
 
 private:
 	DWORD									m_dwType;		// 原生transport的类型
-	CMEAutoPtrT<IMETransportImpl>			m_pTransport;	// 2013.9.6 editedy by 韦珂 // 原生transport
+	CMEAutoPtrT<IMETransportImpl>			m_pTransport;   // 原生transport
 
 	IMETransportSink*						m_pSink;		// 上层回调对象，一般是transport cross thread或者上层使用者
 
