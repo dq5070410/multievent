@@ -226,7 +226,6 @@ private:
 	ME_Result OperatorPostRecv( 
 		CMEMessageBlock*& pmbBlock );
 
-	/* 2013.9.5 added by 韦珂 */
 private:
 	ME_Result CreateSync( 
 		DWORD dwType,
@@ -249,7 +248,6 @@ private:
     OperatorDequeType                       m_dequeOperator;
 
 	/**
-	* 2013.9.6 added 韦珂
 	*
 	* 用于确认是否close以保护在OnReceive() callback中可能存在的 
 	* 使用者删除transport的行为
