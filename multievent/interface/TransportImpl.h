@@ -11,7 +11,7 @@
 #ifndef __TRANSPORT_IMPL_H_
 #define __TRANSPORT_IMPL_H_
 
-#include "HikBase.h"
+#include "Base.h"
 
 #include "ReferenceControlT.h"
 #include "ConnectionDefines.h"
