@@ -18,17 +18,17 @@ NAME_SPACE_BEGIN
 *
 * 目前只支持IPv4
 */
-class OS_EXPORT CInetAddress
+class OS_EXPORT CMEInetAddress
 {
 public:
-	CInetAddress();
+	CMEInetAddress();
 
 	/**
 	* 构造函数
 	*
 	* <pszHostNameAndPort>，地址与端口，比如"127.0.0.1:80"
 	*/
-	CInetAddress( const char* pszHostNameAndPort );
+	CMEInetAddress( const char* pszHostNameAndPort );
 
 	/**
 	* 构造函数
@@ -36,12 +36,12 @@ public:
 	* <pszHostName>，地址，比如"127.0.0.1"
 	* <wPort>，端口，最大不能超过65535
 	*/
-	CInetAddress( 
+	CMEInetAddress( 
 		const char* pszHostName,
 		WORD wPort );
 
 	/* 2013.9.5 added by 韦珂 */
-	CInetAddress( const ME_SOCK_ADDR& hsaAddress );
+	CMEInetAddress( const ME_SOCK_ADDR& hsaAddress );
 
 public:
 	/**
@@ -52,7 +52,7 @@ public:
 	* <bLoopback>，是否获取回路地址
 	*/
 	static ME_Result GetLocalAddress( 
-		CInetAddress& hiaLocalAddress,
+		CMEInetAddress& hiaLocalAddress,
 		BOOL bIPv4 = TRUE,
 		BOOL bLoopback = FALSE);
 
@@ -117,7 +117,7 @@ public:
 	* 取得当前地址
 	*
 	* 返回值:
-	*		CHikString值
+	*		CMEString值
 	*/
 	CMEString GetIP() const;
 
@@ -151,16 +151,16 @@ public:
 
 	/**
 	* == 运算符
-	* 判断两个CInetAddress对象是否相等
+	* 判断两个CMEInetAddress对象是否相等
 	*/
-	BOOL operator == ( const CInetAddress& DstAddress ) const;
+	BOOL operator == ( const CMEInetAddress& DstAddress ) const;
 
 	/**
 	* < 运算符
-	* 判断当前CInetAddress对象小于目标对象
+	* 判断当前CMEInetAddress对象小于目标对象
 	* 通常用于std::map中的查找操作
 	*/
-	BOOL operator < ( const CInetAddress& DstAddress ) const;
+	BOOL operator < ( const CMEInetAddress& DstAddress ) const;
 
 public:
 	/**
@@ -188,10 +188,10 @@ public:
 		* 返回值:
 		*		long允许范围之内的任何值
 		*/
-		LONG GetHashValue( const CInetAddress& Src ) const;
+		LONG GetHashValue( const CMEInetAddress& Src ) const;
 
 		/**  
-		* 对比两个CHikInetAddress对象, 功能依赖于CHikInetAddress的operator <
+		* 对比两个CMEInetAddress对象, 功能依赖于CMEInetAddress的operator <
 		*
 		* <Src>, 源对象
 		* <Dst>, 目标对象
@@ -200,8 +200,8 @@ public:
 		*		Src小于Dst, 返回TRUE; 否则返回FALSE
 		*/
 		BOOL operator () (
-			const CInetAddress& Src, 
-			const CInetAddress& Dst ) const;
+			const CMEInetAddress& Src, 
+			const CMEInetAddress& Dst ) const;
 
 		/**  
 		* hash目标对象
@@ -212,7 +212,7 @@ public:
 		* 返回值:
 		*		long允许范围之内的任何值
 		*/
-		LONG operator() ( const CInetAddress& Dst ) const;
+		LONG operator() ( const CMEInetAddress& Dst ) const;
 	};
 
 private:
