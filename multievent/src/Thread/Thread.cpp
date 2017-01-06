@@ -84,7 +84,7 @@ ME_Result CMEThread::Run()
      *  多线程如果同时Run和Join，那么最终的结果一定是线程对象是停掉的（包括启动
      *  了被停止和没启动）
      */
-    CHikLockGuardT<CHikLockThreadMutex> Guard( &m_hThreadMutex );
+    CMELockGuardT<CMELockThreadMutex> Guard( &m_hThreadMutex );
 
     /* 非阻塞模式则需要检查下线程的状态，启动的情况下就可以返回了 */
     if ( RUN_STATE_RUNNING == m_iStatus || NULL != m_hThreadHandle )
@@ -126,7 +126,7 @@ ME_Result CMEThread::Join(
         << ", bTerminate: " << bTerminate );
     {
         /* 这把锁暂时只用来保护m_iStatus */
-        CHikLockGuardT<CHikLockThreadMutex> Guard( &m_hThreadMutex );
+        CMELockGuardT<CMELockThreadMutex> Guard( &m_hThreadMutex );
 
         /* 不论怎样都将线程对象的状态置为exit */
         m_iStatus = RUN_STATE_EXIT;
@@ -141,7 +141,7 @@ ME_Result CMEThread::Join(
     }
 
     /* OS层接口所需的超时时间和线程状态参数 */
-    CHikTimeValue hTimeValue;
+    CMETimeValue hTimeValue;
     ME_THREAD_STAT hThreadStat;
 
     /* 只有存在有限超时时间的情况下才设置超时时间 */
@@ -159,7 +159,7 @@ ME_Result CMEThread::Join(
         &hThreadStat );
 
     /* Join之后，那么就保护线程句柄，不能存在两个线程都来Destroy的情况，TODO：Linux环境需要考虑是否会有异常 */
-    CHikLockGuardT<CHikLockThreadMutex> Guard( &m_hThreadMutex );
+    CMELockGuardT<CMELockThreadMutex> Guard( &m_hThreadMutex );
 
     /* 停止超时，当允许强停的时候才能强停 */
     if ( ME_ERROR_FAILURE == hResult  && bTerminate )
