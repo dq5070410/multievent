@@ -1,1 +1,1 @@
-#A cross platform multievent framework, inclue win32 and linux(kernel 2.6.3 above)
+#A network program framework cross platform, inclue win32 and linux(kernel 2.6.3 above)
