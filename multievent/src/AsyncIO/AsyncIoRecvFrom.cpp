@@ -132,14 +132,6 @@ void CMEAsyncIoRecvFrom::CMEAsyncIoRecvFromResult::OnCompleteImpl(
 	}
 }
 
-
-
-
-
-
-
-
-
 ME_NAME_SPACE_END
 
 #endif	// ME_WIN
