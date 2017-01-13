@@ -3,7 +3,7 @@
 * 
 *
 * History
-*	12/02/2012		Created
+*	12/02/2016		Created
 */
 
 #ifndef __UTIL_DEFINES_H_
@@ -119,29 +119,29 @@
 #ifndef ME_NO_NAME_SPACE
 
 	/* MultiEvent顶层命名空间HIK的预声明 */
-	namespace HIK {}
+	namespace ME {}
 
 	/* MultiEvent次级命名空间OS的预声明 */
-	namespace HIK { namespace OS {} }
+	namespace ME { namespace OS {} }
 
     /* MultiEvent次级命名空间CRYPTO的预声明 */
-    namespace HIK { namespace CRYPTO {} }
+    namespace ME { namespace CRYPTO {} }
 
-	/* MultiEvent所用的顶层命名空间 HIK */
-	#define ME_NAME_SPACE_BEGIN namespace HIK {
+	/* MultiEvent所用的顶层命名空间 ME */
+	#define ME_NAME_SPACE_BEGIN namespace ME {
 	#define ME_NAME_SPACE_END }
 
 	/* MultiEvent封装与系统相关的C API使用的命名空间 */
-	#define ME_NAME_SPACE_OS_BEGIN namespace HIK { namespace OS {
+	#define ME_NAME_SPACE_OS_BEGIN namespace ME { namespace OS {
 	#define ME_NAME_SPACE_OS_END } }
 
     /* MultiEvent封装与SSL，加解密以及摘要相关的模块使用的命名空间 */
-    #define ME_NAME_SPACE_CRYPTO_BEGIN namespace HIK { namespace CRYPTO {
+    #define ME_NAME_SPACE_CRYPTO_BEGIN namespace ME { namespace CRYPTO {
     #define ME_NAME_SPACE_CRYPTO_END } }
 
-	#define ME_USING_HIK using namespace HIK;
-	#define ME_USING_ME_OS using namespace HIK::OS;
-    #define ME_USING_ME_CRYPTO using namespace HIK::CRYPTO;
+	#define ME_USING_ME using namespace ME;
+	#define ME_USING_ME_OS using namespace ME::OS;
+    #define ME_USING_ME_CRYPTO using namespace ME::CRYPTO;
 
 #else
 	#define ME_NAME_SPACE_BEGIN
@@ -153,7 +153,7 @@
     #define ME_NAME_SPACE_CRYPTO_BEGIN
     #define ME_NAME_SPACE_CRYPTO_END
 
-	#define ME_USING_HIK
+	#define ME_USING_ME
 	#define ME_USING_ME_OS
     #define ME_USING_ME_CRYPTO
 #endif	// ME_NO_NAME_SPACE
