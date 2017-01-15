@@ -10,15 +10,15 @@
 
 #include "Base.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 /**
 * IO封装接口类
 */
-class IIO
+class IMEIO
 {
 public:
-	virtual ~IIO() {}
+	virtual ~IMEIO() {}
 
 public:
 	virtual void SetHandle( ME_HANDLE hHandle ) = 0;
@@ -29,10 +29,10 @@ public:
 /**
 * IO封装接口回调类
 */
-class IIOSink
+class IMEIOSink
 {
 public:
-	virtual ~IIOSink() {}
+	virtual ~IMEIOSink() {}
 
 public:
 	/**
@@ -75,7 +75,7 @@ public:
 		int iEvent ) = 0;
 };
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif	// __IO_H_
 
