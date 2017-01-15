@@ -3,7 +3,7 @@
 *
 *
 * History
-*	1/29/2013		Created
+*	1/29/2016		Created
 */
 
 #ifndef __BYTESTREAM_H_
@@ -11,7 +11,7 @@
 
 #include "Base.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 template<class MBType>
 class CByteStreamT
@@ -99,8 +99,8 @@ public:
 
     CByteStreamT& operator << ( LPCSTR Value );
 
-    CByteStreamT& operator << ( const CHikString& Value );
-    CByteStreamT& operator >> ( CHikString& Value );
+    CByteStreamT& operator << ( const CMEString& Value );
+    CByteStreamT& operator >> ( CMEString& Value );
 
 private:
     /**
@@ -178,6 +178,6 @@ private:
 
 #include "ByteStreamT.hpp"
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
-#endif // __HIK_BYTESTREAM_H_
+#endif // __ME_BYTESTREAM_H_

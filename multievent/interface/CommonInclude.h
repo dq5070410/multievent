@@ -11,7 +11,7 @@
 
 #include "Platform.h"
 
-#ifdef WIN
+#ifdef ME_WIN
 
 	/*set the max select handle is 2048,default is 64*/
 	#ifdef FD_SETSIZE
@@ -40,7 +40,7 @@
 	#include <MSWSock.h>
 #endif	// WIN
 
-#ifdef LINUX
+#ifdef ME_LINUX
 	#include <stdio.h>
 	#include <stdlib.h>
 	#include <string.h>
