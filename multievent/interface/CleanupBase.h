@@ -7,8 +7,8 @@
 *	12/08/2016		Created
 */
 
-#ifndef __ME_CLEAN_UP_BASE_H_
-#define __ME_CLEAN_UP_BASE_H_
+#ifndef __CLEAN_UP_BASE_H_
+#define __CLEAN_UP_BASE_H_
 
 #include "Platform.h"
 #include "UtilDefines.h"
@@ -33,7 +33,7 @@ public:
 	virtual void Cleanup();
 
 protected:
-	typedef CHikLockThreadMutex MutexType;
+	typedef CMELockThreadMutex MutexType;
 
 protected:
 	static MutexType* GetCleanupMutex();
@@ -54,7 +54,7 @@ private:
 
 ME_NAME_SPACE_END
 
-#endif	// __ME_CLEAN_UP_H_
+#endif	// __CLEAN_UP_H_
 
 
 

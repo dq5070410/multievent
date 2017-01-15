@@ -35,7 +35,7 @@ typedef CSingletonT<CConfigManager> CConfigManagerSingleton;
 
 ME_NAME_SPACE_END
 
-#endif	// __ME_CONFIG_MANAGER_H_
+#endif	// __CONFIG_MANAGER_H_
 
 
 
