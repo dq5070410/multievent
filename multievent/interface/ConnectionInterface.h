@@ -24,7 +24,7 @@ class IConnector;
 class IConnectorSink;
 class ITransport;
 class ITransportSink;
-class CInetAddress;
+class CMEInetAddress;
 
 typedef CAutoPtrT<IAcceptor> CAcceptorAutoPtr;
 typedef CAutoPtrT<IConnector> CConnectorAutoPtr;
@@ -113,7 +113,7 @@ public:
 	*/
 	virtual ME_Result Open( 
 		IAcceptorSink* pSink,
-		const CHikInetAddress& hiaLocalAddr ) = 0;
+		const CMEInetAddress& hiaLocalAddr ) = 0;
 
 	/**
 	* 关闭一个Acceptor并且停止侦听
@@ -154,8 +154,8 @@ public:
 };
 
 /**
- * IHikAcceptor的事件接收类
- * 如果你想收到由IHikAcceptor产生的事件, 比如, 有连接连进来了, 等等
+ * IMEAcceptor的事件接收类
+ * 如果你想收到由IMEAcceptor产生的事件, 比如, 有连接连进来了, 等等
  * 就必须继承这个类, 并实现相关函数
 */
 class ME_OS_EXPORT IAcceptorSink
@@ -204,9 +204,9 @@ public:
 	*/
 	virtual ME_Result Open(
 		IConnectorSink* pSink,
-		const CInetAddress& peerAddress,
+		const CMEInetAddress& peerAddress,
 		CTimeValue* pTimeout = NULL,
-		CInetAddress* pLocalAddress = NULL ) = 0;
+		CMEInetAddress* pLocalAddress = NULL ) = 0;
 
 	
 	/**
@@ -354,7 +354,7 @@ public:
 	* 返回值:
 	*		ME_OK表示成功; 非ME_OK表示失败
 	*/
-	virtual ME_Result SendData( CHikMessageBlock* pmbBlock ) = 0;
+	virtual ME_Result SendData( CMEMessageBlock* pmbBlock ) = 0;
 
 	/**
 	* 设置transport的属性
