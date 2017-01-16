@@ -16,18 +16,18 @@
 #include "Platform.h"
 #include "CommonInclude.h"
 
-#if ( defined(WIN) && (!defined(_WIN32_WINNT) || (_WIN32_WINNT <= 0x0501)) )
-	#error only support winxp and above
-#endif	// ( !defined(_WIN32_WINNT) && !(_WIN32_WINNT >= 0x0501) )
+#if ( defined(ME_WIN) && (!defined(_ME_WIN32_ME_WINNT) || (_ME_WIN32_ME_WINNT <= 0x0501)) )
+	#error only support ME_WINxp and above
+#endif	// ( !defined(_ME_WIN32_ME_WINNT) && !(_ME_WIN32_ME_WINNT >= 0x0501) )
 
 /* multievent return value */
-typedef int Result;
+typedef int ME_Result;
 
 /*
- * linux base data
+ * ME_LINUX base data
  * 
  */
-#ifdef LINUX
+#ifdef ME_LINUX
 
 	typedef long long				LONGLONG;
 	typedef unsigned long			ULONG;
@@ -72,9 +72,9 @@ typedef int Result;
 	#ifndef TRUE
 		#define TRUE 1
 	#endif // TRUE
-#endif	// LINUX
+#endif	// ME_LINUX
 
-#ifdef WIN
+#ifdef ME_WIN
 
 
 	#define EWOULDBLOCK             WSAEWOULDBLOCK
@@ -113,13 +113,13 @@ typedef int Result;
 	#define ESTALE                  WSAESTALE
 	#define EREMOTE                 WSAEREMOTE
 
-#elif defined( LINUX )
+#elif defined( ME_LINUX )
 	#define EWOULDBLOCK				EAGAIN
 	#ifndef SOCKET_ERROR
 		#define SOCKET_ERROR		-1
 	#endif	// SOCKET_ERROR
 
-#endif	// SC_WIN
+#endif	// SC_ME_WIN
 
 	struct iovec
 	{
@@ -129,17 +129,17 @@ typedef int Result;
 
 	#define IOV_MAX 64
 
-#elif defined( LINUX )
+#elif defined( ME_LINUX )
 	#ifndef IOV_MAX
 		#define IOV_MAX 16
 	#endif	// IOV_MAX
 	#define IOV_MAX IOV_MAX
-#endif	// WIN
+#endif	// ME_WIN
 
 /**
 * handle
 */
-#ifdef WIN
+#ifdef ME_WIN
 	typedef HANDLE ME_HANDLE;
 	typedef SOCKET ME_SOCKET;
 	typedef int ME_SOCK_LEN;
@@ -150,7 +150,7 @@ typedef int Result;
 
 	#define ME_INFINITE			INFINITE
 
-#elif defined( LINUX )
+#elif defined( ME_LINUX )
 	typedef int ME_HANDLE;
 	typedef int ME_SOCKET;
 	typedef socklen_t ME_SOCK_LEN;
@@ -161,7 +161,7 @@ typedef int Result;
 	#define ME_SD_BOTH				2
 
 	#define ME_INFINITE			-1
-#endif	// WIN
+#endif	// ME_WIN
 
 #ifdef SUPPORT_IPV6
 	typedef sockaddr_in6 ME_SOCK_ADDR;
@@ -170,11 +170,11 @@ typedef int Result;
 #endif	// SUPPORT_IPV6
 
 
-#ifdef WIN
+#ifdef ME_WIN
 	typedef OVERLAPPED ME_OVERLAPPED;
 
-#elif defined( LINUX )
-	/*  copy from winbase.h*/
+#elif defined( ME_LINUX )
+	/*  copy from ME_WINbase.h*/
 
 	typedef struct tagOVERLAPPED 
 	{
@@ -208,11 +208,11 @@ typedef int Result;
 * 函数调用约定的重定义
 */
 #ifndef C_STDCALL
-	#ifdef WIN
+	#ifdef ME_WIN
 		#define C_STDCALL __stdcall
-	#elif defined( LINUX )
+	#elif defined( ME_LINUX )
 		#define C_STDCALL
-	#endif	// WIN
+	#endif	// ME_WIN
 #endif	// C_STDCALL
 
 
@@ -236,7 +236,7 @@ typedef struct tagTimeValue
 /**
 * 线程、锁相关定义
 */
-#ifdef WIN
+#ifdef ME_WIN
 	/* thread ID */
 	typedef UINT THREAD_ID;
 
@@ -255,7 +255,7 @@ typedef struct tagTimeValue
 	/* CS */
 	typedef CRITICAL_SECTION C_THREAD_MUTEX;
 
-	/* win32 condition variable */
+	/* ME_WIN32 condition variable */
 	typedef struct tagConditionVariable
 	{
 		LONG lWaiters;
@@ -263,7 +263,7 @@ typedef struct tagTimeValue
 		C_SEMAPHONE hsSemaphoreWaiter;	// 记录有多少个线程在等待条件变量有信号
 		C_EVENT heEventWaiterDone;		// 用于，在当前线程把条件变量置为有信号或broadcast之后，通知其他等待的线程
 		BOOL bBroadcast;					// 条件变量是否处于broadcast状态
-	} HIK_CONDITION_VARIABLE;
+	} ME_CONDITION_VARIABLE;
 
 	/* 线程状态类型 */
 	typedef DWORD C_THREAD_STAT;
@@ -271,18 +271,18 @@ typedef struct tagTimeValue
 	/* 线程函数返回值类型 */
 	typedef UINT C_THREAD_RETURN_TYPE;
 
-#elif defined( LINUX )
+#elif defined( ME_LINUX )
 	/* 线程ID */
 	typedef pthread_t C_THREAD_ID;
 
 	/* 线程句柄 */
-	typedef HIK_THREAD_ID C_THREAD_HANDLE;
+	typedef ME_THREAD_ID C_THREAD_HANDLE;
 
 	/* 信号灯 */
 	typedef sem_t* C_SEMAPHONE;
 
 	/* 事件 */
-	typedef HIK_HANDLE C_EVENT;
+	typedef ME_HANDLE C_EVENT;
 
 	/* 互斥量 */
 	typedef pthread_mutex_t C_THREAD_MUTEX;
@@ -299,7 +299,7 @@ typedef struct tagTimeValue
 	/* 线程函数返回值类型 */
 	typedef void* C_THREAD_RETURN_TYPE;
 
-#endif	// C_WIN
+#endif	// C_ME_WIN
 
 typedef struct tagMutex
 
@@ -314,8 +314,8 @@ typedef struct tagMutex
 
 	union
 	{
-		C_THREAD_MUTEX htmLock;	// win下是CRITICAL_SECTION，linux下是mutex
-		C_MUTEX hmLock;			// win和linux下都是mutex
+		C_THREAD_MUTEX htmLock;	// ME_WIN下是CRITICAL_SECTION，ME_LINUX下是mutex
+		C_MUTEX hmLock;			// ME_WIN和ME_LINUX下都是mutex
 	};
 } C_MUTEX_CS;
 

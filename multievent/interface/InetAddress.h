@@ -11,7 +11,7 @@
 
 #include "Base.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 /**
 * ÍøÂçµØÖ·Àà
@@ -244,7 +244,7 @@ private:
 
 };
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif	// __INET_ADDRESS_H_
 
