@@ -17,7 +17,7 @@ namespace EVENT
 {
 
 template <class TransportType>
-class EventOpenT : public CHikEventRun
+class EventOpenT : public CEventRun
 {
 public:
 	EventOpenT( TransportType* pTransport )
