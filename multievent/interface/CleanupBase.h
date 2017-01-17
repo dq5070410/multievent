@@ -20,11 +20,11 @@ class CLockThreadMutex;
 * 用于退出时做对象回收、清理的一个类
 * 更多是为了配合单例以而存在
 */
-class ME_OS_EXPORT CCleanupBase
+class ME_OS_EXPORT CMECleanupBase
 {
 protected:
-	CCleanupBase();
-	virtual ~CCleanupBase();
+	CMECleanupBase();
+	virtual ~CMECleanupBase();
 
 public:
 	static void CleanupAll();
@@ -41,15 +41,15 @@ protected:
 	static void ReleaseCleanupMutex();
 
 private:
-	void operator = ( const CCleanupBase& );
-	CCleanupBase( const CCleanupBase& );
+	void operator = ( const CMECleanupBase& );
+	CMECleanupBase( const CMECleanupBase& );
 
 private:
-	static CCleanupBase*			s_pHeader;	// 链表头
+	static CMECleanupBase*			s_pHeader;	// 链表头
 	static MutexType*				s_pMutex;	// 锁
 
 private:
-	CCleanupBase*				m_pNext;	// 指向下一个对象的指针
+	CMECleanupBase*				m_pNext;	// 指向下一个对象的指针
 };
 
 ME_NAME_SPACE_END
