@@ -42,13 +42,13 @@ public:
 		PRIORITY_HIGH,			// 高优先
 	};
 
-	class CHikSyncEvent;
+	class CMESyncEvent;
 
 public:
 	CEventNodeT();
 
 	/**
-	* 为了符合CHikNodeListT的要求而添加
+	* 为了符合CMENodeListT的要求而添加
 	*/
 	CEventNodeT( SuperType* pSuper );
 
@@ -56,16 +56,16 @@ public:
 	* 同时，为了避免默认参数而导致的编译器无法识别到底是
 	* 调用哪个构造函数，只能把原来的默认参数去掉
 	*/
-	/*CHikEventNodeT(
+	/*CMEEventNodeT(
 		EventType* pEvent,
 		MODE nMode = MODE_POST,
-		CHikSyncEvent* pSync = NULL,
+		CMESyncEvent* pSync = NULL,
 		PRIORITY nPriority = PRIORITY_NORMAL );*/
 
 	CEventNodeT(
 		EventType* pEvent,
 		MODE nMode,
-		CHikSyncEvent* pSync,
+		CMESyncEvent* pSync,
 		PRIORITY nPriority = PRIORITY_NORMAL );
 
 public:

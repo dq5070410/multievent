@@ -59,7 +59,7 @@ ME_Result CEventNodeT<EventType>::SetSyncEvent( CSyncEvent* pSync )
 }
 
 template <class EventType>
-void CHikEventNodeT<EventType>::SetPriority( PRIORITY nPriority )
+void CMEEventNodeT<EventType>::SetPriority( PRIORITY nPriority )
 {
 	m_nPriority = nPriority;
 }

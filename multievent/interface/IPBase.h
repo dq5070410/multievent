@@ -17,7 +17,7 @@ NAME_SPACE_BEGIN
 /**
 * IP基础类，所有的socket应该类都从这里继承
 */
-class OS_EXPORT CIPBase : public IHikIO
+class ME_OS_EXPORT CIPBase : public IMEIO
 {
 public:
 	/* 非阻塞选项 */

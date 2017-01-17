@@ -17,7 +17,7 @@
 
 NAME_SPACE_BEGIN
 
-class OS_EXPORT ICustomizeEvent
+class ME_OS_EXPORT ICustomizeEvent
 {
 public:
 	virtual ~ICustomizeEvent() {}

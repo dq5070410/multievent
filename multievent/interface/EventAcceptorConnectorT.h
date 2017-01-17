@@ -3,7 +3,7 @@
 * 
 *
 * History
-*	12/14/2012		Created
+*	12/14/2016		Created
 */
 
 #ifndef __EVENT_ACCEPTOR_CONNECTOR_H_
@@ -70,7 +70,7 @@ public:
 	{
 		m_pAcceptor->OnConnect_c( m_pTransport );
 
-		return HIK_OK;
+		return ME_OK;
 	}
 
 private:
@@ -143,7 +143,7 @@ public:
 	{
 		m_pObject->Close_n();
 
-		return HIK_OK;
+		return ME_OK;
 	}
 
 private:
@@ -163,7 +163,7 @@ public:
 	EventOnConnectUserT( 
 		AcceptorConnectorType* pConnector,
 		PtrType pPtr,
-		HikResult hResult )
+		ME_Result hResult )
 		: m_pConnector( pConnector )
 		, m_pPtr( pPtr )
 		, m_hResult( hResult )
@@ -182,13 +182,13 @@ public:
 			m_pPtr,
 			m_hResult );
 
-		return HIK_OK;
+		return ME_OK;
 	}
 
 private:
 	AcceptorConnectorType*			m_pConnector;
 	PtrType							m_pPtr;
-	HikResult						m_hResult;
+	ME_Result						m_hResult;
 };
 
 /**
@@ -205,7 +205,7 @@ class EventOnConnectCurrentT : public CEventRun
 public:
 	EventOnConnectCurrentT( 
 		ConnectorType* pConnector,
-		HikResult hResult )
+		ME_Result hResult )
 		: m_pConnector( pConnector )
 		, m_hResult( hResult )
 	{
@@ -220,7 +220,7 @@ public:
 	{
 		m_pConnector->OnConnect_c( m_hResult );
 
-		return HIK_OK;
+		return ME_OK;
 	}
 
 private:

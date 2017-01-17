@@ -15,7 +15,7 @@
 #include "SocketErrorAutoSave.h"
 
 NAME_SPACE_BEGIN
-class CInetAddress;
+class CMEInetAddress;
 NAME_SPACE_END
 
 NAME_SPACE_BEGIN
@@ -24,10 +24,10 @@ NAME_SPACE_BEGIN
 * 底层socket的基础封装类
 * 所有的socket类都应该从这里继承
 */
-class OS_EXPORT CSocketBase : public CIPBase
+class OS_EXPORT CMESocketBase : public CIPBase
 {
 public:
-	virtual ~CSocketBase();
+	virtual ~CMESocketBase();
 
 public:
 	/** 
@@ -50,7 +50,7 @@ public:
 	*		ME_OK是成功, 其他为失败
 	*/
 	ME_Result Open( 
-		const CInetAddress& hiaLocalAddr,
+		const CMEInetAddress& hiaLocalAddr,
 		BOOL bReuse = FALSE );
 
 	/** 
@@ -61,7 +61,7 @@ public:
 	* 返回值:
 	*		ME_OK是成功, 其他为失败
 	*/
-	ME_Result Listen( const CInetAddress& hiaLocalAddr );
+	ME_Result Listen( const CMEInetAddress& hiaLocalAddr );
 
 	/** 
 	* 接受对端接入
@@ -74,7 +74,7 @@ public:
 	*/
 	ME_Result Accept(
 		ME_HANDLE& hHandle,
-		CInetAddress& hiaPeerAddr );
+		CMEInetAddress& hiaPeerAddr );
 
 	/**
 	* 尝试关闭一个socket并把<m_hhHandle>置为ME_INVALID_HANDLE
@@ -182,7 +182,7 @@ public:
 	* 返回值:
 	*		SOCKET_ERROR是失败; ME_OK是成功
 	*/
-	ME_Result GetLoacalAddress( CHikInetAddress& hiaLocalAddr );
+	ME_Result GetLoacalAddress( CMEInetAddress& hiaLocalAddr );
 
 	/** 
 	* 获取一个已有连接中所绑定的对端地址
@@ -192,12 +192,12 @@ public:
 	* 返回值:
 	*		SOCKET_ERROR是失败; ME_OK是成功
 	*/
-	ME_Result GetRemoteAddress( CHikInetAddress& hiaRemoteAddress );
+	ME_Result GetRemoteAddress( CMEInetAddress& hiaRemoteAddress );
 
 protected:
-	CSocketBase();
+	CMESocketBase();
 
-	CSocketBase( ME_HANDLE hHandle );
+	CMESocketBase( ME_HANDLE hHandle );
 
 protected:
 	/**
