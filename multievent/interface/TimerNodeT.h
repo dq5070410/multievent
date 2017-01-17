@@ -29,7 +29,7 @@ public:
 	CTimerNodeT();
 
 	/**
-	* 为了符合CHikNodeListT的要求而添加
+	* 为了符合CMENodeListT的要求而添加
 	*/
 	CTimerNodeT( SuperType* pSuper );
 

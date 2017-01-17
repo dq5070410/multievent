@@ -117,7 +117,7 @@ public:
 private:
 	/* 先用一个笨办法解决这个问题，后边再优化 */
 	/*template <class T>
-	class CHikNodeCompareT
+	class CMENodeCompareT
 	{
 	public:
 		BOOL operator () ( const T& pSrcNode, const T& pDstNode )

@@ -82,7 +82,7 @@ ME_Result ConditionVariableCreate(
 	else
 	{
 		/** 
-		* timespec是从1970.1.1 GMT 00:00:00算起的, 所以需要用CHikTimeValue
+		* timespec是从1970.1.1 GMT 00:00:00算起的, 所以需要用CMETimeValue
 		* 首先取得当前的年月日小时分秒, 再换算过去
 		*/
 

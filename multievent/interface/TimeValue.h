@@ -20,12 +20,12 @@ NAME_SPACE_BEGIN
 *
 * 它的最大用处在于作为CTimer的标准输入函数
 */
-class OS_EXPORT CTimeValue
+class ME_OS_EXPORT CTimeValue
 {
 public:
 	CTimeValue();
 
-	CTimeValue( const CHikTimeValue& htvTime );
+	CTimeValue( const CMETimeValue& htvTime );
 
 	CTimeValue(
 		LONGLONG llSecond,

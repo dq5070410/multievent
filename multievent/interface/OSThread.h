@@ -17,7 +17,7 @@ NAME_SPACE_END
 
 NAME_SPACE_OS_BEGIN
 
-ME_Result OS_EXPORT ThreadCreate(
+ME_Result ME_OS_EXPORT ThreadCreate(
 	ME_THREAD_FUNC pFunc,
 	LPVOID pArgs,
 	UINT lFlags,
@@ -40,7 +40,7 @@ ME_Result OS_EXPORT ThreadCreate(
 * 无法到达，为了避免这个问题，你需要在你的循环里加上ThreadTestDestroy，以确保
 * 在线程能够顺利的到达cancel点
 */
-ME_Result OS_EXPORT ThreadDestroy(
+ME_Result ME_OS_EXPORT ThreadDestroy(
 	ME_THREAD_HANDLE hThreadHandle, 
 	DWORD dwExitCode );
 
@@ -51,21 +51,21 @@ ME_Result OS_EXPORT ThreadDestroy(
 * linux环境下，会设置一cancellation point，这样当线程处于cancel状态时，
 * 它就能够顺利的退出(当然，也还是要花上一点时间)
 */
-ME_Result OS_EXPORT ThreadTestDestroy();
+ME_Result ME_OS_EXPORT ThreadTestDestroy();
 
-ME_Result OS_EXPORT ThreadJoin( 
+ME_Result ME_OS_EXPORT ThreadJoin( 
 	ME_THREAD_HANDLE hThreadHandle,
-	CHikTimeValue* pTimeout = NULL,
+	CMETimeValue* pTimeout = NULL,
 	ME_THREAD_STAT* pStat = NULL );
 
-ME_Result OS_EXPORT ThreadSetPriority(
+ME_Result ME_OS_EXPORT ThreadSetPriority(
 	ME_THREAD_HANDLE hThreadHandle,
 	int iPriority );
 
 /**
 * 获取当前线程的ID
 */
-ME_THREAD_ID OS_EXPORT GetThreadID();
+ME_THREAD_ID ME_OS_EXPORT GetThreadID();
 
 /**
 * 获得当前线程的句柄
@@ -75,7 +75,7 @@ ME_THREAD_ID OS_EXPORT GetThreadID();
 *
 * 在win32环境下，则是不同
 */
-ME_THREAD_HANDLE OS_EXPORT GetThreadHandle();
+ME_THREAD_HANDLE ME_OS_EXPORT GetThreadHandle();
 
 ME_NAME_SPACE_OS_END
 

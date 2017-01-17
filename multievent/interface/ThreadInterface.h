@@ -27,7 +27,7 @@ class ICustomizeEvent;
  *  信息的接口
  *
  */
-class OS_EXPORT IMEThread
+class ME_OS_EXPORT IMEThread
 {
 public:
     /**
@@ -145,7 +145,7 @@ public:
  *  只能通过线程对象管理器来做这些事情
  *
  */
-class OS_EXPORT IMEThreadManager
+class ME_OS_EXPORT IMEThreadManager
 {
 public:
     /**

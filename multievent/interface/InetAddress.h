@@ -18,7 +18,7 @@ ME_NAME_SPACE_BEGIN
 *
 * 目前只支持IPv4
 */
-class OS_EXPORT CMEInetAddress
+class ME_OS_EXPORT CMEInetAddress
 {
 public:
 	CMEInetAddress();

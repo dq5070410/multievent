@@ -90,7 +90,7 @@ void CTimeTick::Update(
 	m_httTick.dwTickCount = dwTickCount;
 }
 
-const CTimeTick& CTimeTick::operator = ( const CHikTimeValue& htvTime )
+const CTimeTick& CTimeTick::operator = ( const CMETimeValue& htvTime )
 {
 	Set(
 		0,

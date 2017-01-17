@@ -25,7 +25,7 @@ NAME_SPACE_OS_BEGIN
 * 返回值:
 *		SOCKET_ERROR是失败; ME_OK是成功
 */
-ME_Result OS_EXPORT SocketOpen(
+ME_Result ME_OS_EXPORT SocketOpen(
 	int iFamily,
 	int iType,
 	int iProtocol,
@@ -39,7 +39,7 @@ ME_Result OS_EXPORT SocketOpen(
 * 返回值:
 *		SOCKET_ERROR是失败; ME_OK是成功
 */
-ME_Result OS_EXPORT SocketClose( ME_HANDLE Handle );
+ME_Result ME_OS_EXPORT SocketClose( ME_HANDLE Handle );
 
 /**
 * 发送数据
@@ -52,7 +52,7 @@ ME_Result OS_EXPORT SocketClose( ME_HANDLE Handle );
 * 返回值:
 *		返回本次调用发送的字节数数量
 */
-int OS_EXPORT SocketSend(
+int ME_OS_EXPORT SocketSend(
 	ME_HANDLE Handle,
 	const char* pszData,
 	DWORD dwLength,
@@ -68,7 +68,7 @@ int OS_EXPORT SocketSend(
 * 返回值:
 *		返回本次调用发送的字节数数量
 */
-int OS_EXPORT SocketSendV(
+int ME_OS_EXPORT SocketSendV(
 	ME_HANDLE Handle,
 	const iovec pszIov[],
 	DWORD dwCount );
@@ -84,7 +84,7 @@ int OS_EXPORT SocketSendV(
 * 返回值:
 *		返回本次收取的字节数数量
 */
-int OS_EXPORT SocketRecv(
+int ME_OS_EXPORT SocketRecv(
 	ME_HANDLE Handle,
 	char*& pszBuf,
 	DWORD dwLength,
@@ -100,7 +100,7 @@ int OS_EXPORT SocketRecv(
 * 返回值:
 *		返回本次收取的字节数数量
 */
-int OS_EXPORT SocketRecvV(
+int ME_OS_EXPORT SocketRecvV(
 	ME_HANDLE Handle,
 	iovec szIov[],
 	DWORD dwCount );
@@ -117,7 +117,7 @@ int OS_EXPORT SocketRecvV(
 * 返回值:
 *		返回本次调用发送的字节数数量
 */
-int OS_EXPORT SocketSendTo(
+int ME_OS_EXPORT SocketSendTo(
 	ME_HANDLE Handle,
 	const char* pszData,
 	DWORD dwLength,
@@ -135,7 +135,7 @@ int OS_EXPORT SocketSendTo(
 * 返回值:
 *		返回本次调用发送的字节数数量
 */
-int OS_EXPORT SocketSendVTo(
+int ME_OS_EXPORT SocketSendVTo(
 	ME_HANDLE Handle,
 	const iovec pszIov[],
 	DWORD dwCount,
@@ -153,7 +153,7 @@ int OS_EXPORT SocketSendVTo(
 * 返回值:
 *		返回本次收取的字节数数量
 */
-int OS_EXPORT SocketRecvFrom(
+int ME_OS_EXPORT SocketRecvFrom(
 	ME_HANDLE Handle,
 	char*& pszBuf,
 	DWORD dwLength,
@@ -169,7 +169,7 @@ int OS_EXPORT SocketRecvFrom(
 * 返回值:
 *		SOCKET_ERROR是失败; ME_OK是成功
 */
-ME_Result OS_EXPORT SocketBind(
+ME_Result ME_OS_EXPORT SocketBind(
 	ME_HANDLE Handle,
 	const ME_SOCK_ADDR* pLocalAddrYouWantToBind );
 
@@ -182,7 +182,7 @@ ME_Result OS_EXPORT SocketBind(
 * 返回值:
 *		SOCKET_ERROR是失败; ME_OK是成功
 */
-ME_Result OS_EXPORT SocketShutdown(
+ME_Result ME_OS_EXPORT SocketShutdown(
 	ME_HANDLE Handle,
 	int iFlag );
 
@@ -195,7 +195,7 @@ ME_Result OS_EXPORT SocketShutdown(
 * 返回值:
 *		SOCKET_ERROR是失败; ME_OK是成功
 */
-ME_Result OS_EXPORT SocketConnect(
+ME_Result ME_OS_EXPORT SocketConnect(
 	ME_HANDLE Handle,
 	const ME_SOCK_ADDR* pPeerAddress );
 
@@ -208,7 +208,7 @@ ME_Result OS_EXPORT SocketConnect(
 * 返回值:
 *		SOCKET_ERROR是失败; ME_OK是成功
 */
-ME_Result OS_EXPORT SocketListen( ME_HANDLE Handle );
+ME_Result ME_OS_EXPORT SocketListen( ME_HANDLE Handle );
 
 /**
 * 监听
@@ -219,7 +219,7 @@ ME_Result OS_EXPORT SocketListen( ME_HANDLE Handle );
 * 返回值:
 *		SOCKET_ERROR是失败; ME_OK是成功
 */
-ME_HANDLE OS_EXPORT SocketAccept(
+ME_HANDLE ME_OS_EXPORT SocketAccept(
 	ME_HANDLE Handle,
 	ME_SOCK_ADDR& hsaPeerAddress );
 
@@ -231,7 +231,7 @@ ME_HANDLE OS_EXPORT SocketAccept(
 * 返回值:
 *		字符串长度为0是失败; 非ME_OK是成功
 */
-CHikString OS_EXPORT IpDigitalToString( DWORD dwIP );
+CMEString ME_OS_EXPORT IpDigitalToString( DWORD dwIP );
 
 /**
 * 把一个符合IPV4规范的地址转换成4字节的DWORD值
@@ -241,7 +241,7 @@ CHikString OS_EXPORT IpDigitalToString( DWORD dwIP );
 * 返回值:
 *		0是失败; 非ME_OK是成功
 */
-DWORD OS_EXPORT IpStringToDigital( const char* pszIP );
+DWORD ME_OS_EXPORT IpStringToDigital( const char* pszIP );
 
 /**
 * 设置socket的I/O模式
@@ -253,7 +253,7 @@ DWORD OS_EXPORT IpStringToDigital( const char* pszIP );
 * 返回值:
 *		SOCKET_ERROR是失败; ME_OK是成功
 */
-ME_Result OS_EXPORT IOCtrl(
+ME_Result ME_OS_EXPORT IOCtrl(
 	ME_SOCKET Handle,
 	int iFlag,
 	void* pArg );
@@ -267,7 +267,7 @@ ME_Result OS_EXPORT IOCtrl(
 * 返回值:
 *		SOCKET_ERROR是失败; ME_OK是成功
 */
-ME_Result OS_EXPORT SocketGetLocalAddress(
+ME_Result ME_OS_EXPORT SocketGetLocalAddress(
 	ME_HANDLE Handle,
 	ME_SOCK_ADDR& hsaLocalAddress );
 
@@ -280,7 +280,7 @@ ME_Result OS_EXPORT SocketGetLocalAddress(
 * 返回值:
 *		SOCKET_ERROR是失败; ME_OK是成功
 */
-ME_Result OS_EXPORT SocketGetRemoteAddress(
+ME_Result ME_OS_EXPORT SocketGetRemoteAddress(
 	ME_HANDLE Handle,
 	ME_SOCK_ADDR& hsaRemoteAddress );
 
@@ -296,7 +296,7 @@ ME_Result OS_EXPORT SocketGetRemoteAddress(
 * 返回值:
 *		SOCKET_ERROR是失败; ME_OK是成功
 */
-ME_Result OS_EXPORT SocketSetSocketOption(
+ME_Result ME_OS_EXPORT SocketSetSocketOption(
 	ME_HANDLE Handle,
 	int iLevel, 
 	int iOption, 
@@ -315,7 +315,7 @@ ME_Result OS_EXPORT SocketSetSocketOption(
 * 返回值:
 *		SOCKET_ERROR是失败; ME_OK是成功
 */
-ME_Result OS_EXPORT SocketGetSocketOption(
+ME_Result ME_OS_EXPORT SocketGetSocketOption(
 	ME_HANDLE Handle,
 	int iLevel, 
 	int iOption, 

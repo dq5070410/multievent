@@ -28,7 +28,7 @@ HNAME_SPACE_OS_BEGIN
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT MutexCreate(
+ME_Result ME_OS_EXPORT MutexCreate(
 	INT iType,
 	MUTEX_CS& hmcLock,
 	LPSTR pszName = NULL );
@@ -42,7 +42,7 @@ ME_Result OS_EXPORT MutexCreate(
 * 返回值：
 *		ME_OK为成功；R_ERROR_TIMEOUT为超时；其他失败
 */
-ME_Result OS_EXPORT MutexDestroy( MUTEX_CS& hmcLock );
+ME_Result ME_OS_EXPORT MutexDestroy( MUTEX_CS& hmcLock );
 
 /**
 * 尝试获得一个互斥量
@@ -53,7 +53,7 @@ ME_Result OS_EXPORT MutexDestroy( MUTEX_CS& hmcLock );
 * 返回值：
 *		ME_OK为成功；R_ERROR_TIMEOUT为超时；其他失败
 */
-ME_Result OS_EXPORT MutexLock( MUTEX_CS& hmcLock );
+ME_Result ME_OS_EXPORT MutexLock( MUTEX_CS& hmcLock );
 
 /**
 * 尝试获得一个互斥量
@@ -66,7 +66,7 @@ ME_Result OS_EXPORT MutexLock( MUTEX_CS& hmcLock );
 * 返回值：
 *		ME_OK为成功；R_ERROR_TIMEOUT为超时；其他失败
 */
-ME_Result OS_EXPORT MutexLock( 
+ME_Result ME_OS_EXPORT MutexLock( 
 	MUTEX_CS& hmcLock,
 	const CTimeValue& htvTimeout );
 
@@ -78,7 +78,7 @@ ME_Result OS_EXPORT MutexLock(
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT MutexUnLock( MUTEX_CS& hmcLock );
+ME_Result ME_OS_EXPORT MutexUnLock( MUTEX_CS& hmcLock );
 
 NAME_SPACE_OS_END
 

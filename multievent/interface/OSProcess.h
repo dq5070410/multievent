@@ -10,13 +10,13 @@
 
 NAME_SPACE_OS_BEGIN
 
-UINT OS_EXPORT GetCPUCount();
+UINT ME_OS_EXPORT GetCPUCount();
 
-UINT OS_EXPORT GetProcessID();
+UINT ME_OS_EXPORT GetProcessID();
 
-const OS_EXPORT char* GetExecName();
+const ME_OS_EXPORT char* GetExecName();
 
-const OS_EXPORT char* GetProcessName();
+const ME_OS_EXPORT char* GetProcessName();
 
 NAME_SPACE_OS_END
 

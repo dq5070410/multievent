@@ -419,13 +419,13 @@ NAME_SPACE_OS_BEGIN
 }
 
 /* 2013.4.12 让gcc能够正确识别 */
-/*ME_INLINE */CHikString IpDigitalToString( DWORD dwIP )
+/*ME_INLINE */CMEString IpDigitalToString( DWORD dwIP )
 {
 	struct in_addr AddrIn;
 	AddrIn.s_addr = dwIP;
 	const char* pAddr = ::inet_ntoa( AddrIn );	// 用inet_pton
 
-	return CHikString( pAddr );
+	return CMEString( pAddr );
 }
 
 /* 2013.4.12 让gcc能够正确识别 */

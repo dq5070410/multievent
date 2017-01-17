@@ -51,7 +51,7 @@ public:
         BOOL bBlock,
         INT iThreadID,
         INT iType,
-        IHikThreadSink* pThreadSink );
+        IMEThreadSink* pThreadSink );
 
     virtual ~CMEThread();
 
@@ -71,7 +71,7 @@ public:
      *      线程对象类型
      *
      *  参考:
-     *      IHikThreadManager::ME_THREAD_OPTION
+     *      IMEThreadManager::ME_THREAD_OPTION
      */
     virtual INT GetThreadType() const;
 
@@ -108,7 +108,7 @@ public:
      *  返回值:
      *      ME_OK表示成功; 非ME_OK表示失败
      */
-    virtual ME_Result PostEvent( IHikCustomizeEvent* pEvent );
+    virtual ME_Result PostEvent( IMECustomizeEvent* pEvent );
 
     /**
      *  阻塞式事件投递，如果线程对象具有事件队列，那么在调用这个接口后，在事件被

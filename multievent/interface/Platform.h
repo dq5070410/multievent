@@ -64,7 +64,7 @@
 	#pragma warning( disable: 4275 )	// 输出类里包含非输出类
 	#pragma warning( disable: 4251 )	// 在输出类中使用非输出类的东西
 	#pragma warning( disable: 4005 )	// 忽略可能存在重定义
-#endif	// HIK_WIN
+#endif	// ME_WIN
 
 /**
 * default use epoll on linux

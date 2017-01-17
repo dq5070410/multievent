@@ -28,7 +28,7 @@ class CTimeValue;
 * 在win32环境下，它就是事件(event)，在linux环境下用
 * 条件变量模拟实现
 */
-class OS_EXPORT CLockEvent
+class ME_OS_EXPORT CLockEvent
 {
 public:
 	explicit CLockEvent(
@@ -97,7 +97,7 @@ public:
 
 private:
 	void operator = ( const CLockEvent& );
-	CHikLockEvent( const CLockEvent& );
+	CMELockEvent( const CLockEvent& );
 
 private:
 #ifdef WIN

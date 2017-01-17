@@ -24,7 +24,7 @@ NAME_SPACE_OS_BEGIN
 * return value：
 *		ME_OK is success；other is error
 */
-ME_Result OS_EXPORT ConditionVariableCreate( 
+ME_Result ME_OS_EXPORT ConditionVariableCreate( 
 	ME_CONDITION_VARIABLE* pConditionVariable,
 	const char* pszName );
 
@@ -36,7 +36,7 @@ ME_Result OS_EXPORT ConditionVariableCreate(
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT ConditionVariableDestroy( ME_CONDITION_VARIABLE* pConditionVariable );
+ME_Result ME_OS_EXPORT ConditionVariableDestroy( ME_CONDITION_VARIABLE* pConditionVariable );
 
 /**
 * 使条件变量发出一个signal
@@ -46,7 +46,7 @@ ME_Result OS_EXPORT ConditionVariableDestroy( ME_CONDITION_VARIABLE* pConditionV
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT ConditionVariableSignal( ME_CONDITION_VARIABLE* pConditionVariable );
+ME_Result ME_OS_EXPORT ConditionVariableSignal( ME_CONDITION_VARIABLE* pConditionVariable );
 
 /**
 * 使条件变量广播
@@ -56,7 +56,7 @@ ME_Result OS_EXPORT ConditionVariableSignal( ME_CONDITION_VARIABLE* pConditionVa
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT ConditionVariableBroadcast( ME_CONDITION_VARIABLE* pConditionVariable );
+ME_Result ME_OS_EXPORT ConditionVariableBroadcast( ME_CONDITION_VARIABLE* pConditionVariable );
 
 /**
 * 等待条件变量有信号
@@ -70,7 +70,7 @@ ME_Result OS_EXPORT ConditionVariableBroadcast( ME_CONDITION_VARIABLE* pConditio
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT ConditionVariableWait( 
+ME_Result ME_OS_EXPORT ConditionVariableWait( 
 	ME_CONDITION_VARIABLE* pConditionVariable, 
 	THREAD_MUTEX* pMutex,
 	CTimeValue* pTimeout = NULL );

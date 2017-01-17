@@ -27,7 +27,7 @@ const DWORD ME_SEMAPHORE_FILE_MODE = 438;	// 文件属性rw-r--r--
 * 返回值:
 *		ME_OK是成功; 非ME_OK皆为失败
 */
-ME_Result OS_EXPORT SemaphoreCreate( 
+ME_Result ME_OS_EXPORT SemaphoreCreate( 
 	ME_SEMAPHONE& pSemaphore,
 	DWORD dwInitCount,
 	DWORD dwMaxCount = ME_SEMAPHORE_MAX_COUNT,
@@ -42,7 +42,7 @@ ME_Result OS_EXPORT SemaphoreCreate(
 * 返回值:
 *		ME_OK是成功; 非ME_OK皆为失败
 */
-ME_Result OS_EXPORT SemaphoreDestroy( 
+ME_Result ME_OS_EXPORT SemaphoreDestroy( 
 	ME_SEMAPHONE& pSemaphore,
 	const char* pszName = NULL );
 
@@ -58,7 +58,7 @@ ME_Result OS_EXPORT SemaphoreDestroy(
 * 返回值:
 *		ME_OK是成功; 非ME_OK皆为失败
 */
-ME_Result OS_EXPORT SemaphoreLock( ME_SEMAPHONE pSemaphore );
+ME_Result ME_OS_EXPORT SemaphoreLock( ME_SEMAPHONE pSemaphore );
 
 /** 
 * 放弃一个信号灯
@@ -70,7 +70,7 @@ ME_Result OS_EXPORT SemaphoreLock( ME_SEMAPHONE pSemaphore );
 * 返回值:
 *		ME_OK是成功; 非ME_OK皆为失败
 */
-ME_Result OS_EXPORT SemaphoreUnLock( ME_SEMAPHONE pSemaphore );
+ME_Result ME_OS_EXPORT SemaphoreUnLock( ME_SEMAPHONE pSemaphore );
 
 /** 
 * 减少可用资源数
@@ -81,7 +81,7 @@ ME_Result OS_EXPORT SemaphoreUnLock( ME_SEMAPHONE pSemaphore );
 * 返回值:
 *		ME_OK是成功; 非ME_OK皆为失败
 */
-ME_Result OS_EXPORT SemaphorePostN( 
+ME_Result ME_OS_EXPORT SemaphorePostN( 
 	ME_SEMAPHONE pSemaphore,
 	DWORD dwCount );
 

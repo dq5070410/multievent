@@ -132,7 +132,7 @@ ME_INLINE ME_Result ThreadTestDestroy()
 
 ME_Result ThreadJoin( 
 	ME_THREAD_HANDLE hThreadHandle,
-	CHikTimeValue* pTimeout, /* = NULL, */
+	CMETimeValue* pTimeout, /* = NULL, */
 	ME_THREAD_STAT* pStat /* = NULL */ )
 {
 	ME_Result hResult = ME_ERROR_FAILURE;
@@ -174,12 +174,12 @@ ME_Result ThreadJoin(
 	else
 	{
 		/** 
-		* timespec是从1970.1.1 GMT 00:00:00算起的, 所以需要用CHikTimeValue
+		* timespec是从1970.1.1 GMT 00:00:00算起的, 所以需要用CMETimeValue
 		* 首先取得当前的年月日小时分秒, 再换算过去
 		*/
 
 		struct timespec tsTimeout;
-		CHikTimeValue tvAbs = CHikTimeValue::TimeOfDay() + *pTimeout;
+		CMETimeValue tvAbs = CMETimeValue::TimeOfDay() + *pTimeout;
 		tsTimeout.tv_sec = tvAbs.GetSecond();				// 秒
 		tsTimeout.tv_nsec = tvAbs.GetMicrosecond() * 1000;	// 微秒换算成纳秒
 

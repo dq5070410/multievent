@@ -20,7 +20,7 @@ NAME_SPACE_OS_BEGIN
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT ThreadMutexCreate( ME_THREAD_MUTEX& htmLock );
+ME_Result ME_OS_EXPORT ThreadMutexCreate( ME_THREAD_MUTEX& htmLock );
 
 /**
 * 删除一个thread mutex(win32下是cs，linux下是mutex)
@@ -30,7 +30,7 @@ ME_Result OS_EXPORT ThreadMutexCreate( ME_THREAD_MUTEX& htmLock );
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT ThreadMutexDestroy( ME_THREAD_MUTEX& htmLock );
+ME_Result ME_OS_EXPORT ThreadMutexDestroy( ME_THREAD_MUTEX& htmLock );
 
 /**
 * 尝试获得这把锁
@@ -42,7 +42,7 @@ ME_Result OS_EXPORT ThreadMutexDestroy( ME_THREAD_MUTEX& htmLock );
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT ThreadMutexLock( ME_THREAD_MUTEX& htmLock );
+ME_Result ME_OS_EXPORT ThreadMutexLock( ME_THREAD_MUTEX& htmLock );
 
 /**
 * 放弃这把锁(让其他线程可以获取)
@@ -52,7 +52,7 @@ ME_Result OS_EXPORT ThreadMutexLock( ME_THREAD_MUTEX& htmLock );
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT ThreadMutexUnLock( ME_THREAD_MUTEX& htmLock );
+ME_Result ME_OS_EXPORT ThreadMutexUnLock( ME_THREAD_MUTEX& htmLock );
 
 NAME_SPACE_OS_END
 

@@ -29,7 +29,7 @@ extern "C"
 	*		ME_OK为成功；其他为失败
 	*/
 	ME_Result ME_OS_EXPORT Initialize(
-		IHikThreadSink* pUserThreadSink = NULL,
+		IMEThreadSink* pUserThreadSink = NULL,
 		BOOL bUserThreadWorkInBlockMode = FALSE );
 
 	/**

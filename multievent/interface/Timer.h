@@ -19,7 +19,7 @@ class CTimeValue;
 /**
 * ¶¨Ê±Æ÷
 */
-class OS_EXPORT CTimer
+class ME_OS_EXPORT CTimer
 {
 public:
 	CTimer();

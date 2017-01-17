@@ -25,7 +25,7 @@ NAME_SPACE_OS_BEGIN
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result HIK_OS_EXPORT EventCreate(
+ME_Result ME_OS_EXPORT EventCreate(
 	ME_EVENT& pEvent,
 	const char* pszName = NULL,
 	BOOL bManualReset = FALSE,
@@ -39,7 +39,7 @@ ME_Result HIK_OS_EXPORT EventCreate(
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT EventDestroy( ME_EVENT& pEvent );
+ME_Result ME_OS_EXPORT EventDestroy( ME_EVENT& pEvent );
 
 /**
 * 销毁一个事件
@@ -49,7 +49,7 @@ ME_Result OS_EXPORT EventDestroy( ME_EVENT& pEvent );
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT EventWait( ME_EVENT pEvent );
+ME_Result ME_OS_EXPORT EventWait( ME_EVENT pEvent );
 
 /**
 * 等待一个事件变为“有信号”的状态
@@ -62,7 +62,7 @@ ME_Result OS_EXPORT EventWait( ME_EVENT pEvent );
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT EventTimeWait( 
+ME_Result ME_OS_EXPORT EventTimeWait( 
 	ME_EVENT pEvent,
 	const CTimeValue& htvTime );
 
@@ -74,7 +74,7 @@ ME_Result OS_EXPORT EventTimeWait(
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT EventSignal( ME_EVENT pEvent );
+ME_Result ME_OS_EXPORT EventSignal( ME_EVENT pEvent );
 
 /**
 * 把一个事件置为“无信号”的状态
@@ -84,7 +84,7 @@ ME_Result OS_EXPORT EventSignal( ME_EVENT pEvent );
 * 返回值：
 *		ME_OK为成功；其他失败
 */
-ME_Result OS_EXPORT EventReset( ME_EVENT pEvent );
+ME_Result ME_OS_EXPORT EventReset( ME_EVENT pEvent );
 
 NAME_SPACE_OS_END
 
