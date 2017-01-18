@@ -19,12 +19,12 @@ class CTimeValue;
 /**
 * 定时器
 */
-class ME_OS_EXPORT CTimer
+class ME_OS_EXPORT CMETimer
 {
 public:
-	CTimer();
+	CMETimer();
 
-	~CTimer();
+	~CMETimer();
 
 public:
 	/**
@@ -115,7 +115,7 @@ public:
 	* 返回值:
 	*		无
 	*/
-	virtual void OnTimer( CTimer* pTimerID ) = 0;
+	virtual void OnTimer( CMETimer* pTimerID ) = 0;
 };
 
 
