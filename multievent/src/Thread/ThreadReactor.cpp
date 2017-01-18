@@ -109,7 +109,7 @@ ME_Result CMEThreadReactor::SendEvent( IMECustomizeEvent* pEvent )
 
 ME_Result CMEThreadReactor::ScheduleTimer(
     CMETimer* pTimer,
-    IMETimerSink* pSink,
+    ITimerSink* pSink,
     const CMETimeValue& htvInterval,
     const CMETimeValue& htvDelay,
     UINT nLoopTime /* = 0 */ )

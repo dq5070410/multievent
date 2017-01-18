@@ -68,7 +68,7 @@ public:
      */
     virtual ME_Result ScheduleTimer(
         CMETimer* pTimer,
-        IMETimerSink* pSink,
+        ITimerSink* pSink,
         const CMETimeValue& htvInterval,
         const CMETimeValue& htvDelay,
         UINT nLoopTime = 0 );

@@ -70,7 +70,7 @@ public:
 	*/
 	ME_Result SetOption( DWORD dwOptionType, VOID* pOptionValue );
 
-	/* 继承自IMETimerSink */
+	/* 继承自ITimerSink */
 public:
 	/**
 	* 定时检查该条连接状态。

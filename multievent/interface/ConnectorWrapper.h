@@ -36,7 +36,7 @@ ME_NAME_SPACE_BEGIN
 class CMEConnectorWrapper
 	: public IMEConnector
 	, protected IMEConnectorImplSink
-	, protected IMETimerSink
+	, protected ITimerSink
 	, public CMEMutexTypeTraits<CMEConnDummy>
 	, public CMEReferenceControlT<CMEConnDummy::MutexType>
 {
@@ -149,7 +149,7 @@ protected:
 		ME_Result hResult,
 		ME_HANDLE hHandle );
 
-	/* 继承自IMETimerSink */
+	/* 继承自ITimerSink */
 protected:
 	/**
 	* 你schedule的时钟发生了

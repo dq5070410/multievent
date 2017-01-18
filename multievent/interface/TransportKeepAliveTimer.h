@@ -25,7 +25,7 @@ class CMEThread;
  */
 class CMETransportKeepAliveTimer 
 	: public CMETimer
-    , public IMETimerSink
+    , public ITimerSink
 {
 public:
 	/**
@@ -53,7 +53,7 @@ public:
 		IMETransportTimerOperator* pOperator, 
 		INT iInterval );
 
-    /* ¼Ì³Ð×ÔIMETimerSink */
+    /* ¼Ì³Ð×ÔITimerSink */
 public:
     virtual VOID OnTimer( CMETimer* pTimerID );
 

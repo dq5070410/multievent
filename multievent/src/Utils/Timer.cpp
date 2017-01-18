@@ -17,7 +17,7 @@ CMETimer::~CMETimer()
 }
 
 ME_Result CMETimer::Schedule( 
-	IMETimerSink* pSink, 
+	ITimerSink* pSink, 
 	const CMETimeValue& htvInterval, 
 	const CMETimeValue& htvDelay,
 	int iLoopTime )
@@ -37,7 +37,7 @@ ME_Result CMETimer::Schedule(
 }
 
 ME_Result CMETimer::Schedule( 
-	IMETimerSink* pSink, 
+	ITimerSink* pSink, 
 	const CMETimeValue& htvInterval )
 {
 	return Schedule(
@@ -48,7 +48,7 @@ ME_Result CMETimer::Schedule(
 }
 
 ME_Result CMETimer::Schedule( 
-	IMETimerSink* pSink, 
+	ITimerSink* pSink, 
 	const CMETimeValue& htvInterval, 
 	int iLoopTime )
 {

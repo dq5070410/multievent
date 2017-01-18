@@ -21,7 +21,7 @@ class IMEIO;
 class IMEIOSink;
 class IMECustomizeEvent;
 class CMETimer;
-class IMETimerSink;
+class ITimerSink;
 
 
 /**
@@ -36,7 +36,7 @@ class IMEReactorImpl
 public:
     typedef CMEEventQueueT<IMECustomizeEvent, CMELockThreadMutex> CMEEventQueue;
     typedef CMEEventQueue::NodeType::CMESyncEvent CMESyncEventType;
-    typedef CMETimerQueueT<CMETimer, IMETimerSink, CMELockThreadMutex> CMETimerQueue;
+    typedef CMETimerQueueT<CMETimer, ITimerSink, CMELockThreadMutex> CMETimerQueue;
 
 public:
     virtual ~IMEReactorImpl() {}

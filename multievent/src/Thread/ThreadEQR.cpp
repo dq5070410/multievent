@@ -38,7 +38,7 @@ CMEThreadEQR::~CMEThreadEQR()
 
 ME_Result CMEThreadEQR::ScheduleTimer(
     CMETimer* pTimer,
-    IMETimerSink* pSink,
+    ITimerSink* pSink,
     const CMETimeValue& htvInterval,
     const CMETimeValue& htvDelay,
     UINT nLoopTime /* = 0 */ )

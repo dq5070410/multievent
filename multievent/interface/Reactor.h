@@ -21,7 +21,7 @@ class IMEIO;
 class IMEIOSink;
 class IMECustomizeEvent;
 class CMETimer;
-class IMETimerSink;
+class ITimerSink;
 
 class ME_OS_EXPORT CMEReactor
 {
