@@ -25,7 +25,7 @@ class ME_OS_EXPORT CTimeValue
 public:
 	CTimeValue();
 
-	CTimeValue( const CMETimeValue& htvTime );
+	CTimeValue( const CTimeValue& htvTime );
 
 	CTimeValue(
 		LONGLONG llSecond,
@@ -35,7 +35,7 @@ public:
 
 	CTimeValue( const timeval& tvTime );
 
-#ifdef WIN
+#ifdef ME_WIN
 	CTimeValue( const FILETIME& ftTime );
 #endif	// WIN
 
@@ -81,7 +81,7 @@ public:
 	*/
 	void Set( const timeval& tvTime );
 
-#ifdef WIN
+#ifdef ME_WIN
 	void Set( const FILETIME& ftTime );
 #endif	// ME_WIN
 
