@@ -17,7 +17,7 @@
 * 
 * 以下对应的具体含义就不一一注释了，man或者查看MSDN就是
 */
-#ifdef WIN
+#ifdef ME_WIN
 	#define EWOULDBLOCK             WSAEWOULDBLOCK
 	#define EINPROGRESS             WSAEINPROGRESS
 	#define EALREADY                WSAEALREADY
@@ -54,7 +54,7 @@
 	#define ESTALE                  WSAESTALE
 	#define EREMOTE                 WSAEREMOTE
 
-#elif defined( LINUX )
+#elif defined( ME_LINUX )
 	#define EWOULDBLOCK				EAGAIN
 	#ifndef SOCKET_ERROR
 		#define SOCKET_ERROR		-1
