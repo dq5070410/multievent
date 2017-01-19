@@ -8,7 +8,7 @@
 #include "LockThreadMutex.h"
 
 
-using HIK::CRYPTO::CMESSLContextSingleton;
+using ME::CRYPTO::CMESSLContextSingleton;
 
 
 ME_NAME_SPACE_BEGIN

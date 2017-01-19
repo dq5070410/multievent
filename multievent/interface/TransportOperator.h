@@ -9,9 +9,9 @@
 #ifndef __TRANSPORT_OPERATOR_H_
 #define __TRANSPORT_OPERATOR_H_
 
-#include "HikBase.h"
-#include "HikReferenceControlT.h"
-#include "HikAutoPtrT.h"
+#include "Base.h"
+#include "ReferenceControlT.h"
+#include "AutoPtrT.h"
 
 ME_NAME_SPACE_BEGIN
 
