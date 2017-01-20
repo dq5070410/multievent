@@ -13,7 +13,7 @@
 #include "TimeTick.h"
 #include "Timer.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 /**
 * 时钟队列节点的封装类
@@ -142,7 +142,7 @@ private:
 
 #include "TimerNodeT.hpp"
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif	// __TIME_NODE_T_H_
 

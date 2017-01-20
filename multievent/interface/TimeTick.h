@@ -11,7 +11,7 @@
 #include "Base.h"
 #include "TimeValue.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 typedef struct tagTimeTick
 {
@@ -110,7 +110,7 @@ private:
 	ME_TIME_TICK					m_httTick;
 };
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif	// __TIME_TICK_H_
 

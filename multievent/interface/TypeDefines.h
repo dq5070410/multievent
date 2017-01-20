@@ -223,14 +223,13 @@ typedef struct tagTimeValue
 {
 	LONGLONG llSecond;	// √Î
 	LONG lMicrosecond;	// Œ¢√Î
-}C_TIME_VALUE;
+}ME_TIME_VALUE;
 
 #ifndef C_TIMER_NO_LIMIT
 	#define C_TIMER_LIMIT 1
 #else
 	#define C_TIMER_LIMIT 0
 #endif	// C_TIMER_NO_LIMIT
-}C_TIME_VALUE;
 
 
 /**
