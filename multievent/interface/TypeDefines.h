@@ -240,19 +240,19 @@ typedef struct tagTimeValue
 	typedef UINT THREAD_ID;
 
 	/* thread handle */
-	typedef C_HANDLE C_THREAD_HANDLE;
+	typedef C_HANDLE ME_THREAD_HANDLE;
 
 	/* SEMAPHONE */
-	typedef C_HANDLE C_SEMAPHONE;
+	typedef C_HANDLE ME_SEMAPHONE;
 
 	/* MUTEX */
-	typedef C_HANDLE C_MUTEX;
+	typedef C_HANDLE ME_MUTEX;
 
 	/* EVENT */
-	typedef C_HANDLE C_EVENT;
+	typedef C_HANDLE ME_EVENT;
 
 	/* CS */
-	typedef CRITICAL_SECTION C_THREAD_MUTEX;
+	typedef CRITICAL_SECTION ME_THREAD_MUTEX;
 
 	/* ME_WIN32 condition variable */
 	typedef struct tagConditionVariable
@@ -265,38 +265,38 @@ typedef struct tagTimeValue
 	} ME_CONDITION_VARIABLE;
 
 	/* 线程状态类型 */
-	typedef DWORD C_THREAD_STAT;
+	typedef DWORD ME_THREAD_STAT;
 	
 	/* 线程函数返回值类型 */
-	typedef UINT C_THREAD_RETURN_TYPE;
+	typedef UINT ME_THREAD_RETURN_TYPE;
 
 #elif defined( ME_LINUX )
 	/* 线程ID */
-	typedef pthread_t C_THREAD_ID;
+	typedef pthread_t ME_THREAD_ID;
 
 	/* 线程句柄 */
-	typedef ME_THREAD_ID C_THREAD_HANDLE;
+	typedef ME_THREAD_ID ME_THREAD_HANDLE;
 
 	/* 信号灯 */
-	typedef sem_t* C_SEMAPHONE;
+	typedef sem_t* ME_SEMAPHONE;
 
 	/* 事件 */
-	typedef ME_HANDLE C_EVENT;
+	typedef ME_HANDLE ME_EVENT;
 
 	/* 互斥量 */
-	typedef pthread_mutex_t C_THREAD_MUTEX;
+	typedef pthread_mutex_t ME_THREAD_MUTEX;
 
 	/* 互斥量 */
-	typedef pthread_mutex_t C_MUTEX;
+	typedef pthread_mutex_t ME_MUTEX;
 	
 	/* 条件变量 */
-	typedef pthread_cond_t C_CONDITION_VARIABLE;
+	typedef pthread_cond_t ME_CONDITION_VARIABLE;
 
 	/* 线程状态类型 */
-	typedef void* C_THREAD_STAT;
+	typedef void* ME_THREAD_STAT;
 
 	/* 线程函数返回值类型 */
-	typedef void* C_THREAD_RETURN_TYPE;
+	typedef void* ME_THREAD_RETURN_TYPE;
 
 #endif	// C_ME_WIN
 
@@ -313,10 +313,10 @@ typedef struct tagMutex
 
 	union
 	{
-		C_THREAD_MUTEX htmLock;	// ME_WIN下是CRITICAL_SECTION，ME_LINUX下是mutex
-		C_MUTEX hmLock;			// ME_WIN和ME_LINUX下都是mutex
+		ME_THREAD_MUTEX htmLock;	// ME_WIN下是CRITICAL_SECTION，ME_LINUX下是mutex
+		ME_MUTEX hmLock;			// ME_WIN和ME_LINUX下都是mutex
 	};
-} C_MUTEX_CS;
+} ME_MUTEX_CS;
 
 /* 线程函数类型 */
 typedef C_THREAD_RETURN_TYPE (C_STDCALL *C_THREAD_FUNC)(void *);
