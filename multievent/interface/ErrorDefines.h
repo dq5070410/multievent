@@ -54,7 +54,7 @@ enum
 	ME_ERROR_INVALID_ARG				= (int)(ME_ERROR_BASE + 8),
 
 	/* 当前操作不允许 */
-	ME_ERROR_NOT_AVAILABLE			    = (int)(RMEERROR_BASE + 9),
+	ME_ERROR_NOT_AVAILABLE			    = (int)(ME_ERROR_BASE + 9),
 
 	/* 结果无法立即返回 */
 	ME_ERROR_WOULD_BLOCK				= (int)(ME_ERROR_BASE + 10),

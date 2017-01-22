@@ -121,19 +121,27 @@ typedef int ME_Result;
 
 #endif	// SC_ME_WIN
 
+/**
+* 无论win32还是linux，统一用iovec存储数据
+* 结构名以及成员变量名保持与linux一致，
+* 但由于为了与win32的WSABUF结构保持一致
+* (在使用WSA系列函数读取数据时，必须这么做)，
+* 成员变量命名顺序必须是iov_len首先声明
+*/
+#ifdef ME_WIN
 	struct iovec
 	{
 		DWORD iov_len;	
 		char* iov_base;
 	};
 
-	#define IOV_MAX 64
+	#define ME_IOV_MAX 64
 
 #elif defined( ME_LINUX )
 	#ifndef IOV_MAX
 		#define IOV_MAX 16
 	#endif	// IOV_MAX
-	#define IOV_MAX IOV_MAX
+	#define ME_IOV_MAX IOV_MAX
 #endif	// ME_WIN
 
 /**
