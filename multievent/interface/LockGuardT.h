@@ -9,7 +9,7 @@
 #ifndef __GUARD_T_H_
 #define __GUARD_T_H_
 
-#include "HikBase.h"
+#include "Base.h"
 
 ME_NAME_SPACE_BEGIN
 

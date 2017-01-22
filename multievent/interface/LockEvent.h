@@ -14,11 +14,11 @@
 
 #include "Base.h"
 
-#ifndef WIN
-#include "HikLockConditionVariable.h"
+#ifndef ME_WIN
+#include "LockConditionVariable.h"
 #endif	// WIN32
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 class CTimeValue;
 
@@ -107,7 +107,7 @@ private:
 #endif	// WIN
 };
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif	// __LOCK_EVENT_H_
 
