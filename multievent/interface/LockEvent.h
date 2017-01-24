@@ -97,13 +97,13 @@ public:
 
 private:
 	void operator = ( const CLockEvent& );
-	CMELockEvent( const CLockEvent& );
+	CLockEvent( const CLockEvent& );
 
 private:
 #ifdef WIN
 	ME_EVENT						m_pEvent;
 #else
-	CLockConditionVariable		m_pEvent;
+	CMELockConditionVariable		m_pEvent;
 #endif	// WIN
 };
 

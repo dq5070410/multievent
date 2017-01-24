@@ -11,7 +11,7 @@
 #include "Base.h"
 #include "LockEvent.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 /**
 * 事件队列节点的封装类
@@ -150,7 +150,7 @@ private:
 
 #include "EventNodeT.hpp"
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif	// __EVENT_NODE_T_H_
 

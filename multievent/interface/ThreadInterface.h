@@ -11,7 +11,7 @@
 
 #include "Base.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 /* Ô¤ÉùÃ÷ */
 class IMEThread;
@@ -277,7 +277,7 @@ protected:
     virtual ~IMEThreadManager() {}
 };
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif // __THREAD_INTERFACE_H_
 
