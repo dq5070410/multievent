@@ -31,7 +31,7 @@ public:
 	ME_Result UnInitialize();
 };
 
-typedef CSingletonT<CConfigManager> CConfigManagerSingleton;
+typedef CMESingletonT<CConfigManager> CConfigManagerSingleton;
 
 ME_NAME_SPACE_END
 

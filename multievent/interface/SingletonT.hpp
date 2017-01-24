@@ -1,5 +1,5 @@
 #ifdef ME_LINUX
-ME_USING_HIK
+ME_USING_ME
 #endif	// ME_LINUX
 
 template <class ObjectType>

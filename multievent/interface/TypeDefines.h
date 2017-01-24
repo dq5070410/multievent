@@ -201,27 +201,27 @@ typedef int ME_Result;
 		ME_HANDLE  hEvent;
 	}ME_OVERLAPPED;
 
-
+#endif
 
 
 #ifndef _NO_INLINE
-	#ifndef _INLINE
-		#define _INLINE inline
+	#ifndef ME_INLINE
+		#define ME_INLINE inline
 	#endif	// _INLINE
 #else	// // _INLINE
-	#define _INLINE
+	#define ME_INLINE
 #endif	// _IN_LINE
 
 /**
 * 函数调用约定的重定义
 */
-#ifndef C_STDCALL
+#ifndef ME_STDCALL
 	#ifdef ME_WIN
-		#define C_STDCALL __stdcall
+		#define ME_STDCALL __stdcall
 	#elif defined( ME_LINUX )
-		#define C_STDCALL
+		#define ME_STDCALL
 	#endif	// ME_WIN
-#endif	// C_STDCALL
+#endif	// ME_STDCALL
 
 
 /**
@@ -233,10 +233,10 @@ typedef struct tagTimeValue
 	LONG lMicrosecond;	// 微秒
 }ME_TIME_VALUE;
 
-#ifndef C_TIMER_NO_LIMIT
-	#define C_TIMER_LIMIT 1
+#ifndef ME_TIMER_NO_LIMIT
+	#define ME_TIMER_LIMIT 1
 #else
-	#define C_TIMER_LIMIT 0
+	#define ME_TIMER_LIMIT 0
 #endif	// C_TIMER_NO_LIMIT
 
 
@@ -327,9 +327,9 @@ typedef struct tagMutex
 } ME_MUTEX_CS;
 
 /* 线程函数类型 */
-typedef C_THREAD_RETURN_TYPE (C_STDCALL *C_THREAD_FUNC)(void *);
+typedef ME_THREAD_RETURN_TYPE (ME_STDCALL *ME_THREAD_FUNC)(void *);
 
-typedef std::string String;
+typedef std::string CMEString;
 
 #endif	// __TYPE_DEFINES_H_
 
