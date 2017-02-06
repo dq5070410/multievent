@@ -100,7 +100,7 @@ private:
 	CLockEvent( const CLockEvent& );
 
 private:
-#ifdef WIN
+#ifdef ME_WIN
 	ME_EVENT						m_pEvent;
 #else
 	CMELockConditionVariable		m_pEvent;

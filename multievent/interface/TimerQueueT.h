@@ -190,7 +190,7 @@ private:
 	LockType						m_LockStandard;	// 用一个单独的锁保护<m_httStandard>
 
 private:
-	typedef CNodeListT<NodeType, SorterType> ListType;
+	typedef CMENodeListT<NodeType, SorterType> ListType;
 	ListType						m_nodeList;		// 节点链表
 };
 

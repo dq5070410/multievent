@@ -19,7 +19,7 @@ ME_NAME_SPACE_BEGIN
 
 class IMEIO;
 class IMEIOSink;
-class IMECustomizeEvent;
+class ICustomizeEvent;
 class CMETimer;
 class ITimerSink;
 
@@ -34,8 +34,8 @@ class ITimerSink;
 class IMEReactorImpl
 {
 public:
-    typedef CMEEventQueueT<IMECustomizeEvent, CMELockThreadMutex> CMEEventQueue;
-    typedef CMEEventQueue::NodeType::CMESyncEvent CMESyncEventType;
+    typedef CEventQueueT<ICustomizeEvent, CMELockThreadMutex> CMEEventQueue;
+    typedef CEventQueue::NodeType::CSyncEvent CMESyncEventType;
     typedef CMETimerQueueT<CMETimer, ITimerSink, CMELockThreadMutex> CMETimerQueue;
 
 public:
@@ -153,7 +153,6 @@ public:
      */
     virtual ME_Result Dispatch( BOOL bExit = FALSE ) = 0;
 
-	/* 2013.9.4 added by Î¤çæ */
 	virtual int GetType() const = 0;
 };
 

@@ -28,7 +28,7 @@ class CEventQueueT
 {
 public:
 	typedef CEventNodeT<EventType> NodeType;
-	typedef typename NodeType::CSyncEvent SyncEvent;
+	typedef typename NodeType::CMESyncEvent SyncEvent;
 
 public:
 	CEventQueueT();
