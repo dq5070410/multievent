@@ -90,7 +90,7 @@ public:
 	* 返回值：
 	*		ME_OK为成功；其他为失败
 	*/
-	ME_Result SetSyncEvent( CSyncEvent* pSync );
+	ME_Result SetSyncEvent( CMESyncEvent* pSync );
 
 	/**
 	* 设置事件优先级

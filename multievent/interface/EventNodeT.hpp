@@ -25,7 +25,7 @@ template <class EventType>
 CEventNodeT<EventType>::CEventNodeT( 
 	EventType* pEvent, 
 	MODE nMode, 
-	CSyncEvent* pSync, 
+	CMESyncEvent* pSync, 
 	PRIORITY nPriority /* = PRIORITY_NORMAL */ )
 	: m_pEvent( pEvent )
 	, m_nEventMode( nMode )
@@ -49,7 +49,7 @@ ME_Result CEventNodeT<EventType>::Set(
 }
 
 template <class EventType>
-ME_Result CEventNodeT<EventType>::SetSyncEvent( CSyncEvent* pSync )
+ME_Result CEventNodeT<EventType>::SetSyncEvent( CMESyncEvent* pSync )
 {
 	ME_ASSERTE_RETURN( pSync, ME_ERROR_NULL_POINTER );
 
@@ -71,7 +71,7 @@ UINT CEventNodeT<EventType>::GetPriority() const
 }
 
 template <class EventType>
-void CEventNodeT<EventType>::CSyncEvent::Signal( ME_Result hResult /* = ME_OK */ )
+void CEventNodeT<EventType>::CMESyncEvent::Signal( ME_Result hResult /* = ME_OK */ )
 {
 	m_hResult = hResult;
 
@@ -79,7 +79,7 @@ void CEventNodeT<EventType>::CSyncEvent::Signal( ME_Result hResult /* = ME_OK */
 }
 
 template <class EventType>
-ME_Result CEventNodeT<EventType>::CSyncEvent::GetResult()
+ME_Result CEventNodeT<EventType>::CMESyncEvent::GetResult()
 {
 	m_SyncEvent.Wait();
 

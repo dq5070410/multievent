@@ -8,7 +8,7 @@
 
 #include "Base.h"
 
-NAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 UINT ME_OS_EXPORT GetCPUCount();
 
@@ -18,6 +18,6 @@ const ME_OS_EXPORT char* GetExecName();
 
 const ME_OS_EXPORT char* GetProcessName();
 
-NAME_SPACE_OS_END
+ME_NAME_SPACE_OS_END
 
 #endif // __OS_PROCESS_H_
