@@ -1,5 +1,5 @@
 #ifdef ME_LINUX
-ME_USING_HIK
+ME_USING_ME
 #endif	// ME_LINUX
 
 template <class EventType, class LockType>
@@ -39,7 +39,7 @@ ME_Result CEventQueueT<EventType, LockType>::PostEvent(
 {
 	ME_ASSERTE_RETURN( pEvent, ME_ERROR_NULL_POINTER );
 
-	CLockGuardT<LockType> Guard( &m_Lock );
+	CMELockGuardT<LockType> Guard( &m_Lock );
 
 	if ( TRUE == m_bExit )
 	{
@@ -66,7 +66,7 @@ ME_Result CEventQueueT<EventType, LockType>::HandleEvent( BOOL& bExit )
 	ListType tmpList;
 	UINT iSize = 0;
 	{
-		CLockGuardT<LockType> Guard( &m_Lock );
+		CMELockGuardT<LockType> Guard( &m_Lock );
 
 		if ( TRUE == m_bExit )
 		{
@@ -106,7 +106,7 @@ ME_Result CEventQueueT<EventType, LockType>::HandleEvent( BOOL& bExit )
 template <class EventType, class LockType>
 BOOL CEventQueueT<EventType, LockType>::IsEmpty()
 {
-	CLockGuardT<LockType> Guard( &m_Lock );
+	CMELockGuardT<LockType> Guard( &m_Lock );
 
 	return m_nodeList.IsEmpty();
 }
@@ -114,7 +114,7 @@ BOOL CEventQueueT<EventType, LockType>::IsEmpty()
 template <class EventType, class LockType>
 void CEventQueueT<EventType, LockType>::Destroy()
 {
-	CLockGuardT<LockType> Guard( &m_Lock );
+	CMELockGuardT<LockType> Guard( &m_Lock );
 
 	m_bExit = TRUE;
 }

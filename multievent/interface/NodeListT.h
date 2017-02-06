@@ -136,11 +136,11 @@ private:
 };
 
 template<class ListNodeType> 
-class CNodeListDefaultSort 
+class CMENodeListDefaultSort 
 {
 public:
 	/**
-	* 作为CNodeListT的默认排序
+	* 作为CMENodeListT的默认排序
 	*
 	* 它的主要工作就是：什么都不做
 	*/

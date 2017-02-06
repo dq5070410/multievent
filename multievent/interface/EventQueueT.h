@@ -88,7 +88,7 @@ public:
 	void operator = ( const CEventQueueT<EventType, LockType>& Dst );
 
 private:
-	typedef CNodeListT<NodeType> ListType;
+	typedef CMENodeListT<NodeType> ListType;
 
 private:
 	ListType						m_nodeList;	// 事件存储结构
@@ -96,9 +96,9 @@ private:
 	BOOL							m_bExit;	// 事件队列是否处于退出状态
 };
 
-typedef CEventQueueT<IMECustomizeEvent, CLockThreadMutex> CEventQueue;	// 事件队列
+typedef CEventQueueT<ICustomizeEvent, CLockThreadMutex> CEventQueue;	// 事件队列
 
-typedef CSingletonT<CEventQueue> CEventQueueSingleton;
+typedef CMESingletonT<CEventQueue> CEventQueueSingleton;
 
 #include "EventQueueT.hpp"
 
