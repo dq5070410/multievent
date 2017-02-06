@@ -14,7 +14,7 @@
 #include "UtilDefines.h"
 
 ME_NAME_SPACE_BEGIN
-class CLockThreadMutex;
+class CMELockThreadMutex;
 
 /**
 * 用于退出时做对象回收、清理的一个类

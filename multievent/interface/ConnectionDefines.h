@@ -51,7 +51,7 @@ const DWORD ME_SELECT_MAX_WAIT_NUM = FD_SETSIZE;		// 2048£¬Ê¹ÓÃselect×î¶àÄÜ¹»µÈ´
 class CConnDummy
 {
 public:
-	typedef CLockMutex MutexType;
+	typedef CMELockMutex MutexType;
 };
 
 template <class T>

@@ -35,7 +35,7 @@ class IMEReactorImpl
 {
 public:
     typedef CEventQueueT<ICustomizeEvent, CMELockThreadMutex> CMEEventQueue;
-    typedef CEventQueue::NodeType::CSyncEvent CMESyncEventType;
+    typedef CEventQueue::NodeType::CMESyncEvent CMESyncEventType;
     typedef CMETimerQueueT<CMETimer, ITimerSink, CMELockThreadMutex> CMETimerQueue;
 
 public:
