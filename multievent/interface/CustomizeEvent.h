@@ -15,7 +15,7 @@
 #ifndef __CUSTOMIZE_EVENT_H_
 #define __CUSTOMIZE_EVENT_H_
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 class ME_OS_EXPORT ICustomizeEvent
 {
@@ -47,7 +47,7 @@ public:
 	virtual ME_Result OnDestroy();
 };
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif	// __CUSTOMIZE_EVENT_H_
 

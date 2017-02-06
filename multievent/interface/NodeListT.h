@@ -71,7 +71,7 @@ public:
 	* 返回值：
 	*		返回活动节点的个数(0 ~ DELIVERY_MAX_NUM)
 	*/
-	UINT GetActiveNodes( CNodeListT<NodeType, SorterType, DELIVERY_MAX_NUM>& activeList );
+	UINT GetActiveNodes( CMENodeListT<NodeType, SorterType, DELIVERY_MAX_NUM>& activeList );
 
 	/**
 	* 获取当前链表的size
