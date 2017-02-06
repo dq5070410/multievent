@@ -11,7 +11,7 @@
 
 #include "Base.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 class ITimerSink;
 class CTimeValue;
@@ -119,7 +119,7 @@ public:
 };
 
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif	// __ME_TIME_H_
 

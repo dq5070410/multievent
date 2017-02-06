@@ -21,8 +21,8 @@ template <class TimerType, class TimerSinkType>
 CTimerNodeT<TimerType, TimerSinkType>::CTimerNodeT( 
 	TimerType* pTimer, 
 	TimerSinkType* pSink, 
-	const CHikTimeValue& htvInterval, 
-	const CHikTimeValue& htvDelay, 
+	const CTimeValue& htvInterval, 
+	const CTimeValue& htvDelay, 
 	int iLoopTime /* = 0 */ )
 	: m_pTimer( pTimer )
 	, m_pTimerSink( pSink )
@@ -39,14 +39,14 @@ CTimerNodeT<TimerType, TimerSinkType>::~CTimerNodeT()
 }
 
 template <class TimerType, class TimerSinkType>
-HikResult CTimerNodeT<TimerType, TimerSinkType>::Set( 
+ME_Result CTimerNodeT<TimerType, TimerSinkType>::Set( 
 	TimerType* pTimer, 
 	TimerSinkType* pSink, 
-	const CHikTimeTick& httInterval, 
-	const CHikTimeTick& httDelay, 
+	const CTimeTick& httInterval, 
+	const CTimeTick& httDelay, 
 	int iLoopTime /* = 0 */ )
 {
-	HIK_ASSERTE_RETURN( pTimer && pSink, HIK_ERROR_INVALID_ARG );
+	ME_ASSERTE_RETURN( pTimer && pSink, ME_ERROR_INVALID_ARG );
 
 	m_pTimer = pTimer;
 	m_pTimerSink = pSink;
@@ -55,11 +55,11 @@ HikResult CTimerNodeT<TimerType, TimerSinkType>::Set(
 	m_httDelay = httDelay;
 	m_iLoopTime = iLoopTime;
 
-	return HIK_OK;
+	return ME_OK;
 }
 
 template <class TimerType, class TimerSinkType>
-void CTimerNodeT<TimerType, TimerSinkType>::SetTimeTick( const CHikTimeTick& httTimeTick )
+void CTimerNodeT<TimerType, TimerSinkType>::SetTimeTick( const CTimeTick& httTimeTick )
 {
 	m_httDelay = httTimeTick;
 }
@@ -86,7 +86,7 @@ int CTimerNodeT<TimerType, TimerSinkType>::ReduceLoopTime()
 }
 
 template <class TimerType, class TimerSinkType>
-const CHikTimeTick& CTimerNodeT<TimerType, TimerSinkType>::GetTimeTick() const
+const CTimeTick& CTimerNodeT<TimerType, TimerSinkType>::GetTimeTick() const
 {
 	return m_httDelay;
 }
@@ -104,13 +104,13 @@ DWORD CTimerNodeT<TimerType, TimerSinkType>::GetIntervalTimeCount() const
 }
 
 template <class TimerType, class TimerSinkType>
-HikResult CTimerNodeT<TimerType, TimerSinkType>::Active()
+ME_Result CTimerNodeT<TimerType, TimerSinkType>::Active()
 {
-	HIK_ASSERTE_RETURN( m_pTimerSink, HIK_ERROR_NULL_POINTER );
+	ME_ASSERTE_RETURN( m_pTimerSink, ME_ERROR_NULL_POINTER );
 
 	m_pTimerSink->OnTimer( m_pTimer );
 
-	return HIK_OK;
+	return ME_OK;
 }
 
 template <class TimerType, class TimerSinkType>

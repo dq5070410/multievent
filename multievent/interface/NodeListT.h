@@ -11,20 +11,20 @@
 #include "Base.h"
 #include "TimerNodeT.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 template<class ListNodeType> class CNodeListDefaultSort;
 
 template <class NodeType, class SorterType = CNodeListDefaultSort<NodeType>, DWORD DELIVERY_MAX_NUM = 150>
-class CNodeListT
+class CMENodeListT
 {
 public:
 	typedef typename NodeType::SuperType NodeSuperType;
 	
 public:
-	CNodeListT();
+	CMENodeListT();
 
-	~CNodeListT();
+	~CMENodeListT();
 
 public:
 	/**
@@ -150,7 +150,7 @@ public:
 
 #include "NodeListT.hpp"
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif	// __NODE_LIST_T_H_
 
