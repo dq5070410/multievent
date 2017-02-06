@@ -11,7 +11,7 @@
 
 #include "Base.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 /**
 * 这个类只提供一些简单的时间功能，如获取当前的秒，
@@ -126,7 +126,7 @@ private:
 	ME_TIME_VALUE					m_Time;	// 实际存储的时间结构
 };
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif	// __TIME_VALUE_H_
 

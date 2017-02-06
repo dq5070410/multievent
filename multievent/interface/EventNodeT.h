@@ -123,7 +123,7 @@ public:
 	BOOL operator == ( const EventType* pEvent );
 
 public:
-	class CSyncEvent
+	class CMESyncEvent
 	{
 	public:
 		void Signal( ME_Result hResult = ME_OK );
@@ -143,7 +143,7 @@ private:
 	EventType*						m_pEvent;			// 存放需要执行的自定义事件
 	MODE							m_nEventMode;		// 标识执行事件的方法Send or Post
 
-	CSyncEvent*					m_pSync;			// 在事件执行方法为Send时，用这个来做同步阻塞操作
+	CMESyncEvent*					m_pSync;			// 在事件执行方法为Send时，用这个来做同步阻塞操作
 
 	PRIORITY						m_nPriority;		// 优先级，保留，目前无用
 };
