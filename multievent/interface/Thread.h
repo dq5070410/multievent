@@ -206,7 +206,7 @@ protected:
     INT                             m_iStatus;
 
     /* 用户回调类型指针 */
-    IThreadSink*                   m_pThreadSink;
+    IMEThreadSink*                   m_pThreadSink;
 
     /* 线程句柄(对应OS中的线程句柄) */
     ME_THREAD_HANDLE               m_hThreadHandle;
@@ -215,7 +215,7 @@ protected:
     ME_THREAD_ID                   m_ThreadID;
 
     /* 线程锁 */
-    CLockThreadMutex             m_hThreadMutex;
+    CMELockThreadMutex             m_hThreadMutex;
 
 private:
     /* 声明线程对象管理器为线程对象的友元类 */

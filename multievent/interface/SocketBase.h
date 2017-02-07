@@ -14,11 +14,11 @@
 #include "IPBase.h"
 #include "SocketErrorAutoSave.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 class CMEInetAddress;
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 /**
 * 底层socket的基础封装类
@@ -217,7 +217,7 @@ protected:
 	void ShowSocketError( int iResult );
 };
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif	// __ME_SOCKET_BASE_H_
 

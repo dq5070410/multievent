@@ -12,7 +12,7 @@
 #include "Base.h"
 #include "IO.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 /**
 * IP基础类，所有的socket应该类都从这里继承
@@ -97,7 +97,7 @@ protected:
 	ME_HANDLE						m_hHandle;
 };
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif	// __ME_IP_BASE_H_
 

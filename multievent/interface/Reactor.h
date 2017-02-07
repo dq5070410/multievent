@@ -205,7 +205,7 @@ public:
      *  返回值:
      *      ME_OK表示成功; 非ME_OK表示失败
      */
-    ME_Result AttachEventQueue( CMEEventQueue* pEq );
+    ME_Result AttachEventQueue( CEventQueue* pEq );
 
     /**
      *  附加分离器到时钟队列，目前，一个分离器只能够附加到一个时钟队列，以第一次

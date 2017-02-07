@@ -21,7 +21,7 @@ ME_NAME_SPACE_BEGIN
 
 class IMEThreadSink;
 
-class CConfigManager
+class CMEConfigManager
 {
 public:
 	ME_Result Initialize(
@@ -31,7 +31,7 @@ public:
 	ME_Result UnInitialize();
 };
 
-typedef CMESingletonT<CConfigManager> CConfigManagerSingleton;
+typedef CMESingletonT<CMEConfigManager> CConfigManagerSingleton;
 
 ME_NAME_SPACE_END
 
