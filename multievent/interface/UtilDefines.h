@@ -118,7 +118,7 @@
 */
 #ifndef ME_NO_NAME_SPACE
 
-	/* MultiEvent顶层命名空间HIK的预声明 */
+	/* MultiEvent顶层命名空间ME的预声明 */
 	namespace ME {}
 
 	/* MultiEvent次级命名空间OS的预声明 */

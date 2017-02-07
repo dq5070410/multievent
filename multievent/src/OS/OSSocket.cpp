@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-NAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 /* 2013.4.12 让gcc能够正确识别 */
 /*ME_INLINE */ME_Result SocketOpen( 
@@ -591,7 +591,7 @@ NAME_SPACE_OS_BEGIN
 	return iResult;
 }
 
-NAME_SPACE_OS_END
+ME_NAME_SPACE_OS_END
 
 
 

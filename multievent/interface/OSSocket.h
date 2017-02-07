@@ -11,7 +11,7 @@
 
 #include "Base.h"
 
-NAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 /**
 * 打开一个socket并获得句柄
@@ -322,7 +322,7 @@ ME_Result ME_OS_EXPORT SocketGetSocketOption(
 	void* pOptval, 
 	int* pOptlen );
 
-NAME_SPACE_OS_END
+ME_NAME_SPACE_OS_END
 
 
 #endif	// __OS_SOCKET_H_
