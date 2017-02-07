@@ -48,14 +48,14 @@ const DWORD ME_SELECT_MAX_WAIT_NUM = FD_SETSIZE;		// 2048£¬Ê¹ÓÃselect×î¶àÄÜ¹»µÈ´
 * ÓÃÔÚÁ¬½ÓÏà¹Ø´¦ÀíµÄËøµÄÀàĞÍ¶¨Òå
 * ËùÓĞµÄÏà¹ØÀàµÄËøÀàĞÍ¶¼ÒıÉê×ÔÕâ¸öÀà
 */
-class CConnDummy
+class CMEConnDummy
 {
 public:
 	typedef CMELockMutex MutexType;
 };
 
 template <class T>
-class CMutexTypeTraits
+class CMEMutexTypeTraits
 {
 public:
 	typedef typename T::MutexType MutexType;

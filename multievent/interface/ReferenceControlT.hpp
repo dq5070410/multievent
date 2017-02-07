@@ -10,7 +10,6 @@ ME_INLINE DWORD CMEReferenceControlT<LockType>::RemoveReference()
 {
 	if ( m_Atomic == 0 )
 	{
-		/* 2014.11.4 edited by 韦珂 */
 		/* 
 		* 如果引用计数已经是0，就无需进行删除，不然会导致两次删除引起的crash
 		*

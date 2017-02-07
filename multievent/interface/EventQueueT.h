@@ -96,7 +96,7 @@ private:
 	BOOL							m_bExit;	// 事件队列是否处于退出状态
 };
 
-typedef CEventQueueT<ICustomizeEvent, CLockThreadMutex> CEventQueue;	// 事件队列
+typedef CEventQueueT<ICustomizeEvent, CMELockThreadMutex> CEventQueue;	// 事件队列
 
 typedef CMESingletonT<CEventQueue> CEventQueueSingleton;
 
