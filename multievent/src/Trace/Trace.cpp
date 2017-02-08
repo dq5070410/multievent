@@ -9,11 +9,16 @@
 #include "LockGuardT.h"
 //#include "../dependency/hlog/h/hlog.h"
 
-
+enum log_level
+{
+	HLOG_LEVEL_INFO,
+	HLOG_LEVEL_WARN,
+	HLOG_LEVEL_ERROR,
+};
 
 ME_NAME_SPACE_BEGIN
 
-static HLOG_LEVEL s_hlLevels[] = 
+static /*HLOG_LEVEL*/int s_hlLevels[] = 
 {
 	HLOG_LEVEL_INFO,
 	HLOG_LEVEL_WARN,
