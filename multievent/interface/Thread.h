@@ -108,7 +108,7 @@ public:
      *  返回值:
      *      ME_OK表示成功; 非ME_OK表示失败
      */
-    virtual ME_Result PostEvent( IMECustomizeEvent* pEvent );
+    virtual ME_Result PostEvent( ICustomizeEvent* pEvent );
 
     /**
      *  阻塞式事件投递，如果线程对象具有事件队列，那么在调用这个接口后，在事件被

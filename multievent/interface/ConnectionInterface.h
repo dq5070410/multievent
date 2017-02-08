@@ -16,7 +16,7 @@
 ME_NAME_SPACE_BEGIN
 
 /* 预声明 */
-class CMessageBlock;
+class CMEMessageBlock;
 class CTimeValue;
 class IAcceptor;
 class IAcceptorSink;
@@ -26,9 +26,9 @@ class ITransport;
 class ITransportSink;
 class CMEInetAddress;
 
-typedef CAutoPtrT<IAcceptor> CAcceptorAutoPtr;
-typedef CAutoPtrT<IConnector> CConnectorAutoPtr;
-typedef CAutoPtrT<ITransport> CTransportAutoPtr;
+typedef CMEAutoPtrT<IAcceptor> CAcceptorAutoPtr;
+typedef CMEAutoPtrT<IConnector> CConnectorAutoPtr;
+typedef CMEAutoPtrT<ITransport> CTransportAutoPtr;
 
 class ME_OS_EXPORT IConnectionManager
 {
@@ -94,7 +94,7 @@ public:
  * 侦听时, 如果没有指定绑定的地址, 而且机器上有多块网卡的话,
  * 那么最终将默认选择第一块网卡的第一个地址作为侦听地址
 */
-class ME_OS_EXPORT IAcceptor : public IReferenceControl
+class ME_OS_EXPORT IAcceptor : public IMEReferenceControl
 {
 public:
 	virtual ~IAcceptor() {}
@@ -184,7 +184,7 @@ public:
 * 连接时, 如果没有指定绑定的地址, 而且机器上有多块网卡的话,
 * 那么最终将默认选择第一块网卡的第一个地址作为侦听地址
 */
-class ME_OS_EXPORT IConnector : public IReferenceControl
+class ME_OS_EXPORT IConnector : public IMEReferenceControl
 {
 public:
 	virtual ~IConnector() {}
@@ -276,7 +276,7 @@ public:
 /**
 * 传输接口类
 */
-class ME_OS_EXPORT ITransport : public IReferenceControl
+class ME_OS_EXPORT ITransport : public IMEReferenceControl
 {
 public:
 	enum OPTION_TYPE
@@ -405,7 +405,7 @@ public:
 	*/
 	virtual void OnReceive( 
 		ITransport* pTransport,
-		CMessageBlock* pmbBlock ) = 0;
+		CMEMessageBlock* pmbBlock ) = 0;
 
 	/**
 	* 连接被断开
