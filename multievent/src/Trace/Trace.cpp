@@ -85,12 +85,7 @@ void CMETrace::WriteLog(
 		ME_TRACE_MAX_TRACE_LEN + 1, 
 		iLevel, 
 		pszData );
-
-	//hlog_format( 
-	//	s_hlLevels[iLevel], 
-	//	"HikUtility", 
-	//	szBuf );
-		//OS::GetProcessName(), 
+ 
 }
 
 void CMETrace::FormatStr( 
