@@ -7,7 +7,7 @@
 #include "SingletonT.h"
 #include "LockThreadMutex.h"
 #include "LockGuardT.h"
-#include "../dependency/hlog/h/hlog.h"
+//#include "../dependency/hlog/h/hlog.h"
 
 
 
@@ -109,7 +109,7 @@ void CMETrace::FormatStr(
 
 #endif	// ME_WIN
 
-	CMETimeValue tvCur = CMETimeValue::TimeOfDay();
+	CTimeValue tvCur = CTimeValue::TimeOfDay();
 
 #ifdef ME_WIN
 	timeVal = tvCur.GetSecond();

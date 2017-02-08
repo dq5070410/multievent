@@ -11,11 +11,11 @@
 
 #include "Base.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 class CTimeValue;
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
-NAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 ME_Result ME_OS_EXPORT ThreadCreate(
 	ME_THREAD_FUNC pFunc,
@@ -55,7 +55,7 @@ ME_Result ME_OS_EXPORT ThreadTestDestroy();
 
 ME_Result ME_OS_EXPORT ThreadJoin( 
 	ME_THREAD_HANDLE hThreadHandle,
-	CMETimeValue* pTimeout = NULL,
+	CTimeValue* pTimeout = NULL,
 	ME_THREAD_STAT* pStat = NULL );
 
 ME_Result ME_OS_EXPORT ThreadSetPriority(
