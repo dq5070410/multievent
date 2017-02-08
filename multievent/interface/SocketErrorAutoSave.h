@@ -22,11 +22,11 @@
 * 为了避免socket error被其他error覆盖，就搞了
 * 这么个类
 */
-class CSocketErrorAutoSave
+class CMESocketErrorAutoSave
 {
 public:
-	CSocketErrorAutoSave();
-	~CSocketErrorAutoSave();
+	CMESocketErrorAutoSave();
+	~CMESocketErrorAutoSave();
 
 public:
 	/**

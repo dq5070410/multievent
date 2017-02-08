@@ -17,7 +17,7 @@ ME_NAME_SPACE_BEGIN
 /**
 * IP基础类，所有的socket应该类都从这里继承
 */
-class ME_OS_EXPORT CIPBase : public IMEIO
+class ME_OS_EXPORT CMEIPBase : public IMEIO
 {
 public:
 	/* 非阻塞选项 */
@@ -32,7 +32,7 @@ public:
 	};
 
 public:
-	virtual ~CIPBase();
+	virtual ~CMEIPBase();
 
 public:
 	/**
@@ -89,9 +89,9 @@ public:
 		void* pArg );
 
 protected:
-	CIPBase();
+	CMEIPBase();
 
-	CIPBase( ME_HANDLE hHandle );
+	CMEIPBase( ME_HANDLE hHandle );
 
 protected:
 	ME_HANDLE						m_hHandle;

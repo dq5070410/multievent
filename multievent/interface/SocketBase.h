@@ -24,7 +24,7 @@ ME_NAME_SPACE_BEGIN
 * 底层socket的基础封装类
 * 所有的socket类都应该从这里继承
 */
-class ME_OS_EXPORT CMESocketBase : public CIPBase
+class ME_OS_EXPORT CMESocketBase : public CMEIPBase
 {
 public:
 	virtual ~CMESocketBase();
