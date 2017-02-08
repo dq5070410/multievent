@@ -21,7 +21,7 @@ ME_NAME_SPACE_BEGIN
 class ITimerSink;
 class CTimeValue;
 class CTimer;
-class CReactor;
+class CMEReactor;
 
 /**
  *  线程对象基类
@@ -160,7 +160,7 @@ public:
      *  返回值:
      *      非空，分离器实例指针; NULL，当前线程对象不带有分离器
      */
-    virtual CReactor* GetReactor();
+    virtual CMEReactor* GetReactor();
 
 protected:
     /**

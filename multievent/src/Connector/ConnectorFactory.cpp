@@ -37,13 +37,13 @@ ME_Result CMEConnectorFactory::CreateSync(
 	IMEConnectorImpl*& pConnector )
 {
 	/* TCP */
-	if ( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) )
+	if ( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) )
 	{
 		pConnector = new CMEConnectorTcp;
 	}
 
 	/* UDP */
-	else if ( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_UDP) )
+	else if ( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_UDP) )
 	{
 		pConnector = new CMEConnectorUdp;
 	}
@@ -61,13 +61,13 @@ ME_Result CMEConnectorFactory::CreateAsync(
 	IMEConnectorImpl*& pConnector )
 {
 	/* TCP */
-	if ( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) )
+	if ( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) )
 	{
 		pConnector = new CMEConnectorAsyncTcp;
 	}
 
 	/* UDP */
-	else if ( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_UDP) )
+	else if ( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_UDP) )
 	{
 		pConnector = new CMEConnectorAsyncUdp;
 	}
