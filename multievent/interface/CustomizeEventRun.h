@@ -12,9 +12,9 @@
 #include "Base.h"
 #include "CustomizeEvent.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
-class IThread;
+class IMEThread;
 
 /*
 * 用于简化事件投递操作的类
@@ -32,7 +32,7 @@ public:
 	*		ME_OK为成功; 其他为失败
 	*/
 	ME_Result Run(
-		IThread* pThread,
+		IMEThread* pThread,
 		BOOL bSync = FALSE );
 
 protected:
@@ -41,7 +41,7 @@ protected:
 	virtual ~CEventRun();
 };
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 
 #endif	// __CUSTOMIZE_EVENT_RUN_H_

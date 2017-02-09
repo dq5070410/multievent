@@ -11,7 +11,7 @@
 
 #include "CustomizeEventRun.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 namespace EVENT
 {
@@ -231,7 +231,7 @@ private:
 
 }
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif	// __EVENT_ACCEPTOR_CONNECTOR_H_
 
