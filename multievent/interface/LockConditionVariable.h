@@ -16,7 +16,7 @@
 
 ME_NAME_SPACE_BEGIN
 
-class CMETimeValue;
+class CTimeValue;
 
 /**
 * 条件变量的实现类

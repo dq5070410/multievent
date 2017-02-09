@@ -11,7 +11,7 @@
 ME_NAME_SPACE_BEGIN
 
 CMEConnectorWrapper::CMEConnectorWrapper()
-	: m_dwType( IMEConnectionManager::CONNECTION_TYPE_NONE )
+	: m_dwType( IConnectionManager::CONNECTION_TYPE_NONE )
 	, m_pConnector( NULL )
 	, m_pSink( NULL )
 	, m_bConnected( FALSE )
@@ -51,9 +51,9 @@ ME_Result CMEConnectorWrapper::Initialize( DWORD dwType )
 }
 
 ME_Result CMEConnectorWrapper::Open( 
-	IMEConnectorSink* pSink, 
+	IConnectorSink* pSink, 
 	const CMEInetAddress& peerAddress, 
-	CMETimeValue* pTimeout /* = NULL */, 
+	CTimeValue* pTimeout /* = NULL */, 
 	CMEInetAddress* pLocalAddress /* = NULL */ )
 {
 	ME_ASSERTE_RETURN( pSink, ME_ERROR_INVALID_ARG );
@@ -100,7 +100,7 @@ ME_Result CMEConnectorWrapper::Open(
 		{
 			m_Timer.Schedule(
 				this,
-				CMETimeValue(),
+				CTimeValue(),
 				*pTimeout,
 				1 );
 
@@ -125,7 +125,7 @@ ME_Result CMEConnectorWrapper::Open(
 		/* 这里仅仅为了避免在Open()里call OnConnect() */
 		m_Timer.Schedule(
 			this,
-			CMETimeValue(),
+			CTimeValue(),
 			1 );
 	}
 
@@ -315,7 +315,7 @@ void CMEConnectorWrapper::OnTimer( CMETimer* pTimerID )
 
 	AddReference();
 
-	IMEConnectorSink* pSink = m_pSink;
+	IConnectorSink* pSink = m_pSink;
 	Close();
 
 	/* 同样，因为不会产生transport，handle无人托管，所以就必须在这里close，不然会有句柄泄漏 */

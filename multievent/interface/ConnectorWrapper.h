@@ -35,7 +35,7 @@ ME_NAME_SPACE_BEGIN
 */
 class CMEConnectorWrapper
 	: public IConnector
-	, protected IConnectorImplSink
+	, protected IMEConnectorImplSink
 	, protected ITimerSink
 	, public CMEMutexTypeTraits<CMEConnDummy>
 	, public CMEReferenceControlT<CMEConnDummy::MutexType>
@@ -77,7 +77,7 @@ public:
 	virtual ME_Result Open(
 		IConnectorSink* pSink,
 		const CMEInetAddress& peerAddress,
-		CMETimeValue* pTimeout = NULL,
+		CTimeValue* pTimeout = NULL,
 		CMEInetAddress* pLocalAddress = NULL );
 
 	
