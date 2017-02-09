@@ -23,7 +23,7 @@ class IMEConnectionOperator
 public:
     virtual ME_Result PreOnConnect(
         ME_HANDLE hSocket,
-        CMETransportAutoPtr& pTransportAutoPtr ) = 0;
+        CTransportAutoPtr& pTransportAutoPtr ) = 0;
 
     virtual ME_Result SetOption(
         DWORD dwOptionType,

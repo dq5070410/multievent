@@ -34,8 +34,8 @@ ME_NAME_SPACE_BEGIN
 * TCP/UDP都wrap
 */
 class CMEConnectorWrapper
-	: public IMEConnector
-	, protected IMEConnectorImplSink
+	: public IConnector
+	, protected IConnectorImplSink
 	, protected ITimerSink
 	, public CMEMutexTypeTraits<CMEConnDummy>
 	, public CMEReferenceControlT<CMEConnDummy::MutexType>
@@ -75,7 +75,7 @@ public:
 	*		ME_OK为成功; 非ME_OK为失败
 	*/
 	virtual ME_Result Open(
-		IMEConnectorSink* pSink,
+		IConnectorSink* pSink,
 		const CMEInetAddress& peerAddress,
 		CMETimeValue* pTimeout = NULL,
 		CMEInetAddress* pLocalAddress = NULL );
@@ -166,7 +166,7 @@ private:
 
     ME_Result PreOnConnect(
         ME_HANDLE hSocket,
-        CMETransportAutoPtr& pTransportAutoPtr );
+        CTransportAutoPtr& pTransportAutoPtr );
 
 private:
     typedef std::deque<IMEConnectionOperatorAutoPtr> OperatorDequeType;
@@ -175,7 +175,7 @@ private:
 	DWORD							m_dwType;			// 标识该connector是什么类型的，tcp/udp...
 	CMEAutoPtrT<IMEConnectorImpl>	m_pConnector;		// 原生类指针，类型与<m_dwType>对应
 
-	IMEConnectorSink*				m_pSink;			// 上层回调对象
+	IConnectorSink*			    	m_pSink;			// 上层回调对象
 	CMETimer						m_Timer;			// 用作连接超时以及跳出函数
 	BOOL							m_bConnected;		// 用于标识Open()函数调用成功与否
 	ME_HANDLE						m_hHandle;			// 用于在没有连接成功(即没有产生transport)时，对已经产生的句柄进行清理，防止句柄泄漏
