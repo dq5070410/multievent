@@ -204,7 +204,7 @@ ME_Result CMEConnectorWrapper::SetOption( DWORD dwOptionType, void* pOptionValue
             OperatorDequeType::iterator iter = m_dequeOperator.begin();
             for ( ; iter != m_dequeOperator.end(); ++iter )
             {
-                if ( (*iter)->GetType() == IMEConnectionManager::CONNECTION_TYPE_SSL )
+                if ( (*iter)->GetType() == IConnectionManager::CONNECTION_TYPE_SSL )
                 {
                     return (*iter)->SetOption(
                         dwOptionType,
@@ -256,7 +256,7 @@ void CMEConnectorWrapper::OnConnect(
 
 	AddReference();
 
-	IMEConnectorSink* pTmpSink = m_pSink;
+	IConnectorSink* pTmpSink = m_pSink;
 
 	CMEAutoPtrT<IMETransport> pTransport;
 	Close();
@@ -276,7 +276,7 @@ void CMEConnectorWrapper::OnConnect(
 			m_dwType,
 			hHandle, 
 			pTransport.ParaOut(),
-			ME_BIT_ENABLED(m_dwType, IMEConnectionManager::CONNECTION_TYPE_UDP) ? &m_hiaPeerAddress : NULL );
+			ME_BIT_ENABLED(m_dwType, IConnectionManager::CONNECTION_TYPE_UDP) ? &m_hiaPeerAddress : NULL );
 
 		ME_ASSERTE( ME_SUCCEEDED(hResult) );
 

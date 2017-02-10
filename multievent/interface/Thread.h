@@ -150,7 +150,7 @@ public:
      *  返回值:
      *      ME_OK表示成功; 非ME_OK表示失败
      */
-    virtual ME_Result CancelTimer( CTimer* pTimer );
+    virtual ME_Result CancelTimer( CMETimer* pTimer );
 
     /**
      *  获取线程对象上的分离器实例

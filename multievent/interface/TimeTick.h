@@ -98,7 +98,7 @@ public:
 		DWORD dwTickCount,
 		BOOL bAddRound = FALSE );
 
-	const CTimeTick& operator = ( const CMETimeValue& htvTime );
+	const CTimeTick& operator = ( const CTimeValue& htvTime );
 
 	const CTimeTick& operator = ( const ME_TIME_TICK& httTick );
 

@@ -176,7 +176,7 @@ private:
 	CMEAutoPtrT<IMEConnectorImpl>	m_pConnector;		// 原生类指针，类型与<m_dwType>对应
 
 	IConnectorSink*			    	m_pSink;			// 上层回调对象
-	CMETimer						m_Timer;			// 用作连接超时以及跳出函数
+	CMETimer				 		m_Timer;			// 用作连接超时以及跳出函数
 	BOOL							m_bConnected;		// 用于标识Open()函数调用成功与否
 	ME_HANDLE						m_hHandle;			// 用于在没有连接成功(即没有产生transport)时，对已经产生的句柄进行清理，防止句柄泄漏
 
