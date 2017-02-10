@@ -27,7 +27,7 @@ public:
 public:
     virtual ME_Result PreOnConnect(
         ME_HANDLE hSocket,
-        CMETransportAutoPtr& pTransportAutoPtr );
+        CTransportAutoPtr& pTransportAutoPtr );
 
     virtual ME_Result SetOption(
         DWORD dwOptionType,

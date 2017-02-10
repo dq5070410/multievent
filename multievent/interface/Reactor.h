@@ -19,7 +19,7 @@ ME_NAME_SPACE_BEGIN
 class IMEReactorImpl;
 class IMEIO;
 class IMEIOSink;
-class IMECustomizeEvent;
+class ICustomizeEvent;
 class CMETimer;
 class ITimerSink;
 
@@ -218,7 +218,6 @@ public:
      */
     ME_Result AttachTimerQueue( CMETimerQueue* pTq );
 
-	/* 2013.9.4 added by 韦珂 */
 	/**
 	* 获取Reactor的类型
 	*

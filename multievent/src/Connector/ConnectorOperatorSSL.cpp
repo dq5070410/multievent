@@ -10,7 +10,7 @@
 #include "LockThreadMutex.h"
 
 
-using HIK::CRYPTO::CMESSLContextSingleton;
+using ME::CRYPTO::CMESSLContextSingleton;
 
 
 ME_NAME_SPACE_BEGIN
@@ -45,7 +45,7 @@ ME_Result CMEConnectorOperatorSSL::PreOnConnect(
     ME_ASSERTE_RETURN( ME_SUCCEEDED(hResult), hResult );
 
     pTransportAutoPtr->SetOption(
-        IMETransport::OPTION_TYPE_SET_SSL,
+        ITransport::OPTION_TYPE_SET_SSL,
         m_pSSLAutoPtr.Get() );
 
     return hResult;

@@ -128,7 +128,6 @@ ME_Result CMEReactor::AttachTimerQueue( CMETimerQueue* pTq )
     return m_pReactorImpl->AttachTimerQueue( pTq );
 }
 
-/* 2013.9.4 added by Î¤çæ*/
 int CMEReactor::GetType() const
 {
 	return m_pReactorImpl->GetType();
