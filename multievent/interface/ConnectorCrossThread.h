@@ -44,17 +44,17 @@ namespace EVENT
 * 好像所有操作都是在一个线程里完成的
 */
 class CMEConnectorCrossThread
-	: public IMEConnector
-	, public IMEConnectorSink
+	: public IConnector
+	, public IConnectorSink
 	, public CMEMutexTypeTraits<CMEConnDummy>
 	, public CMEReferenceControlT<CMEConnDummy::MutexType>
 	, protected CMEMTSafeDestroy
 {
 public:
 	typedef CMEConnectorCrossThread ConnectorType;
-	typedef CMETimeValue TimeType;
+	typedef CTimeValue TimeType;
 	typedef CMEInetAddress AddressType;
-	typedef CMEAutoPtrT<IMETransport> TransportPtrType;
+	typedef CMEAutoPtrT<ITransport> TransportPtrType;
 
 public:
 	CMEConnectorCrossThread( DWORD dwType );
@@ -76,9 +76,9 @@ public:
 	*		ME_OK为成功; 非ME_OK为失败
 	*/
 	virtual ME_Result Open(
-		IMEConnectorSink* pSink,
+		IConnectorSink* pSink,
 		const CMEInetAddress& peerAddress,
-		CMETimeValue* pTimeout = NULL,
+		CTimeValue* pTimeout = NULL,
 		CMEInetAddress* pLocalAddress = NULL );
 
 	
@@ -161,7 +161,7 @@ private:
 	*/
 	ME_Result Open_n( 
 		const CMEInetAddress& peerAddress,
-		CMETimeValue* pTimeout = NULL,
+		CTimeValue* pTimeout = NULL,
 		CMEInetAddress* pLocalAddress = NULL );
 
 	/**
@@ -187,7 +187,7 @@ public:
 	 *		无
 	*/
 	virtual void OnConnect( 
-		CMETransportAutoPtr& pTransportAutoPtr,
+		CTransportAutoPtr& pTransportAutoPtr,
 		ME_Result hResult );
 
 protected:
@@ -244,11 +244,11 @@ private:
 	typedef EVENT::EventOnConnectUserT<ConnectorType, TransportPtrType> OnConnectUserEvent;
 
 private:
-	IMEConnectorSink*				m_pSink;				// 上层给定的回调对象
+	IConnectorSink*				m_pSink;				// 上层给定的回调对象
 
 	DWORD							m_dwType;				// 什么类型的connector，tcp、udp
-	CMEConnectorAutoPtr			m_pConnectorAutoPtr;	// connector wrapper
-	CMETimeValue					m_htvTimeout;			// 连接超时设置
+	CConnectorAutoPtr			m_pConnectorAutoPtr;	// connector wrapper
+	CTimeValue					m_htvTimeout;			// 连接超时设置
 	CMEInetAddress					m_hiaPeerAddr;			// 对端地址
 	CMEInetAddress					m_hiaLocalAddr;			// 需要绑定的本机地址
 };

@@ -9,7 +9,7 @@ ME_NAME_SPACE_BEGIN
 ME_Result CMETransportFactory::Create( 
 	DWORD dwType, 
 	ME_HANDLE hHandle, 
-	IMETransport*& pTransport, 
+	ITransport*& pTransport, 
 	CMEInetAddress* pPeerAddress /* = NULL */ )
 {
 	ME_ASSERTE_RETURN( hHandle && (ME_INVALID_HANDLE != hHandle), ME_ERROR_INVALID_ARG );
@@ -44,8 +44,8 @@ ME_Result CMETransportFactory::Create(
 }
 
 ME_Result CMETransportFactory::Create( 
-	IMETransport* pSrcTransport, 
-	IMETransport*& pTransport )
+	ITransport* pSrcTransport, 
+	ITransport*& pTransport )
 {
 	ME_ASSERTE_RETURN( pSrcTransport, ME_ERROR_INVALID_ARG );
 

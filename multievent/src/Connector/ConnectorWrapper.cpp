@@ -258,7 +258,7 @@ void CMEConnectorWrapper::OnConnect(
 
 	IConnectorSink* pTmpSink = m_pSink;
 
-	CMEAutoPtrT<IMETransport> pTransport;
+	CMEAutoPtrT<ITransport> pTransport;
 	Close();
 
 	/* 连接成功时不需要CloseHandle，因为handle会交付transport管理 */
@@ -323,7 +323,7 @@ void CMEConnectorWrapper::OnTimer( CMETimer* pTimerID )
 
 	if ( pSink )
 	{
-		CMEAutoPtrT<IMETransport> pTransport;
+		CMEAutoPtrT<ITransport> pTransport;
 		pSink->OnConnect(
 			pTransport,
 			m_bConnected ? ME_ERROR_TIMEOUT : ME_ERROR_NETWORK_CONNECT_ERROR );
@@ -334,7 +334,7 @@ void CMEConnectorWrapper::OnTimer( CMETimer* pTimerID )
 
 ME_Result CMEConnectorWrapper::PreOnConnect(
     ME_HANDLE hSocket,
-    CMETransportAutoPtr& pTransportAutoPtr )
+    CTransportAutoPtr& pTransportAutoPtr )
 {
     ME_Result hResult = ME_OK;
 

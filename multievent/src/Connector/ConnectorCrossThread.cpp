@@ -20,9 +20,9 @@ CMEConnectorCrossThread::~CMEConnectorCrossThread()
 }
 
 ME_Result CMEConnectorCrossThread::Open( 
-	IMEConnectorSink* pSink, 
+	IConnectorSink* pSink, 
 	const CMEInetAddress& peerAddress, 
-	CMETimeValue* pTimeout /* = NULL */, 
+	CTimeValue* pTimeout /* = NULL */, 
 	CMEInetAddress* pLocalAddress /* = NULL */ )
 {
 	ME_ASSERTE_RETURN( pSink, ME_ERROR_NULL_POINTER );
@@ -50,20 +50,20 @@ ME_Result CMEConnectorCrossThread::Open(
 
 ME_Result CMEConnectorCrossThread::Open_n( 
 	const CMEInetAddress& peerAddress, 
-	CMETimeValue* pTimeout /* = NULL */, 
+	CTimeValue* pTimeout /* = NULL */, 
 	CMEInetAddress* pLocalAddress /* = NULL */ )
 {
 	ME_Result hResult = ME_OK;
 	if ( !m_pConnectorAutoPtr )
 	{
-		hResult = IMEConnectionManager::Instance()->CreateClient(
+		hResult = IConnectionManager::Instance()->CreateClient(
 			m_dwType,
 			m_pConnectorAutoPtr );
 	}
 
 	if ( ME_FAILED(hResult) )
 	{
-		CMETransportAutoPtr pNullTransport;
+		CTransportAutoPtr pNullTransport;
 		OnConnectUserEvent* pEvent = new OnConnectUserEvent(
 			this,
 			pNullTransport,
@@ -154,7 +154,7 @@ void CMEConnectorCrossThread::Destroy_n()
 }
 
 void CMEConnectorCrossThread::OnConnect( 
-	CMETransportAutoPtr& pTransportAutoPtr, 
+	CTransportAutoPtr& pTransportAutoPtr, 
 	ME_Result hResult )
 {
 	OnConnectUserEvent* pEvent = NULL;
@@ -176,7 +176,7 @@ void CMEConnectorCrossThread::OnConnect_u(
 
 	if ( ME_SUCCEEDED(hResult) )
 	{
-		CMETransportAutoPtr pTransportAutoPtr;
+		CTransportAutoPtr pTransportAutoPtr;
 		hResult = CMETransportFactorySingleton::Instance()->Create(
 			pTransport.ParaIn(),
 			pTransportAutoPtr.ParaOut() );

@@ -26,7 +26,7 @@ ME_NAME_SPACE_BEGIN
 * 事件来回, 确保网络线程中需要callback到该对象的事件
 * 被清空, 且再一次回到被创建的线程中之后, 再删除对象
 */
-class CMEMTSafeDestroy : public IMECustomizeEvent
+class CMEMTSafeDestroy : public ICustomizeEvent
 {
 public:
 	/* 对象删除状态 */
@@ -104,7 +104,7 @@ protected:
 
 protected:
 	DESTROY_STATUS					m_dwStatus;		// 当前状态
-	CMELockEvent					m_Event;		// 用于确保网络线程清理完毕之后，再delete
+	CLockEvent					    m_Event;		// 用于确保网络线程清理完毕之后，再delete
 };
 
 ME_NAME_SPACE_END

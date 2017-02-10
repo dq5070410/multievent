@@ -20,7 +20,7 @@
 
 ME_NAME_SPACE_BEGIN
 
-class IMETransport;
+class ITransport;
 class CMEInetAddress;
 
 /**
@@ -45,7 +45,7 @@ public:
 	ME_Result Create( 
 		DWORD dwType,
 		ME_HANDLE hHandle,
-		IMETransport*& pTransport,
+		ITransport*& pTransport,
 		CMEInetAddress* pPeerAddress = NULL );
 
 	/**
@@ -55,8 +55,8 @@ public:
 	* <pTransport>，out，成功应该是非NULL
 	*/
 	ME_Result Create(
-		IMETransport* pSrcTransport,
-		IMETransport*& pTransport );
+		ITransport* pSrcTransport,
+		ITransport*& pTransport );
 };
 
 typedef CMESingletonT<CMETransportFactory> CMETransportFactorySingleton;
