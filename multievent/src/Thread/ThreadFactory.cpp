@@ -44,7 +44,7 @@ ME_Result CMEThreadFactory::Create(
      *  工作是正常的
      */
     ME_Result hResult = ME_OK;
-    CMEEventQueue* pEventQueue = NULL;
+    CEventQueue* pEventQueue = NULL;
     CMETimerQueue* pTimerQueue = NULL;
     CMEReactor* pReactor = NULL;
 
@@ -187,7 +187,7 @@ ME_Result CMEThreadFactory::Destroy( CMEThread*& pThread )
     ME_INFO_TRACE_THIS( "" );
     ME_ASSERTE_RETURN( (NULL != pThread), ME_ERROR_INVALID_ARG );
 
-    CMEEventQueue* pEventQueue = NULL;
+    CEventQueue* pEventQueue = NULL;
     CMETimerQueue* pTimerQueue = NULL;
     CMEReactor* pReactor = NULL;
 

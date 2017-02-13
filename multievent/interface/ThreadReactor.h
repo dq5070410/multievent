@@ -44,7 +44,7 @@ public:
      *  返回值:
      *      ME_OK表示成功; 非ME_OK表示失败
      */
-    virtual ME_Result PostEvent( IMECustomizeEvent* pEvent );
+    virtual ME_Result PostEvent( ICustomizeEvent* pEvent );
 
     /**
      *  阻塞式事件投递，带有分离器的线程对象，在投递事件成功后，通知分离器跳出等
@@ -55,7 +55,7 @@ public:
      *  返回值:
      *      ME_OK表示成功; 非ME_OK表示失败
      */
-    virtual ME_Result SendEvent( IMECustomizeEvent* pEvent );
+    virtual ME_Result SendEvent( ICustomizeEvent* pEvent );
 
     /**
      *  添加时钟对象，向时钟队列添加时钟对象后，还需要通知分离器跳出等待
@@ -72,8 +72,8 @@ public:
     virtual ME_Result ScheduleTimer(
         CMETimer* pTimer,
         ITimerSink* pSink,
-        const CMETimeValue& htvInterval,
-        const CMETimeValue& htvDelay,
+        const CTimeValue& htvInterval,
+        const CTimeValue& htvDelay,
         UINT nLoopTime = 0 );
 
     /**
@@ -131,7 +131,7 @@ protected:
         INT iType,
         CMEReactor* pReactor,
         CMETimerQueue* pTimerQueue,
-        CMEEventQueue* pEventQueue,
+        CEventQueue* pEventQueue,
         IMEThreadSink* pThreadSink );
 
     /**
@@ -161,7 +161,7 @@ private:
     CMETimerQueue*                 m_pTimerQueue;
 
     // 事件队列实例指针
-    CMEEventQueue*                 m_pEventQueue;
+    CEventQueue*                 m_pEventQueue;
 };
 
 ME_NAME_SPACE_END

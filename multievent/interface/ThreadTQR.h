@@ -74,7 +74,7 @@ public:
      *  返回值:
      *      ME_ERROR_NOT_AVAILABLE表示不支持
      */
-    virtual ME_Result SendEvent( IMECustomizeEvent* pEvent );
+    virtual ME_Result SendEvent( ICustomizeEvent* pEvent );
 };
 
 ME_NAME_SPACE_END

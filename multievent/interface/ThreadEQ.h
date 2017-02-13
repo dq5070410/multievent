@@ -39,7 +39,7 @@ public:
         BOOL bBlock,
         INT iThreadID,
         INT iType,
-        CMEEventQueue* pEventQueue,
+        CEventQueue* pEventQueue,
         IMEThreadSink* pThreadSink );
 
     /**
@@ -58,7 +58,7 @@ public:
      *  返回值:
      *      ME_OK表示成功; 非ME_OK表示失败
      */
-    virtual ME_Result PostEvent( IMECustomizeEvent* pEvent );
+    virtual ME_Result PostEvent( ICustomizeEvent* pEvent );
 
     /**
      *  阻塞式事件投递，覆盖基类实现
@@ -68,7 +68,7 @@ public:
      *  返回值:
      *      ME_OK表示成功; 非ME_OK表示失败
      */
-    virtual ME_Result SendEvent( IMECustomizeEvent* pEvent );
+    virtual ME_Result SendEvent( ICustomizeEvent* pEvent );
 
     /**
      *  等待线程停止，覆盖基类实现，这里实际上还是会调用基类的Join，但是在这之前
@@ -97,7 +97,7 @@ private:
     friend class CMEThreadFactory;
 
     /* 事件队列实例指针 */
-    CMEEventQueue*                 m_pEventQueue;
+    CEventQueue*                 m_pEventQueue;
 };
 
 ME_NAME_SPACE_END

@@ -42,7 +42,7 @@ public:
         INT iThreadID,
         INT iType,
         CMEReactor* pReactor,
-        CMEEventQueue* pEventQueue,
+        CEventQueue* pEventQueue,
         IMEThreadSink* pThreadSink );
 
     /**
@@ -69,8 +69,8 @@ public:
     virtual ME_Result ScheduleTimer(
         CMETimer* pTimer,
         ITimerSink* pSink,
-        const CMETimeValue& htvInterval,
-        const CMETimeValue& htvDelay,
+        const CTimeValue& htvInterval,
+        const CTimeValue& htvDelay,
         UINT nLoopTime = 0 );
 
     /**

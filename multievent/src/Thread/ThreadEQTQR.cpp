@@ -18,7 +18,7 @@ CMEThreadEQTQR::CMEThreadEQTQR(
     INT iType,
     CMEReactor* pReactor,
     CMETimerQueue* pTimerQueue,
-    CMEEventQueue* pEventQueue,
+    CEventQueue* pEventQueue,
     IMEThreadSink* pThreadSink )
     : CMEThreadReactor(
         bBlock,
