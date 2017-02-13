@@ -1,7 +1,7 @@
 #include "OSConditionVariable.h"
 #include "TimeValue.h"
 
-NAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 ME_Result ConditionVariableCreate( 
 	CONDITION_VARIABLE* pConditionVariable,
@@ -102,7 +102,7 @@ ME_Result ConditionVariableCreate(
 #endif	// ME_WIN
 }
 
-NAME_SPACE_OS_END
+ME_NAME_SPACE_OS_END
 
 
 

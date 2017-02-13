@@ -36,14 +36,14 @@ CMEThreadTQR::~CMEThreadTQR()
 
 }
 
-ME_Result CMEThreadTQR::PostEvent( IMECustomizeEvent* pEvent )
+ME_Result CMEThreadTQR::PostEvent( ICustomizeEvent* pEvent )
 {
     ME_INFO_TRACE_THIS( "pEvent: " << pEvent );
 
     return ME_ERROR_NOT_AVAILABLE;
 }
 
-ME_Result CMEThreadTQR::SendEvent( IMECustomizeEvent* pEvent )
+ME_Result CMEThreadTQR::SendEvent( ICustomizeEvent* pEvent )
 {
     ME_INFO_TRACE_THIS( "pEvent: " << pEvent );
 

@@ -17,7 +17,7 @@ CMEThreadEQR::CMEThreadEQR(
     INT iThreadID,
     INT iType,
     CMEReactor* pReactor,
-    CMEEventQueue* pEventQueue,
+    CEventQueue* pEventQueue,
     IMEThreadSink* pThreadSink )
     : CMEThreadReactor(
         bBlock,
@@ -39,8 +39,8 @@ CMEThreadEQR::~CMEThreadEQR()
 ME_Result CMEThreadEQR::ScheduleTimer(
     CMETimer* pTimer,
     ITimerSink* pSink,
-    const CMETimeValue& htvInterval,
-    const CMETimeValue& htvDelay,
+    const CTimeValue& htvInterval,
+    const CTimeValue& htvDelay,
     UINT nLoopTime /* = 0 */ )
 {
     /* 应该不能直接输出类的实例，先注释 */

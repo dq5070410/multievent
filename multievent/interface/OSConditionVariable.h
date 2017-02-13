@@ -10,11 +10,11 @@
 
 #include "Base.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 class CTimeValue;
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
-NAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 /**create condition variable
 *
@@ -75,7 +75,7 @@ ME_Result ME_OS_EXPORT ConditionVariableWait(
 	THREAD_MUTEX* pMutex,
 	CTimeValue* pTimeout = NULL );
 
-NAME_SPACE_OS_END
+ME_NAME_SPACE_OS_END
 
 #endif	// __OS_ME_CONDITION_VARIABLE_H_
 

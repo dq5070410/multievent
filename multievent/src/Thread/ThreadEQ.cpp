@@ -18,7 +18,7 @@ CMEThreadEQ::CMEThreadEQ(
     BOOL bBlock,
     INT iThreadID,
     INT iType,
-    CMEEventQueue* pEventQueue,
+    CEventQueue* pEventQueue,
     IMEThreadSink* pThreadSink )
     : CMEThread(
         bBlock,
@@ -35,7 +35,7 @@ CMEThreadEQ::~CMEThreadEQ()
 
 }
 
-ME_Result CMEThreadEQ::PostEvent( IMECustomizeEvent* pEvent )
+ME_Result CMEThreadEQ::PostEvent( ICustomizeEvent* pEvent )
 {
     ME_INFO_TRACE_THIS( "pEvent: " << pEvent );
     ME_ASSERTE_RETURN( (NULL != m_pEventQueue), ME_ERROR_NULL_POINTER );
@@ -52,7 +52,7 @@ ME_Result CMEThreadEQ::PostEvent( IMECustomizeEvent* pEvent )
     return m_pEventQueue->PostEvent( pEvent );
 }
 
-ME_Result CMEThreadEQ::SendEvent( IMECustomizeEvent* pEvent )
+ME_Result CMEThreadEQ::SendEvent( ICustomizeEvent* pEvent )
 {
     ME_INFO_TRACE_THIS( "pEvent: " << pEvent );
     /* 线程对象是阻塞模式或是非阻塞模式下但未运行时不允许阻塞式事件投递 */
@@ -74,12 +74,12 @@ ME_Result CMEThreadEQ::SendEvent( IMECustomizeEvent* pEvent )
 
 
     /* 创建一个同步事件 */
-    CMEEventQueue::SyncEvent seWaitEventDone;
+    CEventQueue::SyncEvent seWaitEventDone;
 
     /* 投递事件 */
     hResult = m_pEventQueue->PostEvent(
         pEvent,
-        CMEEventQueue::NodeType::MODE_SEND,
+        CEventQueue::NodeType::MODE_SEND,
         &seWaitEventDone );
 
     ME_ASSERTE_RETURN( ME_SUCCEEDED(hResult), hResult );
@@ -108,7 +108,7 @@ ME_Result CMEThreadEQ::Join(
 
     if ( NULL != m_hThreadHandle )
     {
-        IMECustomizeEvent* pEvent = new CMEEventQueueDestroy( m_pEventQueue );
+        ICustomizeEvent* pEvent = new CEventQueueDestroy( m_pEventQueue );
         /* 投递停止事件 */
         hResult = m_pEventQueue->PostEvent( pEvent );
         ME_ASSERTE_RETURN( ME_SUCCEEDED(hResult), hResult );
