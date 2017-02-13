@@ -63,7 +63,7 @@ public:
      *  返回值:
      *      ME_ERROR_NOT_AVAILABLE表示不支持
      */
-    virtual ME_Result PostEvent( IMECustomizeEvent* pEvent );
+    virtual ME_Result PostEvent( ICustomizeEvent* pEvent );
 
     /**
      *  阻塞式事件投递，当前线程对象不支持，需要覆盖基类CMEReactorR的实现，返回

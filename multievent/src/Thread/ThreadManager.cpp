@@ -154,14 +154,14 @@ IMEThread* CMEThreadManager::GetCurrentThread()
     ME_INFO_TRACE_THIS( "" );
 
     /* 用当前的系统ID去找线程对象 */
-    ME_THREAD_ID hHikThreadID = OS::GetThreadID();
+    ME_THREAD_ID hMEThreadID = OS::GetThreadID();
 
     CMELockGuardT<CMELockThreadMutex> Guard( &m_hThreadMutex );
 
     ThreadMapType::iterator iterThread = m_mapThreads.begin();
     for ( ; iterThread != m_mapThreads.end(); ++iterThread )
     {
-        if ( iterThread->second->m_ThreadID == hHikThreadID )
+        if ( iterThread->second->m_ThreadID == hMEThreadID )
         {
             return iterThread->second;
         }
