@@ -109,7 +109,7 @@ ME_Result CMEReactor::UnRegister(
         iIndex );
 }
 
-ME_Result CMEReactor::AttachEventQueue( CMEEventQueue* pEq )
+ME_Result CMEReactor::AttachEventQueue( CEventQueue* pEq )
 {
     ME_INFO_TRACE_THIS( "pEq: " << pEq );
     ME_ASSERTE_RETURN( (NULL != m_pReactorImpl), ME_ERROR_NULL_POINTER );

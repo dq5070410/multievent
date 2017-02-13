@@ -3,7 +3,7 @@
  *
  *
  *  History
- *  03/18/2013 create file
+ *  03/18/2016 create file
  */
 
 
@@ -11,18 +11,18 @@
 
 ME_NAME_SPACE_BEGIN
 
-CMEEventQueueDestroy::CMEEventQueueDestroy( CMEEventQueue* pEventQueue )
+CEventQueueDestroy::CEventQueueDestroy( CEventQueue* pEventQueue )
     : m_pEventQueue( pEventQueue )
 {
 
 }
 
-CMEEventQueueDestroy::~CMEEventQueueDestroy()
+CEventQueueDestroy::~CEventQueueDestroy()
 {
     m_pEventQueue = NULL;
 }
 
-ME_Result CMEEventQueueDestroy::OnEvent()
+ME_Result CEventQueueDestroy::OnEvent()
 {
     ME_ASSERTE_RETURN( (NULL != m_pEventQueue), ME_ERROR_NULL_POINTER );
 

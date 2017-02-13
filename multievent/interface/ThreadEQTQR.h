@@ -8,7 +8,7 @@
 #ifndef __THREADEQTQR_H_
 #define __THREADEQTQR_H_
 
-#include "HikThreadReactor.h"
+#include "ThreadReactor.h"
 
 ME_NAME_SPACE_BEGIN
 
@@ -45,7 +45,7 @@ public:
         INT iType,
         CMEReactor* pReactor,
         CMETimerQueue* pTimerQueue,
-        CMEEventQueue* pEventQueue,
+        CEventQueue* pEventQueue,
         IMEThreadSink* pThreadSink );
 
     /**

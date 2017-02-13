@@ -13,7 +13,7 @@
 #include "CustomizeEvent.h"
 #include "EventQueueT.h"
 
-NAME_SPACE_BEGIN
+ME_NAME_SPACE_BEGIN
 
 class CEventQueueDestroy : public ICustomizeEvent
 {
@@ -28,7 +28,7 @@ private:
     CEventQueue*                 m_pEventQueue;
 };
 
-NAME_SPACE_END
+ME_NAME_SPACE_END
 
 #endif // __EVENT_QUEUE_DESTROY_H_
 
