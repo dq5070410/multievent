@@ -20,7 +20,7 @@ ME_NAME_SPACE_BEGIN
 // 预声明
 class ITimerSink;
 class CTimeValue;
-class CTimer;
+class CMETimer;
 class CMEReactor;
 
 /**
@@ -136,7 +136,7 @@ public:
      *      ME_OK表示成功; 非ME_OK表示失败
      */
     virtual ME_Result ScheduleTimer(
-        CTimer* pTimer,
+        CMETimer* pTimer,
         ITimerSink* pSink,
         const CTimeValue& htvInterval,
         const CTimeValue& htvDelay,

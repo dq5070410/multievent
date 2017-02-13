@@ -198,7 +198,7 @@ ME_Result CMEThread::SendEvent( ICustomizeEvent* pEvent )
 }
 
 ME_Result CMEThread::ScheduleTimer(
-    CTimer* pTimer,
+    CMETimer* pTimer,
     ITimerSink* pSink,
     const CTimeValue& htvInterval,
     const CTimeValue& htvDelay,
@@ -214,14 +214,14 @@ ME_Result CMEThread::ScheduleTimer(
     return ME_ERROR_NOT_AVAILABLE;
 }
 
-ME_Result CMEThread::CancelTimer( CTimer* pTimer )
+ME_Result CMEThread::CancelTimer( CMETimer* pTimer )
 {
     ME_INFO_TRACE_THIS( "pTimer: " << pTimer );
 
     return ME_ERROR_NOT_AVAILABLE;
 }
 
-CReactor* CMEThread::GetReactor()
+CMEReactor* CMEThread::GetReactor()
 {
     ME_INFO_TRACE_THIS( "" );
 
@@ -278,7 +278,7 @@ ME_THREAD_ID CMEThread::GetThreadOSID() const
 ME_THREAD_HANDLE CMEThread::GetThreadHandle() // const
 {
     /* 好吧，如果要锁住，就不能用const */
-    CLockGuardT<CLockThreadMutex> Guard( &m_hThreadMutex );
+    CMELockGuardT<CMELockThreadMutex> Guard( &m_hThreadMutex );
 
     return m_hThreadHandle;
 }
