@@ -21,7 +21,7 @@ CMEThreadReactor::CMEThreadReactor(
     INT iType,
     CMEReactor* pReactor,
     CMETimerQueue* pTimerQueue,
-    CMEEventQueue* pEventQueue,
+    CEventQueue* pEventQueue,
     IMEThreadSink* pThreadSink )
     : CMEThread(
         bBlock,
@@ -40,7 +40,7 @@ CMEThreadReactor::~CMEThreadReactor()
 
 }
 
-ME_Result CMEThreadReactor::PostEvent( IMECustomizeEvent* pEvent )
+ME_Result CMEThreadReactor::PostEvent( ICustomizeEvent* pEvent )
 {
     ME_INFO_TRACE_THIS( "pEvent: " << pEvent );
     ME_ASSERTE_RETURN( (NULL != m_pEventQueue && NULL != m_pReactor), ME_ERROR_NULL_POINTER );
@@ -68,7 +68,7 @@ ME_Result CMEThreadReactor::PostEvent( IMECustomizeEvent* pEvent )
     return hResult;
 }
 
-ME_Result CMEThreadReactor::SendEvent( IMECustomizeEvent* pEvent )
+ME_Result CMEThreadReactor::SendEvent( ICustomizeEvent* pEvent )
 {
     ME_INFO_TRACE_THIS( "pEvent: " << pEvent );
     // 线程对象是阻塞模式或是非阻塞模式下但未运行时不允许阻塞式事件投递
@@ -90,11 +90,11 @@ ME_Result CMEThreadReactor::SendEvent( IMECustomizeEvent* pEvent )
     ME_Result hResult = ME_ERROR_FAILURE;
 
     /* 创建一个同步事件 */
-    CMEEventQueue::SyncEvent seWaitEventDone;
+    CEventQueue::SyncEvent seWaitEventDone;
 
     hResult = m_pEventQueue->PostEvent(
         pEvent,
-        CMEEventQueue::NodeType::MODE_SEND,
+        CEventQueue::NodeType::MODE_SEND,
         &seWaitEventDone );
 
     ME_ASSERTE_RETURN( ME_SUCCEEDED(hResult), hResult );
@@ -110,8 +110,8 @@ ME_Result CMEThreadReactor::SendEvent( IMECustomizeEvent* pEvent )
 ME_Result CMEThreadReactor::ScheduleTimer(
     CMETimer* pTimer,
     ITimerSink* pSink,
-    const CMETimeValue& htvInterval,
-    const CMETimeValue& htvDelay,
+    const CTimeValue& htvInterval,
+    const CTimeValue& htvDelay,
     UINT nLoopTime /* = 0 */ )
 {
     /* 应该不能直接输出类的实例，先注释 */
@@ -210,7 +210,7 @@ ME_Result CMEThreadReactor::Join(
         /* 如果带事件队列，则需要投递一个最终事件来标识结束 */
         if ( NULL != m_pEventQueue )
         {
-            IMECustomizeEvent* pEvent = new CMEEventQueueDestroy( m_pEventQueue );
+            ICustomizeEvent* pEvent = new CEventQueueDestroy( m_pEventQueue );
             m_pEventQueue->PostEvent( pEvent );
         }
 

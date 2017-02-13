@@ -141,7 +141,7 @@ ME_Result CMEThread::Join(
     }
 
     /* OS层接口所需的超时时间和线程状态参数 */
-    CMETimeValue hTimeValue;
+    CTimeValue hTimeValue;
     ME_THREAD_STAT hThreadStat;
 
     /* 只有存在有限超时时间的情况下才设置超时时间 */

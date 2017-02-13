@@ -219,7 +219,7 @@ protected:
 
 private:
     /* 声明线程对象管理器为线程对象的友元类 */
-    friend class CThreadManager;
+    friend class CMEThreadManager;
 
     /* 线程对象ID(线程对象管理器分配的ID，不是OS中的线程ID) */
     INT                             m_iThreadID;
