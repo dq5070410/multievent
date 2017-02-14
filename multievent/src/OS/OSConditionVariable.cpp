@@ -4,18 +4,18 @@
 ME_NAME_SPACE_OS_BEGIN
 
 ME_Result ConditionVariableCreate( 
-	CONDITION_VARIABLE* pConditionVariable,
+	ME_CONDITION_VARIABLE* pConditionVariable,
 	const char* pszName )
 {
 #ifdef ME_WIN
 	return ERROR_NOT_IMPLEMENTED;
 
 #elif defined( ME_LINUX )
-	Result hResult = ::pthread_cond_init(
+	ME_Result hResult = ::pthread_cond_init(
 		pConditionVariable,
 		NULL );
 
-	return ME_SUCCEEDED(hResult) ? OK : ME_ERROR_FAILURE;
+	return ME_SUCCEEDED(hResult) ? ME_OK : ME_ERROR_FAILURE;
 
 #endif	// ME_WIN
 }

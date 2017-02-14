@@ -72,7 +72,7 @@ ME_Result ME_OS_EXPORT ConditionVariableBroadcast( ME_CONDITION_VARIABLE* pCondi
 */
 ME_Result ME_OS_EXPORT ConditionVariableWait( 
 	ME_CONDITION_VARIABLE* pConditionVariable, 
-	THREAD_MUTEX* pMutex,
+	ME_THREAD_MUTEX* pMutex,
 	CTimeValue* pTimeout = NULL );
 
 ME_NAME_SPACE_OS_END
