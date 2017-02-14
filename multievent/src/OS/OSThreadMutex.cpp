@@ -1,6 +1,6 @@
 #include "OSThreadMutex.h"
 
-NAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 ME_Result ThreadMutexCreate( ME_THREAD_MUTEX& htmLock )
 {
@@ -109,6 +109,6 @@ ME_INLINE ME_Result ThreadMutexDestroy( ME_THREAD_MUTEX& htmLock )
 	return ME_OK;
 }
 
-NAME_SPACE_OS_END
+ME_NAME_SPACE_OS_END
 
 

@@ -11,7 +11,7 @@
 
 #include "Base.h"
 
-NAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 const DWORD ME_SEMAPHORE_MAX_COUNT = 0x7fffffff;
 const DWORD ME_SEMAPHORE_FILE_MODE = 438;	// ÎÄ¼þÊôÐÔrw-r--r--
@@ -85,7 +85,7 @@ ME_Result ME_OS_EXPORT SemaphorePostN(
 	ME_SEMAPHONE pSemaphore,
 	DWORD dwCount );
 
-NAME_SPACE_OS_END
+ME_NAME_SPACE_OS_END
 
 #endif	// __OS_SEMAPHORE_H_
 

@@ -10,7 +10,7 @@
 
 #include "Base.h"
 
-NAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 /**
 * 创建一个thread mutex(win32下是cs，linux下是mutex)
@@ -54,6 +54,6 @@ ME_Result ME_OS_EXPORT ThreadMutexLock( ME_THREAD_MUTEX& htmLock );
 */
 ME_Result ME_OS_EXPORT ThreadMutexUnLock( ME_THREAD_MUTEX& htmLock );
 
-NAME_SPACE_OS_END
+ME_NAME_SPACE_OS_END
 
 #endif	// __OS_THREAD_MUTEX_H_

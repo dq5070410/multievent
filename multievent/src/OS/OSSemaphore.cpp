@@ -1,6 +1,6 @@
 #include "OSSemaphore.h"
 
-NAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 /* 2013.4.12 让gcc能够正确识别 */
 /*ME_INLINE */ME_Result SemaphoreCreate( 
@@ -155,6 +155,6 @@ NAME_SPACE_OS_BEGIN
 #endif	// ME_WIN
 }
 
-NAME_SPACE_OS_END
+ME_NAME_SPACE_OS_END
 
 
