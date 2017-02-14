@@ -1,6 +1,6 @@
 #include "OSEvent.h"
 
-NAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 ME_INLINE ME_Result EventCreate(
 	ME_EVENT& pEvent,
@@ -120,7 +120,7 @@ ME_INLINE ME_Result EventReset( ME_EVENT pEvent )
 #endif	// ME_WIN
 }
 
-NAME_SPACE_OS_END
+ME_NAME_SPACE_OS_END
 
 
 

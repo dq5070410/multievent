@@ -1,6 +1,6 @@
 #include "OSProcess.h"
 
-NAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 /* 命令行(包含所属路径)最大长度, 如"/sbin/dhclient -1 -q -cf /etc/dhclient-eth0.conf" */
 const DWORD ME_OS_PROCESS_CMD_BUF_LEN	= 1024;
@@ -218,4 +218,4 @@ const char* GetProcessName()
 	return "UnknowProcess";
 }
 
-NAME_SPACE_OS_END
+ME_NAME_SPACE_OS_END

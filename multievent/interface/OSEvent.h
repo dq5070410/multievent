@@ -12,7 +12,7 @@
 #include "Base.h"
 #include "TimeValue.h"
 
-NAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 /**
 * 创建一个事件
@@ -86,6 +86,6 @@ ME_Result ME_OS_EXPORT EventSignal( ME_EVENT pEvent );
 */
 ME_Result ME_OS_EXPORT EventReset( ME_EVENT pEvent );
 
-NAME_SPACE_OS_END
+ME_NAME_SPACE_OS_END
 
 #endif	// __OS_EVENT_H_
