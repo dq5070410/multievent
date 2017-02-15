@@ -43,8 +43,8 @@ namespace EVENT
 * 好像所有操作都是在一个线程里完成的
 */
 class CMEAcceptorCrossThread
-	: public IMEAcceptor
-	, public IMEAcceptorSink
+	: public IAcceptor
+	, public IAcceptorSink
 	, public CMEMutexTypeTraits<CMEConnDummy>
 	, public CMEReferenceControlT<CMEConnDummy::MutexType>
 	, protected CMEMTSafeDestroy
@@ -52,7 +52,7 @@ class CMEAcceptorCrossThread
 public:
 	typedef CMEAcceptorCrossThread AcceptorType;
 	typedef CMEInetAddress AddressType;
-	typedef CMEAutoPtrT<IMETransport> TransportPtrType;
+	typedef CMEAutoPtrT<ITransport> TransportPtrType;
 
 public:
 	CMEAcceptorCrossThread( DWORD dwType );
@@ -70,7 +70,7 @@ public:
 	*		ME_OK为成功; 其他失败
 	*/
 	virtual ME_Result Open( 
-		IMEAcceptorSink* pSink,
+		IAcceptorSink* pSink,
 		const CMEInetAddress& hiaLocalAddr );
 
 	/**
@@ -173,7 +173,7 @@ public:
 	* 返回值:
 	*		无
 	*/
-	virtual void OnConnect( CMETransportAutoPtr& pTransportAutoPtr ) ;
+	virtual void OnConnect( CTransportAutoPtr& pTransportAutoPtr ) ;
 
 protected:
 	/*
@@ -215,7 +215,7 @@ private:
 	*		无
 	*/
 	void OnConnect_u(
-		CMETransportAutoPtr pTransport,
+		CTransportAutoPtr pTransport,
 		ME_Result hResult );
 
 	/* 事件友元类的声明 */
@@ -231,10 +231,10 @@ private:
 	typedef EVENT::EventOnConnectUserT<AcceptorType, TransportPtrType> OnConnectUserEvent;
 
 private:
-	IMEAcceptorSink*				m_pSink;
+	IAcceptorSink*				m_pSink;
 
 	DWORD							m_dwType;			// 什么类型的acceptor，tcp、udp
-	CMEAcceptorAutoPtr				m_pAcceptorAutoPtr;	// acceptor wrapper
+	CAcceptorAutoPtr				m_pAcceptorAutoPtr;	// acceptor wrapper
 	CMEInetAddress					m_hiaLocalAddr;
 };
 

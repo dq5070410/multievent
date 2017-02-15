@@ -82,7 +82,7 @@ public:
 	*		ME_OK为成功; 其他失败
 	*/
 	virtual ME_Result Open( 
-		IMEAcceptorSink* pSink,
+		IAcceptorSink* pSink,
 		const CMEInetAddress& localAddress );
 
 	/**
@@ -200,7 +200,7 @@ private:
 	*		无
 	*/
 	void NotifyUdpManager( 
-		IMETransport* pTransport,
+		ITransport* pTransport,
 		int iRecvLen,
 		char* pszData,
 		const CMEInetAddress& hiaPeerAddr );
@@ -229,7 +229,7 @@ private:
 
 	int								m_iReactorType;	// 用于记录在网络线程的reactor类型
 
-	IMEAcceptorSink*				m_pSink;		// 上层回调对象
+	IAcceptorSink*				m_pSink;		// 上层回调对象
 
 	CMESocketUdp					m_SocketUdp;	// 当且仅当在UDP时会起作用
 
