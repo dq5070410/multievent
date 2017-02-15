@@ -16,7 +16,7 @@
 ME_NAME_SPACE_BEGIN
 
 class ME_OS_EXPORT CMEConnectionManager
-	: public IMEConnectionManager
+	: public IConnectionManager
 	, public CMEMutexTypeTraits<CMEConnDummy>
 {
 public:
@@ -41,7 +41,7 @@ public:
 	*/
 	virtual ME_Result CreateClient(
 		DWORD dwType,
-		CMEConnectorAutoPtr& pConnector );
+		CConnectorAutoPtr& pConnector );
 
 	/**
 	* 创建一个服务器端
@@ -54,7 +54,7 @@ public:
 	*/
 	virtual ME_Result CreateServer(
 		DWORD dwType,
-		CMEAcceptorAutoPtr& pAcceptor );
+		CAcceptorAutoPtr& pAcceptor );
 
 protected:
 
@@ -69,7 +69,7 @@ protected:
 	*/
 	ME_Result CreateClientImpl(
 		DWORD dwType,
-		CMEConnectorAutoPtr& pConnector );
+		CConnectorAutoPtr& pConnector );
 
 	/**
 	* 创建一个服务器端
@@ -82,10 +82,10 @@ protected:
 	*/
 	virtual ME_Result CreateServerImpl(
 		DWORD dwType,
-		CMEAcceptorAutoPtr& pAcceptor );
+		CAcceptorAutoPtr& pAcceptor );
 
 private:
-	/* 2013.8.28 added by 韦珂 */
+
 #ifdef ME_WIN32
 	/**
 	* 通过WSAIoctl函数从Mswsock.lib库中load AcceptEx函数

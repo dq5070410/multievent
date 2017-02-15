@@ -18,8 +18,8 @@ CMETimer::~CMETimer()
 
 ME_Result CMETimer::Schedule( 
 	ITimerSink* pSink, 
-	const CMETimeValue& htvInterval, 
-	const CMETimeValue& htvDelay,
+	const CTimeValue& htvInterval, 
+	const CTimeValue& htvDelay,
 	int iLoopTime )
 {
 	CMEThread* pThread = (CMEThread*)CMEThreadManager::Instance()->GetCurrentThread();
@@ -38,24 +38,24 @@ ME_Result CMETimer::Schedule(
 
 ME_Result CMETimer::Schedule( 
 	ITimerSink* pSink, 
-	const CMETimeValue& htvInterval )
+	const CTimeValue& htvInterval )
 {
 	return Schedule(
 		pSink,
 		htvInterval,
-		CMETimeValue(),
+		CTimeValue(),
 		1 );
 }
 
 ME_Result CMETimer::Schedule( 
 	ITimerSink* pSink, 
-	const CMETimeValue& htvInterval, 
+	const CTimeValue& htvInterval, 
 	int iLoopTime )
 {
 	return Schedule(
 		pSink,
 		htvInterval,
-		CMETimeValue(),
+		CTimeValue(),
 		iLoopTime );
 }
 

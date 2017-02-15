@@ -74,7 +74,7 @@ CMEConnectionManager::~CMEConnectionManager()
 
 ME_Result CMEConnectionManager::CreateClient( 
 	DWORD dwType, 
-	CMEConnectorAutoPtr& pConnector )
+	CConnectorAutoPtr& pConnector )
 {
 	/* 必须是TCP或UDP协议 */
 	ME_ASSERTE_RETURN(
@@ -142,7 +142,7 @@ ME_Result CMEConnectionManager::CreateClient(
 
 ME_Result CMEConnectionManager::CreateServer( 
 	DWORD dwType, 
-	CMEAcceptorAutoPtr& pAcceptor )
+	CAcceptorAutoPtr& pAcceptor )
 {
 	/* 必须是TCP或UDP协议 */
 	ME_ASSERTE_RETURN(
@@ -210,7 +210,7 @@ ME_Result CMEConnectionManager::CreateServer(
 
 ME_Result CMEConnectionManager::CreateClientImpl( 
 	DWORD dwType, 
-	CMEConnectorAutoPtr& pConnector )
+	CConnectorAutoPtr& pConnector )
 {
 	pConnector = new CMEConnectorWrapper;
 	ME_Result hResult = ((CMEConnectorWrapper*)pConnector.ParaIn())->Initialize( dwType );
@@ -231,7 +231,7 @@ ME_Result CMEConnectionManager::CreateClientImpl(
 
 ME_Result CMEConnectionManager::CreateServerImpl( 
 	DWORD dwType, 
-	CMEAcceptorAutoPtr& pAcceptor )
+	CAcceptorAutoPtr& pAcceptor )
 {
 	pAcceptor = new CMEAcceptorWrapper;
 	ME_Result hResult = ((CMEAcceptorWrapper*)pAcceptor.ParaIn())->Initialize( dwType );
