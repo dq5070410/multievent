@@ -41,14 +41,14 @@ namespace EVENT
 * TCP/UDP它都wrap
 */
 class CMEAcceptorWrapper
-	: public IMEAcceptor
+	: public IAcceptor
 	, public IMEAcceptorUdpImplSink
 	, public CMEMutexTypeTraits<CMEConnDummy>
 	, public CMEReferenceControlT<CMEConnDummy::MutexType>
 {
 public:
 	typedef CMEAcceptorWrapper AcceptorType;
-	typedef IMETransport TransportType;
+	typedef ITransport TransportType;
 
 public:
 	CMEAcceptorWrapper();
@@ -210,7 +210,7 @@ private:
 
     ME_Result PreOnConnect(
         ME_HANDLE hSocket,
-        CMETransportAutoPtr& pTransportAutoPtr );
+        CTransportAutoPtr& pTransportAutoPtr );
 
 	/* 事件友元类的声明 */
 private:
