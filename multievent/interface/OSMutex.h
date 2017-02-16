@@ -14,7 +14,7 @@ ME_NAME_SPACE_BEGIN
 class CTimeValue;
 ME_NAME_SPACE_END
 
-HNAME_SPACE_OS_BEGIN
+ME_NAME_SPACE_OS_BEGIN
 
 /**
 * 创建一个互斥量
@@ -80,6 +80,6 @@ ME_Result ME_OS_EXPORT MutexLock(
 */
 ME_Result ME_OS_EXPORT MutexUnLock( MUTEX_CS& hmcLock );
 
-NAME_SPACE_OS_END
+ME_NAME_SPACE_OS_END
 
 #endif	// __OS_MUTEX_H_

@@ -3,17 +3,17 @@
 
 ME_NAME_SPACE_BEGIN
 
-CMEEventRun::CMEEventRun()
+CEventRun::CEventRun()
 {
 
 }
 
-CMEEventRun::~CMEEventRun()
+CEventRun::~CEventRun()
 {
 
 }
 
-ME_Result CMEEventRun::Run( 
+ME_Result CEventRun::Run( 
 	IMEThread* pThread, 
 	BOOL bSync /* = FALSE */ )
 {

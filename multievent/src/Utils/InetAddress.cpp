@@ -29,14 +29,14 @@ const WORD MAX_PORT_NUM = 0xffff;
 
 ME_NAME_SPACE_BEGIN
 
-CInetAddress::CInetAddress()
+CMEInetAddress::CMEInetAddress()
 {
 	Set(
 		NULL,
 		0 );
 }
 
-CInetAddress::CInetAddress( 
+CMEInetAddress::CMEInetAddress( 
 	const char* pszHostName, 
 	WORD wPort )
 {
@@ -45,18 +45,18 @@ CInetAddress::CInetAddress(
 		wPort );
 }
 
-CInetAddress::CInetAddress( const char* pszHostNameAndPort )
+CMEInetAddress::CMEInetAddress( const char* pszHostNameAndPort )
 {
 	Set( pszHostNameAndPort );
 }
 
-CInetAddress::CInetAddress( const ME_SOCK_ADDR& hsaAddress )
+CMEInetAddress::CMEInetAddress( const ME_SOCK_ADDR& hsaAddress )
 {
 	Set( hsaAddress );
 }
 
-ME_Result CInetAddress::GetLocalAddress(
-	CInetAddress& hiaLocalAddress, 
+ME_Result CMEInetAddress::GetLocalAddress(
+	CMEInetAddress& hiaLocalAddress, 
 	BOOL bIPv4 /* = TRUE */, 
 	BOOL bLoopback /* = FALSE */)
 {
@@ -107,32 +107,32 @@ ME_Result CInetAddress::GetLocalAddress(
 	return hResult;
 }
 
-WORD CInetAddress::GetPort() const
+WORD CMEInetAddress::GetPort() const
 {
 	return ::ntohs( m_SockAddr.sin_port );
 }
 
-CMEString CInetAddress::GetIP() const
+CMEString CMEInetAddress::GetIP() const
 {
 	return OS::IpDigitalToString( m_SockAddr.sin_addr.s_addr );
 }
 
-DWORD CInetAddress::GetSize() const
+DWORD CMEInetAddress::GetSize() const
 {
 	return sizeof(ME_SOCK_ADDR);
 }
 
-BOOL CInetAddress::IsLocalHost() const
+BOOL CMEInetAddress::IsLocalHost() const
 {
 	return (::htonl(INADDR_LOOPBACK) == m_SockAddr.sin_addr.s_addr);
 }
 
-const ME_SOCK_ADDR* CInetAddress::GetRawAddress() const
+const ME_SOCK_ADDR* CMEInetAddress::GetRawAddress() const
 {
 	return &m_SockAddr;
 }
 
-ME_Result CInetAddress::SetIP(
+ME_Result CMEInetAddress::SetIP(
 	DWORD dwIP, 
 	BOOL bIsNetworkOrder /* = FALSE  */ )
 {
@@ -148,7 +148,7 @@ ME_Result CInetAddress::SetIP(
 	return 0;
 }
 
-ME_Result CInetAddress::SetIP( const char* pszIP )
+ME_Result CMEInetAddress::SetIP( const char* pszIP )
 {
 	DWORD dwIP = OS::IpStringToDigital( pszIP );
 
@@ -160,7 +160,7 @@ ME_Result CInetAddress::SetIP( const char* pszIP )
 	return ME_ERROR_FAILURE;
 }
 
-ME_Result CInetAddress::Set( 
+ME_Result CMEInetAddress::Set( 
 	const char *pszHostName, 
 	WORD wPort )
 {
@@ -185,7 +185,7 @@ ME_Result CInetAddress::Set(
 	return SetIP( pszHostName );
 }
 
-ME_Result CInetAddress::Set( const char* pszHostNameAndPort )
+ME_Result CMEInetAddress::Set( const char* pszHostNameAndPort )
 {
 	if ( NULL == pszHostNameAndPort )
 	{
@@ -249,7 +249,7 @@ ME_Result CInetAddress::Set( const char* pszHostNameAndPort )
 		wPort );
 }
 
-ME_Result CInetAddress::Set( const ME_SOCK_ADDR& hsaAddress )
+ME_Result CMEInetAddress::Set( const ME_SOCK_ADDR& hsaAddress )
 {
 	::memcpy( &m_SockAddr, &hsaAddress, sizeof(ME_SOCK_ADDR) );
 
@@ -257,7 +257,7 @@ ME_Result CInetAddress::Set( const ME_SOCK_ADDR& hsaAddress )
 }
 
 /* 2013.4.12 让gcc能够正确识别 */
-/*ME_INLINE */BOOL CInetAddress::operator == ( const CInetAddress &DstAddress ) const
+/*ME_INLINE */BOOL CMEInetAddress::operator == ( const CMEInetAddress &DstAddress ) const
 {
 	/** 地址对比不包括sin_zero是因为, 在使用了类似getpeername()或getsockname()
 	* 之后, 函数会填充sin_zero这个数组, 而且对比这个数组也没什么意义
@@ -268,26 +268,26 @@ ME_Result CInetAddress::Set( const ME_SOCK_ADDR& hsaAddress )
 		sizeof(m_SockAddr) - sizeof(m_SockAddr.sin_zero)) ? TRUE : FALSE );
 }
 
-ME_INLINE BOOL CInetAddress::operator < ( const CInetAddress &DstAddress ) const
+ME_INLINE BOOL CMEInetAddress::operator < ( const CMEInetAddress &DstAddress ) const
 {
 	/* < 操作, 先对比地址, 如果地址相同再对比端口 */
 	return ( m_SockAddr.sin_addr.s_addr < DstAddress.m_SockAddr.sin_addr.s_addr || 
 		((m_SockAddr.sin_addr.s_addr == DstAddress.m_SockAddr.sin_addr.s_addr) && (m_SockAddr.sin_port < DstAddress.m_SockAddr.sin_port)) );
 }
 
-LONG CInetAddress::HashCompare::GetHashValue( const CInetAddress& Src ) const
+LONG CMEInetAddress::HashCompare::GetHashValue( const CMEInetAddress& Src ) const
 {
 	return (LONG)(Src.m_SockAddr.sin_addr.s_addr ^ ME_HASH_SEED);
 }
 
-BOOL CInetAddress::HashCompare::operator () ( 
-	const CInetAddress& Src, 
-	const CInetAddress& Dst ) const
+BOOL CMEInetAddress::HashCompare::operator () ( 
+	const CMEInetAddress& Src, 
+	const CMEInetAddress& Dst ) const
 {
 	return (Src < Dst);
 }
 
-LONG CInetAddress::HashCompare::operator () ( const CInetAddress& Dst ) const
+LONG CMEInetAddress::HashCompare::operator () ( const CMEInetAddress& Dst ) const
 {
 	/* 把<lQuot>限制在一个long的最大值以内 */
 	long lQuot = GetHashValue(Dst) & ME_LONG_MAX;
