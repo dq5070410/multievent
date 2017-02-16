@@ -20,7 +20,7 @@ CMEAcceptorCrossThread::~CMEAcceptorCrossThread()
 }
 
 ME_Result CMEAcceptorCrossThread::Open( 
-	IMEAcceptorSink* pSink, 
+	IAcceptorSink* pSink, 
 	const CMEInetAddress& hiaLocalAddr )
 {
 	ME_ASSERTE_RETURN( pSink, ME_ERROR_NULL_POINTER );
@@ -38,7 +38,7 @@ ME_Result CMEAcceptorCrossThread::Open(
 
 ME_Result CMEAcceptorCrossThread::Open_n( CMEInetAddress* pLocalAddress )
 {
-	ME_Result hResult = IMEConnectionManager::Instance()->CreateServer(
+	ME_Result hResult = IConnectionManager::Instance()->CreateServer(
 		m_dwType,
 		m_pAcceptorAutoPtr );
 
@@ -125,7 +125,7 @@ void CMEAcceptorCrossThread::Destroy_n()
 	CMEMTSafeDestroy::Destroy_n();
 }
 
-void CMEAcceptorCrossThread::OnConnect( CMETransportAutoPtr& pTransportAutoPtr )
+void CMEAcceptorCrossThread::OnConnect( CTransportAutoPtr& pTransportAutoPtr )
 {
 	OnConnectUserEvent* pEvent = new OnConnectUserEvent(
 		this,
@@ -136,12 +136,12 @@ void CMEAcceptorCrossThread::OnConnect( CMETransportAutoPtr& pTransportAutoPtr )
 }
 
 void CMEAcceptorCrossThread::OnConnect_u( 
-	CMETransportAutoPtr pTransport, 
+	CTransportAutoPtr pTransport, 
 	ME_Result hResult )
 {
 	ME_ASSERTE_RETURN_VOID( m_pSink );
 
-	CMETransportAutoPtr pTransportCrossThread;
+	CTransportAutoPtr pTransportCrossThread;
 	CMETransportFactorySingleton::Instance()->Create(
 		pTransport.ParaIn(),
 		pTransportCrossThread.ParaOut() ); 
