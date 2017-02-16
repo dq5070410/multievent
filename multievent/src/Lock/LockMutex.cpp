@@ -21,7 +21,7 @@ ME_Result CMELockMutex::Lock()
 	return OS::MutexLock( m_Mutex );
 }
 
-ME_Result CMELockMutex::Lock( const CMETimeValue& htvTimeout )
+ME_Result CMELockMutex::Lock( const CTimeValue& htvTimeout )
 {
 	return OS::MutexLock( 
 		m_Mutex, 

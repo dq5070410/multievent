@@ -51,7 +51,7 @@ ME_Result CMELockConditionVariable::Broadcast()
 	return OS::ConditionVariableBroadcast( &m_ConditionVariable );
 }
 
-ME_Result CMELockConditionVariable::Wait( CMETimeValue* pTimeout /* = NULL */ )
+ME_Result CMELockConditionVariable::Wait( CTimeValue* pTimeout /* = NULL */ )
 {
 	if ( FALSE == m_bActAsEvent )
 	{
