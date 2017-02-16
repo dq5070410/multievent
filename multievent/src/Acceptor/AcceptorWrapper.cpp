@@ -293,7 +293,7 @@ void CMEAcceptorWrapper::OnInput(
 		return;
 	}
 
-	IMETransport* pTransport = UdpManager::Instance()->FindTransport( peerAddress );
+	ITransport* pTransport = UdpManager::Instance()->FindTransport( peerAddress );
 
 	/* 通知TransportUdpManager，让它来处理OnConnect()以及OnReceive()等callback */
 	NotifyUdpManager( 

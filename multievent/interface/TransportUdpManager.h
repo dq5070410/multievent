@@ -26,7 +26,7 @@
 
 ME_NAME_SPACE_BEGIN
 
-class IMETransport;
+class ITransport;
 
 /**
 * 专门管理由CMEAcceptorUdp产生的transport
@@ -34,7 +34,7 @@ class IMETransport;
 class CMETransportUdpManager
 {
 public:
-	typedef IMETransport TransportType;
+	typedef ITransport TransportType;
 
 public:
 	CMETransportUdpManager();
