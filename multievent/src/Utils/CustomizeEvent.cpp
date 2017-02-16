@@ -3,7 +3,7 @@
 
 ME_NAME_SPACE_BEGIN
 
-int IMECustomizeEvent::OnDestroy()
+int ICustomizeEvent::OnDestroy()
 {
 	delete this;
 

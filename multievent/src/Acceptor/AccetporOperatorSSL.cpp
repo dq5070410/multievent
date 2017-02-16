@@ -25,7 +25,7 @@ CMEAcceptorOperatorSSL::~CMEAcceptorOperatorSSL()
 
 ME_Result CMEAcceptorOperatorSSL::PreOnConnect(
     ME_HANDLE hSocket,
-    CMETransportAutoPtr& pTransportAutoPtr )
+    CTransportAutoPtr& pTransportAutoPtr )
 {
     ME_Result hResult = CMESSLContextSingleton::Instance()->CreateSSL(
         m_pSSLAutoPtr,

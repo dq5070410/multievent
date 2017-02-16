@@ -25,7 +25,7 @@ const char ME_LOCAL_IP_ADDRESS[] = "127.0.0.1";
 
 #endif	// ME_WIN
 
-IMEConnectionManager* IMEConnectionManager::Instance()
+IConnectionManager* IConnectionManager::Instance()
 {
 	return CMESingletonT<CMEConnectionManager>::Instance();
 }
@@ -78,43 +78,43 @@ ME_Result CMEConnectionManager::CreateClient(
 {
 	/* 必须是TCP或UDP协议 */
 	ME_ASSERTE_RETURN(
-		ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) ||
-		ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_UDP),
+		ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) ||
+		ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_UDP),
 		ME_ERROR_INVALID_ARG );
 
 	/* 不能同时是TCP又是UDP */
 	ME_ASSERTE_RETURN(
-		!(ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) &&
-		ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_UDP)),
+		!(ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) &&
+		ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_UDP)),
 		ME_ERROR_INVALID_ARG );
 
 	/* 不能是 “没有开启TCP时开启Length” */
 	ME_ASSERTE_RETURN(
-		!(ME_BIT_DISABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) &&
-		ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_LENGTH)),
+		!(ME_BIT_DISABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) &&
+		ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_LENGTH)),
 		ME_ERROR_INVALID_ARG );
 
     /* 因为SSL也具有处理分包和粘包的能力，所以两者有一个启用了，就能用心跳 */
     /* 不能是 “没有开启Length时也没有开启SSL时开启KeepAlive” */
 	ME_ASSERTE_RETURN(
-		!(ME_BIT_DISABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_LENGTH) &&
-        ME_BIT_DISABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_SSL) &&
-		ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_KEEP_ALIVE)),
+		!(ME_BIT_DISABLED(dwType, IConnectionManager::CONNECTION_TYPE_LENGTH) &&
+        ME_BIT_DISABLED(dwType, IConnectionManager::CONNECTION_TYPE_SSL) &&
+		ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_KEEP_ALIVE)),
 		ME_ERROR_INVALID_ARG );
 
     /* 不能是 “没有开启TCP时开启SSL” */
     ME_ASSERTE_RETURN(
-        !(ME_BIT_DISABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) &&
-        ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_SSL)),
+        !(ME_BIT_DISABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) &&
+        ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_SSL)),
         ME_ERROR_INVALID_ARG );
 
     /* 因为SSL也具有处理分包和粘包的能力，所以用了SSL，就不需要用Length了 */
-    if ( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_SSL) &&
-        ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_LENGTH) )
+    if ( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_SSL) &&
+        ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_LENGTH) )
     {
         ME_ERROR_TRACE( "Set SSL and Length at same time" );
 
-        ME_CLR_BITS( dwType, IMEConnectionManager::CONNECTION_TYPE_LENGTH );
+        ME_CLR_BITS( dwType, IConnectionManager::CONNECTION_TYPE_LENGTH );
     }
 
 	/** 
@@ -146,43 +146,43 @@ ME_Result CMEConnectionManager::CreateServer(
 {
 	/* 必须是TCP或UDP协议 */
 	ME_ASSERTE_RETURN(
-		ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) ||
-		ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_UDP),
+		ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) ||
+		ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_UDP),
 		ME_ERROR_INVALID_ARG );
 
 	/* 不能同时是TCP又是UDP */
 	ME_ASSERTE_RETURN(
-		!(ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) &&
-		ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_UDP)),
+		!(ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) &&
+		ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_UDP)),
 		ME_ERROR_INVALID_ARG );
 
 	/* 不能是 “没有开启TCP时开启Length” */
 	ME_ASSERTE_RETURN(
-		!(ME_BIT_DISABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) &&
-		ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_LENGTH)),
+		!(ME_BIT_DISABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) &&
+		ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_LENGTH)),
 		ME_ERROR_INVALID_ARG );
 
     /* 因为SSL也具有处理分包和粘包的能力，所以两者有一个启用了，就能用心跳 */
 	/* 不能是 “没有开启Length时也没有开启SSL时开启KeepAlive” */
 	ME_ASSERTE_RETURN(
-		!(ME_BIT_DISABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_LENGTH) &&
-        ME_BIT_DISABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_SSL) &&
-		ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_KEEP_ALIVE)),
+		!(ME_BIT_DISABLED(dwType, IConnectionManager::CONNECTION_TYPE_LENGTH) &&
+        ME_BIT_DISABLED(dwType, IConnectionManager::CONNECTION_TYPE_SSL) &&
+		ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_KEEP_ALIVE)),
 		ME_ERROR_INVALID_ARG );
 
     /* 不能是 “没有开启TCP时开启SSL” */
     ME_ASSERTE_RETURN(
-        !(ME_BIT_DISABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) &&
-        ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_SSL)),
+        !(ME_BIT_DISABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) &&
+        ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_SSL)),
         ME_ERROR_INVALID_ARG );
 
     /* 因为SSL也具有处理分包和粘包的能力，所以用了SSL，就不需要用Length了 */
-    if ( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_SSL) &&
-        ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_LENGTH) )
+    if ( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_SSL) &&
+        ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_LENGTH) )
     {
         ME_ERROR_TRACE( "Set SSL and Length at same time" );
 
-        ME_CLR_BITS( dwType, IMEConnectionManager::CONNECTION_TYPE_LENGTH );
+        ME_CLR_BITS( dwType, IConnectionManager::CONNECTION_TYPE_LENGTH );
     }
 
 	/** 

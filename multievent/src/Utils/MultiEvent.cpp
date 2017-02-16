@@ -21,7 +21,7 @@ ME_Result Initialize(
 
 	CMEConnectionManager::SocketStartup();
 
-	CMEConfigManagerSingleton::Instance()->Initialize(
+	CConfigManagerSingleton::Instance()->Initialize(
 		pUserThreadSink,
 		bUserThreadWorkInBlockMode );
 
@@ -33,7 +33,7 @@ ME_Result UnInitialize()
     INT iRef = --g_Ref;
 	if ( 0 == iRef )
 	{
-		CMEConfigManagerSingleton::Instance()->UnInitialize();
+		CConfigManagerSingleton::Instance()->UnInitialize();
 		CMEConnectionManager::SocketCleanup();
 
 #ifndef ME_HAS_MFC

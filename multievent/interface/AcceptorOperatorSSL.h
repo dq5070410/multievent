@@ -25,7 +25,7 @@ public:
 public:
     ME_Result PreOnConnect(
         ME_HANDLE hSocket,
-        CMETransportAutoPtr& pTransportAutoPtr );
+        CTransportAutoPtr& pTransportAutoPtr );
 };
 
 ME_NAME_SPACE_END
