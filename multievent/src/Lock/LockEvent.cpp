@@ -4,7 +4,7 @@
 
 ME_NAME_SPACE_BEGIN
 
-CMELockEvent::CMELockEvent( 
+CLockEvent::CLockEvent( 
 	BOOL bManualReset /* = FALSE */, 
 	BOOL bSignaled /* = FALSE */, 
 	const char* pszName /* = NULL */ )
@@ -22,7 +22,7 @@ CMELockEvent::CMELockEvent(
 #endif	// ME_WIN
 }
 
-CMELockEvent::~CMELockEvent()
+CLockEvent::~CLockEvent()
 {
 #ifdef ME_WIN
 	OS::EventDestroy( m_pEvent );
@@ -32,17 +32,17 @@ CMELockEvent::~CMELockEvent()
 #endif	// ME_WIN
 }
 
-ME_Result CMELockEvent::Lock()
+ME_Result CLockEvent::Lock()
 {
 	return Wait();
 }
 
-ME_Result CMELockEvent::UnLock()
+ME_Result CLockEvent::UnLock()
 {
 	return Signal();
 }
 
-ME_Result CMELockEvent::Reset()
+ME_Result CLockEvent::Reset()
 {
 #ifdef ME_WIN
 	return OS::EventReset( m_pEvent );
@@ -53,7 +53,7 @@ ME_Result CMELockEvent::Reset()
 #endif	// ME_WIN
 }
 
-ME_Result CMELockEvent::Signal()
+ME_Result CLockEvent::Signal()
 {
 #ifdef ME_WIN
 	return OS::EventSignal( m_pEvent );
@@ -68,7 +68,7 @@ ME_Result CMELockEvent::Signal()
 #endif	// ME_WIN
 }
 
-ME_Result CMELockEvent::Wait()
+ME_Result CLockEvent::Wait()
 {
 #ifdef ME_WIN
 	return OS::EventWait( m_pEvent );
@@ -83,7 +83,7 @@ ME_Result CMELockEvent::Wait()
 #endif	// ME_WIN
 }
 
-ME_Result CMELockEvent::Wait( CMETimeValue* pTimeout )
+ME_Result CLockEvent::Wait( CTimeValue* pTimeout )
 {
 #ifdef ME_WIN
 	return OS::EventTimeWait(

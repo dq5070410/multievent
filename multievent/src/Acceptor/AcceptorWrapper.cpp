@@ -16,7 +16,7 @@ ME_NAME_SPACE_BEGIN
 typedef CMETransportUdpManagerSingleton UdpManager;
 
 CMEAcceptorWrapper::CMEAcceptorWrapper()
-	: m_dwType( IMEConnectionManager::CONNECTION_TYPE_NONE )
+	: m_dwType( IConnectionManager::CONNECTION_TYPE_NONE )
 	, m_pAcceptor( NULL )
 	, m_iReactorType( CMEReactor::REACTOR_TYPE_NULL )
 	, m_pSink( NULL )
@@ -61,7 +61,7 @@ ME_Result CMEAcceptorWrapper::Initialize( DWORD dwType )
 }
 
 ME_Result CMEAcceptorWrapper::Open( 
-	IMEAcceptorSink* pSink, 
+	IAcceptorSink* pSink, 
 	const CMEInetAddress& localAddress )
 {
 	// 这里应该要拿到当前线程的Reactor，只有这样才能用m_pAcceptor->Open
@@ -162,7 +162,7 @@ ME_Result CMEAcceptorWrapper::SetOption(
             OperatorDequeType::iterator iter = m_dequeOperator.begin();
             for ( ; iter != m_dequeOperator.end(); ++iter )
             {
-                if ( (*iter)->GetType() == IMEConnectionManager::CONNECTION_TYPE_SSL )
+                if ( (*iter)->GetType() == IConnectionManager::CONNECTION_TYPE_SSL )
                 {
                     return (*iter)->SetOption(
                         dwOptionType,
@@ -224,7 +224,7 @@ void CMEAcceptorWrapper::OnConnect(
 		return;
 	}
 
-	CMETransportAutoPtr pTransportAutoPtr;
+	CTransportAutoPtr pTransportAutoPtr;
 	hResult = CMETransportFactorySingleton::Instance()->Create(
 		m_dwType,
 		hHandle,
@@ -344,7 +344,7 @@ void CMEAcceptorWrapper::ReadData(
 }
 
 void CMEAcceptorWrapper::NotifyUdpManager( 
-	IMETransport* pTransport, 
+	ITransport* pTransport, 
 	int iRecvLen, 
 	char* pszData, 
 	const CMEInetAddress& hiaPeerAddr )
@@ -389,7 +389,7 @@ void CMEAcceptorWrapper::OnConnect_c( TransportType* pTransport )
 
 	if ( m_pSink )
 	{
-		CMETransportAutoPtr pTmpTransport;
+		CTransportAutoPtr pTmpTransport;
 		pTmpTransport.ParaOut() = pTransport;
 
 		m_pSink->OnConnect( pTmpTransport );
@@ -400,7 +400,7 @@ void CMEAcceptorWrapper::OnConnect_c( TransportType* pTransport )
 
 ME_Result CMEAcceptorWrapper::PreOnConnect(
     ME_HANDLE hSocket,
-    CMETransportAutoPtr& pTransportAutoPtr )
+    CTransportAutoPtr& pTransportAutoPtr )
 {
     ME_Result hResult = ME_OK;
 
