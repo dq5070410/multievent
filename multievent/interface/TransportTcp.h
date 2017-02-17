@@ -24,7 +24,7 @@ namespace EVENT
 /**
 * Transport的TCP实现类
 */
-class ME_OS_EXPORT CMETransportTcp : public CMETransportBase
+class ME_OS_EXPORT CMETransportTcp : public CTransportBase
 {
 public:
 	typedef CMETransportTcp TransportType;

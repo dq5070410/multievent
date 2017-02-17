@@ -29,12 +29,12 @@ class CMEReactor;
 * 从这里继承
 */
 class ME_OS_EXPORT CTransportBase 
-	: public ITransportImpl
-	, public IIOSink
-	, public IIO
+	: public IMETransportImpl
+	, public IMEIOSink
+	, public IMEIO
 {
 public:
-	typedef ITransportImplSink TransportSinkType;
+	typedef IMETransportImplSink TransportSinkType;
 
 public:
 	virtual ~CTransportBase();
@@ -50,8 +50,8 @@ public:
 	 *		ME_OK表示成功; 非ME_OK表示失败
 	*/
 	virtual ME_Result Open( 
-		CReactor* pReactor,
-		ITransportImplSink* pSink );
+		CMEReactor* pReactor,
+		IMETransportImplSink* pSink );
 
 	/**
 	* 关闭一个流对象
@@ -67,7 +67,7 @@ public:
 	*		ME_OK表示成功; 非ME_OK表示失败
 	*/
 	virtual ME_Result Close( 
-		CReactor* pReactor,
+		CMEReactor* pReactor,
 		ME_Result hReason = ME_OK );
 
 	/**

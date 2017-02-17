@@ -15,7 +15,7 @@ using namespace std;
 ME_NAME_SPACE_BEGIN
 
 CMETransportTcp::CMETransportTcp( ME_HANDLE hHandle )
-	: CMETransportBase( IMEConnectionManager::CONNECTION_TYPE_TCP, hHandle )
+	: CTransportBase( IConnectionManager::CONNECTION_TYPE_TCP, hHandle )
 {
 
 }
@@ -143,7 +143,7 @@ ME_Result CMETransportTcp::SetOption(
 
 	switch ( dwOptionType )
 	{
-	case IMETransport::OPTION_TYPE_TCP_KEEP_AVLIE:
+	case ITransport::OPTION_TYPE_TCP_KEEP_AVLIE:
 		{
 			pSocketTcp = dynamic_cast<CMESocketTcp*>( m_pSocket );
 			ME_ASSERTE_RETURN( pSocketTcp, ME_ERROR_NETWORK_SOCKET_ERROR );
@@ -161,7 +161,7 @@ ME_Result CMETransportTcp::SetOption(
 	}
 
 	/* 如果都不是，那么就让Base来处理 */
-	return CMETransportBase::SetOption(
+	return CTransportBase::SetOption(
 		dwOptionType,
 		pOptionValue );
 }
@@ -175,14 +175,14 @@ ME_Result CMETransportTcp::GetOption(
 
 	switch ( dwOptionType )
 	{
-	case IMETransport::OPTION_TYPE_TRANSPORT_TYPE:
+	case ITransport::OPTION_TYPE_TRANSPORT_TYPE:
 		{
-			*(static_cast<IMEConnectionManager::CONNECTION_TYPE*>(pOptionValue)) = IMEConnectionManager::CONNECTION_TYPE_TCP;
+			*(static_cast<IConnectionManager::CONNECTION_TYPE*>(pOptionValue)) = IConnectionManager::CONNECTION_TYPE_TCP;
 
 			return ME_OK;
 		}
 
-	case IMETransport::OPTION_TYPE_TCP_KEEP_AVLIE:
+	case ITransport::OPTION_TYPE_TCP_KEEP_AVLIE:
 		{
 			int iLength = sizeof(DWORD);
 			hResult = m_pSocket->GetOption(
@@ -198,7 +198,7 @@ ME_Result CMETransportTcp::GetOption(
 	}
 
 	/* 如果都不是，那么就让Base来处理 */
-	return CMETransportBase::GetOption(
+	return CTransportBase::GetOption(
 		dwOptionType, 
 		pOptionValue );
 }

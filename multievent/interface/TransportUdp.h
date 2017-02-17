@@ -18,7 +18,7 @@ ME_NAME_SPACE_BEGIN
 /**
 * Transport的TCP实现类
 */
-class CMETransportUdp : public CMETransportBase
+class CMETransportUdp : public CTransportBase
 {
 public:
 	CMETransportUdp( ME_HANDLE hHandle );

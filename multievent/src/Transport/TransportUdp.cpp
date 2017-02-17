@@ -8,7 +8,7 @@
 ME_NAME_SPACE_BEGIN
 
 CMETransportUdp::CMETransportUdp( ME_HANDLE hHandle )
-	: CMETransportBase( IMEConnectionManager::CONNECTION_TYPE_UDP, hHandle )
+	: CTransportBase( IConnectionManager::CONNECTION_TYPE_UDP, hHandle )
 {
 
 }
@@ -84,7 +84,7 @@ ME_Result CMETransportUdp::SetOption(
 {
 	switch ( dwOptionType )
 	{
-	case IMETransport::OPTION_TYPE_PEER_ADDRESS:
+	case ITransport::OPTION_TYPE_PEER_ADDRESS:
 		{
 			m_PeerAddress = *(static_cast<CMEInetAddress*>(pOptionValue));
 
@@ -95,7 +95,7 @@ ME_Result CMETransportUdp::SetOption(
 	}
 
 	/* 剩下的返回基类的SetOption即可 */
-	return CMETransportBase::SetOption(
+	return CTransportBase::SetOption(
 		dwOptionType,
 		pOptionValue );
 }
@@ -109,16 +109,16 @@ ME_Result CMETransportUdp::GetOption(
 
 	switch ( dwOptionType )
 	{
-	case IMETransport::OPTION_TYPE_PEER_ADDRESS:
+	case ITransport::OPTION_TYPE_PEER_ADDRESS:
 		{
 			*(static_cast<CMEInetAddress*>(pOptionValue)) = m_PeerAddress;
 
 			return ME_OK;
 		}
 
-	case IMETransport::OPTION_TYPE_TRANSPORT_TYPE:
+	case ITransport::OPTION_TYPE_TRANSPORT_TYPE:
 		{
-			*(static_cast<IMEConnectionManager::CONNECTION_TYPE*>(pOptionValue)) = IMEConnectionManager::CONNECTION_TYPE_UDP;
+			*(static_cast<IConnectionManager::CONNECTION_TYPE*>(pOptionValue)) = IConnectionManager::CONNECTION_TYPE_UDP;
 
 			return ME_OK;
 		}
@@ -126,7 +126,7 @@ ME_Result CMETransportUdp::GetOption(
 		/* 如果还有其他case就继续往下写 */
 	}
 
-	return CMETransportBase::GetOption(
+	return CTransportBase::GetOption(
 		dwOptionType, 
 		pOptionValue );
 }

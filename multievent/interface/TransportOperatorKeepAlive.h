@@ -1,32 +1,26 @@
 /**
 * 用作TCP自动检测该连接是否还是可用处理类
 * 
-* HikTransportOperatorKeepAlive.h
-*
-* Hikvision System Technology Co., Ltd.
-* All rights reserved
-* 
-* Author
-*	王璟			(wangjingyf@hikvision.com)
+* TransportOperatorKeepAlive.h
 *
 * History
-*	3/7/2013		Created
+*	3/7/2016		Created
 */
 
 #ifndef __ME_TRANSPORT_OPERATOR_KEEPALIVE_H_
 #define __ME_TRANSPORT_OPERATOR_KEEPALIVE_H_
 
-#include "HikBase.h"
-#include "HikTransportOperatorBase.h"
-#include "HikConnectionDefines.h"
-#include "HikTimeValue.h"
-#include "HikTimer.h"
-#include "HikEventTransportT.h"
-#include "HikPDU.h"
+#include "Base.h"
+#include "TransportOperatorBase.h"
+#include "ConnectionDefines.h"
+#include "TimeValue.h"
+#include "Timer.h"
+#include "EventTransportT.h"
+#include "PDU.h"
 
 ME_NAME_SPACE_BEGIN
 
-class IMETransport;
+class ITransport;
 class CMETransportKeepAliveTimer;
 
 class IMETransportTimerOperator
@@ -44,7 +38,7 @@ class CMETransportOperatorKeepAlive
 	, public IMETransportTimerOperator
 {
 public:
-	CMETransportOperatorKeepAlive( IMETransport* pTransport );
+	CMETransportOperatorKeepAlive( ITransport* pTransport );
 
 	virtual ~CMETransportOperatorKeepAlive();
 
@@ -111,16 +105,16 @@ private:
 	* 设定Option时需要抛到网络线程设定
 	*/
 	typedef EVENT::EventSheduleTimer<CMETransportKeepAliveTimer, IMETransportTimerOperator> KeepAliveSheduleTimer;
-	typedef EVENT::EventCloseRawT<IMETransport> EventCloseWrapper;
+	typedef EVENT::EventCloseRawT<ITransport> EventCloseWrapper;
 
 private:
 
 private:
 	/* 所监视的Transport */
-    IMETransport*                  m_pTransport;
+    ITransport*                  m_pTransport;
 
 	/* 最近活跃时间，这个字段是最后一次收到或发送包成功的时间 */
-	CMETimeValue					m_tvActiveTime;
+	CTimeValue					m_tvActiveTime;
 
 	BOOL							m_bLastSendOK;
 
