@@ -5,11 +5,11 @@
  */
 
 
-#include "HikTransportOperatorSSL.h"
-#include "HikConnectionInterface.h"
+#include "TransportOperatorSSL.h"
+#include "ConnectionInterface.h"
 
 
-using HIK::CRYPTO::CMESSL;
+using ME::CRYPTO::CMESSL;
 
 
 ME_NAME_SPACE_BEGIN
@@ -103,7 +103,7 @@ ME_Result CMETransportOperatorSSL::SetOption(
 
     switch ( dwOptionType )
     {
-    case IMETransport::OPTION_TYPE_SET_SSL:
+    case ITransport::OPTION_TYPE_SET_SSL:
         {
             CMESSL* pSSL = static_cast<CMESSL*>( pOptionValue );
             if ( NULL != pSSL )
@@ -125,7 +125,7 @@ ME_Result CMETransportOperatorSSL::SetOption(
 
 DWORD CMETransportOperatorSSL::GetType()
 {
-    return IMEConnectionManager::CONNECTION_TYPE_SSL;
+    return IConnectionManager::CONNECTION_TYPE_SSL;
 }
 
 ME_NAME_SPACE_END

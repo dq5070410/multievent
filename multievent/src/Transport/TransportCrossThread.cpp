@@ -6,7 +6,7 @@
 
 ME_NAME_SPACE_BEGIN
 
-CMETransportCrossThread::CMETransportCrossThread( IMETransport* pSrcTransport )
+CMETransportCrossThread::CMETransportCrossThread( ITransport* pSrcTransport )
 	: m_pSink( NULL )
 	, m_pTransport( pSrcTransport )
 
@@ -22,7 +22,7 @@ CMETransportCrossThread::~CMETransportCrossThread()
 	m_DataBuf.clear();
 }
 
-ME_Result CMETransportCrossThread::Open( IMETransportSink* pSink )
+ME_Result CMETransportCrossThread::Open( ITransportSink* pSink )
 {
 	ME_ASSERTE_RETURN( (m_bClosed == FALSE), ME_ERROR_NOT_AVAILABLE );
 
@@ -132,7 +132,7 @@ ME_Result CMETransportCrossThread::GetOption(
 		pOptionValue );
 }
 
-IMETransportSink* CMETransportCrossThread::GetSink() const
+ITransportSink* CMETransportCrossThread::GetSink() const
 {
 	ME_ASSERTE_RETURN( (m_bClosed == FALSE), NULL );
 
@@ -285,7 +285,7 @@ ME_Result CMETransportCrossThread::SendData_n( PayloadType* pmbBlock )
 }
 
 void CMETransportCrossThread::OnReceive( 
-	IMETransport* pTransport, 
+	ITransport* pTransport, 
 	CMEMessageBlock* pmbBlock )
 {
 	OnReceiveUserEvent* pEvent = NULL;
@@ -299,7 +299,7 @@ void CMETransportCrossThread::OnReceive(
 }
 
 void CMETransportCrossThread::OnDisconnect( 
-	IMETransport* pTransport, 
+	ITransport* pTransport, 
 	ME_Result hResult /* = ME_OK */ )
 {
 	OnDisconnectUserEvent* pEvent = NULL;
@@ -313,7 +313,7 @@ void CMETransportCrossThread::OnDisconnect(
 }
 
 void CMETransportCrossThread::OnCanSendAgain( 
-	IMETransport* pTransport, 
+	ITransport* pTransport, 
 	ME_Result hReason /* = ME_OK */ )
 {
 	ME_ASSERTE_RETURN_VOID( ME_SUCCEEDED(hReason) );

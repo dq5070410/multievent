@@ -50,8 +50,8 @@ namespace EVENT
 * 好像所有操作都是在一个线程里完成的
 */
 class CMETransportCrossThread 
-	: public IMETransport
-	, public IMETransportSink
+	: public ITransport
+	, public ITransportSink
 	, public CMEMutexTypeTraits<CMEConnDummy>
 	, public CMEReferenceControlT<CMEConnDummy::MutexType>
 	, protected CMEMTSafeDestroy
@@ -62,7 +62,7 @@ public:
 	typedef CMEAutoPtrT<PayloadType> PayloadTypeAutoPtr;
 
 public:
-	CMETransportCrossThread( IMETransport* pSrcTransport );
+	CMETransportCrossThread( ITransport* pSrcTransport );
 
 	virtual ~CMETransportCrossThread();
 
@@ -76,7 +76,7 @@ public:
 	 * 返回值:
 	 *		ME_OK表示成功; 非ME_OK表示失败
 	*/
-	virtual ME_Result Open( IMETransportSink* pSink );
+	virtual ME_Result Open( ITransportSink* pSink );
 
 	/**
 	* 关闭一个流对象
@@ -134,7 +134,7 @@ public:
 	* 返回值:
 	*		非NULL表示成功; NULL表示失败
 	*/
-	virtual IMETransportSink* GetSink() const;
+	virtual ITransportSink* GetSink() const;
 
 	/* 继承自CMEReferenceControlT */
 public:
@@ -232,7 +232,7 @@ public:
 	* <pmbBlock>, 收到数据的内容
 	*/
 	virtual void OnReceive( 
-		IMETransport* pTransport,
+		ITransport* pTransport,
 		CMEMessageBlock* pmbBlock );
 
 	/**
@@ -242,7 +242,7 @@ public:
 	* <hReason>, 为什么断开了
 	*/
 	virtual void OnDisconnect( 
-		IMETransport* pTransport,
+		ITransport* pTransport,
 		ME_Result hReason = ME_OK );
 
 	/**
@@ -258,7 +258,7 @@ public:
 	*
 	*/
 	virtual void OnCanSendAgain( 
-		IMETransport* pTransport,
+		ITransport* pTransport,
 		ME_Result hReason = ME_OK );
 
 private:
@@ -294,8 +294,8 @@ private:
 	void OnCanSendAgain_u( ME_Result hResult = ME_OK );
 
 private:
-	IMETransportSink*					m_pSink;					// 上层的事件接收器
-	CMETransportAutoPtr				m_pTransport;				// 原生类transport的智能指针
+	ITransportSink*					m_pSink;					// 上层的事件接收器
+	CTransportAutoPtr				m_pTransport;				// 原生类transport的智能指针
 	CMELockThreadMutex					m_sinkLock;					// 对回调对象进行保护
 
 	BOOL								m_bSendFailed;				// 是否处于发送失败状态

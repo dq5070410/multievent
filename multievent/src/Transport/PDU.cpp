@@ -32,7 +32,7 @@ CMEPDUPackage::CMEPDUPackage(
 ME_Result CMEPDUPackage::Encode( CMEMessageBlock& mbBlock )
 {
 	/* 写入长度字段 */
-	CMEByteStreamT<CMEMessageBlock> bsStream( &mbBlock );
+	CByteStreamT<CMEMessageBlock> bsStream( &mbBlock );
 	bsStream << m_nPackageLength;
 
     ///< 必须使用头部来Append用户MB，否则将会导致用户的MB一直累加头部的4个字节
@@ -52,7 +52,7 @@ ME_Result CMEPDUPackage::Decode( CMEMessageBlock& mbBlock )
 		return ME_ERROR_NETWORK_PARTIAL_DATA;
 	}
 
-	CMEByteStreamT<CMEMessageBlock> bs( &mbBlock );
+	CByteStreamT<CMEMessageBlock> bs( &mbBlock );
 	bs >> m_nPackageLength;
 
 	if ( mbBlock.GetLength() < m_nPackageLength )
@@ -106,7 +106,7 @@ UINT CMEPDUBase::GetLength()
 
 ME_Result CMEPDUBase::Encode( CMEMessageBlock& mbBlock )
 {
-	CMEByteStreamT<CMEMessageBlock> bsStream( &mbBlock );
+	CByteStreamT<CMEMessageBlock> bsStream( &mbBlock );
 
 	bsStream << m_byType;
 
@@ -115,7 +115,7 @@ ME_Result CMEPDUBase::Encode( CMEMessageBlock& mbBlock )
 
 ME_Result CMEPDUBase::Decode( CMEMessageBlock& mbBlock )
 {
-	CMEByteStreamT<CMEMessageBlock> bsStream( &mbBlock );
+	CByteStreamT<CMEMessageBlock> bsStream( &mbBlock );
 
 	bsStream >> m_byType;
 
