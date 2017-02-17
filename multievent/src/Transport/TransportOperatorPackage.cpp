@@ -246,7 +246,7 @@ ME_Result CMETransportOperatorPackage::PostOnReceive( CMEMessageBlock*& pmbBlock
 
 DWORD CMETransportOperatorPackage::GetType()
 {
-	return IMEConnectionManager::CONNECTION_TYPE_LENGTH;
+	return IConnectionManager::CONNECTION_TYPE_LENGTH;
 }
 
 CHAR* CMETransportOperatorPackage::SelfInfo()

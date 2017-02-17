@@ -38,7 +38,7 @@ namespace EVENT
 * plug-in到transport，当然，还有作为IMETransport的adapter存在
 */
 class CMETransportWrapper
-	: public IMETransport
+	: public ITransport
 	, protected IMETransportImplSink
 	, public CMEMutexTypeTraits<CMEConnDummy>
 	, public CMEReferenceControlT<CMEConnDummy::MutexType>
@@ -78,7 +78,7 @@ public:
 	 * 返回值:
 	 *		ME_OK表示成功; 非ME_OK表示失败
 	*/
-	virtual ME_Result Open( IMETransportSink* pSink );
+	virtual ME_Result Open( ITransportSink* pSink );
 
 	/**
 	* 关闭一个流对象
@@ -136,7 +136,7 @@ public:
 	* 返回值:
 	*		非NULL表示成功; NULL表示失败
 	*/
-	virtual IMETransportSink* GetSink() const;
+	virtual ITransportSink* GetSink() const;
 
 	/* 继承自IMEReferenceControl */
 public:
@@ -239,7 +239,7 @@ private:
 	DWORD									m_dwType;		// 原生transport的类型
 	CMEAutoPtrT<IMETransportImpl>			m_pTransport;   // 原生transport
 
-	IMETransportSink*						m_pSink;		// 上层回调对象，一般是transport cross thread或者上层使用者
+	ITransportSink*						m_pSink;		// 上层回调对象，一般是transport cross thread或者上层使用者
 
 // 	typedef std::map<DWORD, IMETransportOperatorAutoPtr> MapType;
 // 	MapType									m_mapOperator;	// 处理器存储结构
