@@ -13,8 +13,8 @@ ME_Result CMETransportFactory::Create(
 	CMEInetAddress* pPeerAddress /* = NULL */ )
 {
 	ME_ASSERTE_RETURN( hHandle && (ME_INVALID_HANDLE != hHandle), ME_ERROR_INVALID_ARG );
-	ME_ASSERTE_RETURN( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) ||
-						ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_UDP),
+	ME_ASSERTE_RETURN( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) ||
+						ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_UDP),
 						ME_ERROR_NOT_FOUND );
 
 	IMETransportBuilder* pBuilder = new CMETransportBuilder;

@@ -18,7 +18,7 @@
 
 ME_NAME_SPACE_BEGIN
 
-class IMETransport;
+class ITransport;
 class IMETransportOperator;
 class CMEInetAddress;
 
@@ -41,7 +41,7 @@ public:
 	/**
 	* 根据已有的transport进行构造
 	*/
-	virtual ME_Result Build( IMETransport* pTransport ) = 0;
+	virtual ME_Result Build( ITransport* pTransport ) = 0;
 
 	virtual ME_Result Build( const CMEInetAddress& peerAddress ) = 0;
 
@@ -53,7 +53,7 @@ public:
 	/**
 	* 获取最终构造好的transport
 	*/
-	virtual IMETransport* GetResult() = 0;
+	virtual ITransport* GetResult() = 0;
 };
 
 /**
@@ -72,17 +72,17 @@ public:
 		DWORD dwType,
 		ME_HANDLE hHandle );
 
-	virtual ME_Result Build( IMETransport* pTransport );
+	virtual ME_Result Build( ITransport* pTransport );
 
 	virtual ME_Result Build( const CMEInetAddress& peerAddress );
 
 	virtual ME_Result Build( IMETransportOperator* pOperator );
 
 
-	virtual IMETransport* GetResult();
+	virtual ITransport* GetResult();
 
 protected:
-	CMEAutoPtrT<IMETransport>		m_pTransport;
+	CMEAutoPtrT<ITransport>		m_pTransport;
 };
 
 ME_NAME_SPACE_END

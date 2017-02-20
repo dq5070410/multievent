@@ -24,8 +24,8 @@ ME_Result CMETransportBuilder::Build(
 
 	ME_Result hResult = ME_ERROR_NOT_FOUND;
 
-	if ( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) ||
-		 ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_UDP) )
+	if ( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) ||
+		 ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_UDP) )
 	{
 		CMETransportWrapper* pWrapper = new CMETransportWrapper;
 		hResult = pWrapper->Initialize(
@@ -45,7 +45,7 @@ ME_Result CMETransportBuilder::Build(
 	return hResult;
 }
 
-ME_Result CMETransportBuilder::Build( IMETransport* pTransport )
+ME_Result CMETransportBuilder::Build( ITransport* pTransport )
 {
 	if ( m_pTransport )
 	{
@@ -65,7 +65,7 @@ ME_Result CMETransportBuilder::Build( const CMEInetAddress& peerAddress )
 	ME_ASSERTE_RETURN( m_pTransport, ME_ERROR_NULL_POINTER );
 
 	return m_pTransport->SetOption(
-		IMETransport::OPTION_TYPE_PEER_ADDRESS,
+		ITransport::OPTION_TYPE_PEER_ADDRESS,
 		(void*)&peerAddress );
 }
 
@@ -76,7 +76,7 @@ ME_Result CMETransportBuilder::Build( IMETransportOperator* pOperator )
 	return ((CMETransportWrapper*)m_pTransport.ParaIn())->RegisterOperator( pOperator );
 }
 
-IMETransport* CMETransportBuilder::GetResult()
+ITransport* CMETransportBuilder::GetResult()
 {
 	return m_pTransport.ParaIn();
 }
