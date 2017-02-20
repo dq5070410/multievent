@@ -14,13 +14,13 @@
 #include <iostream>
 using namespace std;
 
-#include "HikTransportAsyncTcp.h"
-#include "HikTransportAsyncUdp.h"
+#include "TransportAsyncTcp.h"
+#include "TransportAsyncUdp.h"
 
 ME_NAME_SPACE_BEGIN
 
 CMETransportWrapper::CMETransportWrapper()
-	: m_dwType( IMEConnectionManager::CONNECTION_TYPE_NONE )
+	: m_dwType( IConnectionManager::CONNECTION_TYPE_NONE )
 	, m_pTransport( NULL )
 	, m_pSink( NULL )
 	//, m_bClosed( FALSE )
@@ -98,7 +98,7 @@ ME_Result CMETransportWrapper::UnRegisterOperator( IMETransportOperator* pOperat
     return ME_OK;
 }
 
-ME_Result CMETransportWrapper::Open( IMETransportSink* pSink )
+ME_Result CMETransportWrapper::Open( ITransportSink* pSink )
 {
 	ME_ASSERTE_RETURN( m_pTransport && pSink, ME_ERROR_NULL_POINTER );
 	
@@ -147,7 +147,7 @@ ME_Result CMETransportWrapper::Open( IMETransportSink* pSink )
 
 		if ( FALSE == m_UdpDataBuf.empty() )
 		{
-			ME_ASSERTE( ME_BIT_ENABLED(m_dwType, IMEConnectionManager::CONNECTION_TYPE_UDP) );
+			ME_ASSERTE( ME_BIT_ENABLED(m_dwType, IConnectionManager::CONNECTION_TYPE_UDP) );
 
 			DeliveryDataEvent* pEvent = new DeliveryDataEvent( this );
 
@@ -169,7 +169,6 @@ ME_Result CMETransportWrapper::Close( ME_Result hReason /* = ME_OK */ )
 
 	//AddReference();
 
-	/* 2013.9.6 added by 韦珂 */
 	if ( m_bClosed++ != FALSE )
 	{
 		//RemoveReference();
@@ -185,12 +184,12 @@ ME_Result CMETransportWrapper::Close( ME_Result hReason /* = ME_OK */ )
 
 	if ( m_pTransport )
 	{
-		if ( ME_BIT_ENABLED(m_dwType, IMEConnectionManager::CONNECTION_TYPE_UDP) )
+		if ( ME_BIT_ENABLED(m_dwType, IConnectionManager::CONNECTION_TYPE_UDP) )
 		{
 			CMEInetAddress peerAddress;
 			CMEInetAddress* pTmp = &peerAddress;
 			m_pTransport->GetOption(
-				IMETransport::OPTION_TYPE_PEER_ADDRESS,
+				ITransport::OPTION_TYPE_PEER_ADDRESS,
 				(void*&)pTmp );
 
 			CMETransportUdpManagerSingleton::Instance()->UnRegisterTransport(
@@ -267,7 +266,7 @@ ME_Result CMETransportWrapper::SetOption(
 // 		 IMETransport::OPTION_TYPE_SET_KEEPALIVE_CHECKNUM == dwOptionType )
 // 	{
 // 		/* 设置心跳处理器的选项 */
-// 		MapType::iterator iter = m_mapOperator.find( IMEConnectionManager::CONNECTION_TYPE_KEEP_ALIVE );
+// 		MapType::iterator iter = m_mapOperator.find( IConnectionManager::CONNECTION_TYPE_KEEP_ALIVE );
 // 		//ME_ASSERTE_RETURN( iter != m_mapOperator.end() && iter->second, ME_ERROR_NOT_FOUND ); // 2013.9.9 edited by 韦珂
 // 		ME_ASSERTE( iter != m_mapOperator.end() && iter->second );
 // 
@@ -290,7 +289,7 @@ ME_Result CMETransportWrapper::SetOption(
             OperatorDequeType::iterator iter = m_dequeOperator.begin();
             for ( ; iter != m_dequeOperator.end(); ++iter )
             {
-                if ( (*iter)->GetType() == IMEConnectionManager::CONNECTION_TYPE_KEEP_ALIVE )
+                if ( (*iter)->GetType() == IConnectionManager::CONNECTION_TYPE_KEEP_ALIVE )
                 {
                     hResult = (*iter)->SetOption(
                         dwOptionType,
@@ -308,7 +307,7 @@ ME_Result CMETransportWrapper::SetOption(
             OperatorDequeType::iterator iter = m_dequeOperator.begin();
             for ( ; iter != m_dequeOperator.end(); ++iter )
             {
-                if ( (*iter)->GetType() == IMEConnectionManager::CONNECTION_TYPE_SSL )
+                if ( (*iter)->GetType() == IConnectionManager::CONNECTION_TYPE_SSL )
                 {
                     hResult = (*iter)->SetOption(
                         dwOptionType,
@@ -342,7 +341,7 @@ ME_Result CMETransportWrapper::GetOption(
 
 	ME_Result hResult = ME_OK;
 
-	if ( IMETransport::OPTION_TYPE_TRANSPORT_TYPE == dwOptionType )
+	if ( ITransport::OPTION_TYPE_TRANSPORT_TYPE == dwOptionType )
 	{
 		DWORD* iTransportType = static_cast<DWORD*>( pOptionValue );
 		ME_ASSERTE( (NULL != iTransportType) );
@@ -369,7 +368,7 @@ ME_Result CMETransportWrapper::GetOption(
 	return hResult;
 }
 
-IMETransportSink* CMETransportWrapper::GetSink() const
+ITransportSink* CMETransportWrapper::GetSink() const
 {
 	return m_pSink;
 }
@@ -428,7 +427,7 @@ void CMETransportWrapper::OnReceive(
 
 		if ( FALSE == m_UdpDataBuf.empty() )
 		{
-			ME_ASSERTE( ME_BIT_ENABLED(m_dwType, IMEConnectionManager::CONNECTION_TYPE_UDP) );
+			ME_ASSERTE( ME_BIT_ENABLED(m_dwType, IConnectionManager::CONNECTION_TYPE_UDP) );
 			ME_WARNING_TRACE_THIS( "recv data from network and yet the 'OnConnect' notification is still on road " );
 
 			/*{
@@ -534,7 +533,7 @@ void CMETransportWrapper::OnCanSendAgain(
 
 void CMETransportWrapper::DeliveryData()
 {
-	ME_ASSERTE( ME_BIT_ENABLED(m_dwType, IMEConnectionManager::CONNECTION_TYPE_UDP) );
+	ME_ASSERTE( ME_BIT_ENABLED(m_dwType, IConnectionManager::CONNECTION_TYPE_UDP) );
 
 	//AddReference();
 
@@ -713,7 +712,7 @@ ME_Result CMETransportWrapper::CreateSync(
 	do 
 	{
 		/* TCP */
-		if ( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) )
+		if ( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) )
 		{
 			m_pTransport = new CMETransportTcp( hHandle );
 
@@ -721,7 +720,7 @@ ME_Result CMETransportWrapper::CreateSync(
 		}
 
 		/* UDP */
-		else if ( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_UDP) )
+		else if ( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_UDP) )
 		{
 			m_pTransport = new CMETransportUdp( hHandle );
 
@@ -745,7 +744,7 @@ ME_Result CMETransportWrapper::CreateAsync(
 	do 
 	{
 		/* TCP */
-		if ( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) )
+		if ( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) )
 		{
 			m_pTransport = new CMETransportAsyncTcp( hHandle );
 
@@ -753,7 +752,7 @@ ME_Result CMETransportWrapper::CreateAsync(
 		}
 
 		/* UDP */
-		else if ( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_UDP) )
+		else if ( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_UDP) )
 		{
 			m_pTransport = new CMETransportAsyncUdp( hHandle );
 
