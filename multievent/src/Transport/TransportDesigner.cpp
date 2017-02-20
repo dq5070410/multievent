@@ -37,7 +37,7 @@ ME_Result CMETransportDesigner::Build( IMETransportBuilder* pBuilder )
 	do 
 	{
 		/* 如果不需要任何处理器的 */
-		if ( ME_BIT_DISABLED_REVERSE(m_dwType, IMEConnectionManager::CONNECTION_TYPE_TCP | IMEConnectionManager::CONNECTION_TYPE_UDP) )
+		if ( ME_BIT_DISABLED_REVERSE(m_dwType, IConnectionManager::CONNECTION_TYPE_TCP | IConnectionManager::CONNECTION_TYPE_UDP) )
 		{
 			break;
 		}
@@ -46,7 +46,7 @@ ME_Result CMETransportDesigner::Build( IMETransportBuilder* pBuilder )
 		IMETransportOperator* pOperator = NULL;
 
         /* 如果要启用SSL，那么TransportOperatorSSL必须首先build */
-        if ( ME_BIT_ENABLED(m_dwType, IMEConnectionManager::CONNECTION_TYPE_SSL) )
+        if ( ME_BIT_ENABLED(m_dwType, IConnectionManager::CONNECTION_TYPE_SSL) )
         {
             pOperator = new CMETransportOperatorSSL();
             hResult = pBuilder->Build( pOperator );
@@ -57,7 +57,7 @@ ME_Result CMETransportDesigner::Build( IMETransportBuilder* pBuilder )
         }
 
 		/* 如果启用数据整理，那么TransportOperatorPackage在SSL之后就要build */
-		if ( ME_BIT_ENABLED(m_dwType, IMEConnectionManager::CONNECTION_TYPE_LENGTH) )
+		if ( ME_BIT_ENABLED(m_dwType, IConnectionManager::CONNECTION_TYPE_LENGTH) )
 		{
 			pOperator = new CMETransportOperatorPackage;
 			hResult = pBuilder->Build( pOperator );
@@ -68,7 +68,7 @@ ME_Result CMETransportDesigner::Build( IMETransportBuilder* pBuilder )
 		}
 
 		/* 继续在这里往下写，或者继承这个Designer，设计一个你自己的设计器 */
-        if ( ME_BIT_ENABLED(m_dwType, IMEConnectionManager::CONNECTION_TYPE_KEEP_ALIVE) )
+        if ( ME_BIT_ENABLED(m_dwType, IConnectionManager::CONNECTION_TYPE_KEEP_ALIVE) )
         {
             pOperator = new CMETransportOperatorKeepAlive( pBuilder->GetResult() );
             hResult = pBuilder->Build( pOperator );
@@ -90,7 +90,7 @@ ME_Result CMETransportDesigner::Build( IMETransportBuilder* pBuilder )
 	return hResult;
 }
 
-CMETransportCrossThreadDesigner::CMETransportCrossThreadDesigner( IMETransport* pSrcTransport )
+CMETransportCrossThreadDesigner::CMETransportCrossThreadDesigner( ITransport* pSrcTransport )
 	: m_pSrcTransport( pSrcTransport )
 {
 

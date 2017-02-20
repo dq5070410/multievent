@@ -18,7 +18,7 @@
 ME_NAME_SPACE_BEGIN
 
 class IMETransportBuilder;
-class IMETransport;
+class ITransport;
 class CMEInetAddress;
 
 /**
@@ -63,7 +63,7 @@ private:
 class CMETransportCrossThreadDesigner : public IMETransportDesigner
 {
 public:
-	CMETransportCrossThreadDesigner( IMETransport* pSrcTransport );
+	CMETransportCrossThreadDesigner( ITransport* pSrcTransport );
 
 	virtual ~CMETransportCrossThreadDesigner();
 
@@ -71,7 +71,7 @@ public:
 	virtual ME_Result Build( IMETransportBuilder* pBuilder );
 
 private:
-	IMETransport*					m_pSrcTransport;
+	ITransport*					m_pSrcTransport;
 };
 
 ME_NAME_SPACE_END
