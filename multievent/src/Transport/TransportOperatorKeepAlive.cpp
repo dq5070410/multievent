@@ -16,9 +16,9 @@
 
 ME_NAME_SPACE_BEGIN
 
-CMETransportOperatorKeepAlive::CMETransportOperatorKeepAlive( IMETransport* pTransport )
+CMETransportOperatorKeepAlive::CMETransportOperatorKeepAlive( ITransport* pTransport )
     : m_pTransport( pTransport )
-    , m_tvActiveTime( CMETimeValue::TimeOfDay() )
+    , m_tvActiveTime( CTimeValue::TimeOfDay() )
 	, m_bLastSendOK( TRUE )
 	, m_nMaxCheckNum( 3 )
 	, m_nCheckNum( m_nMaxCheckNum )
@@ -70,7 +70,7 @@ ME_Result CMETransportOperatorKeepAlive::PostSendData( CMEMessageBlock*& pmbBloc
 {
 	ME_ASSERTE_RETURN( pmbBlock, ME_ERROR_NULL_POINTER );
 
-	m_tvActiveTime.Set( CMETimeValue::TimeOfDay() );
+	m_tvActiveTime.Set( CTimeValue::TimeOfDay() );
 
 	if ( pmbBlock->GetWritePos() == pmbBlock->GetReadPos() )
 	{
@@ -125,7 +125,7 @@ ME_Result CMETransportOperatorKeepAlive::PreOnReceive( CMEMessageBlock*& pmbBloc
 	}
 
 	/* 凡是收到包都设置下面两个字段 */
-	m_tvActiveTime.Set( CMETimeValue::TimeOfDay() );
+	m_tvActiveTime.Set( CTimeValue::TimeOfDay() );
 	m_nCheckNum = m_nMaxCheckNum;
 
 	return hResult;
@@ -133,7 +133,7 @@ ME_Result CMETransportOperatorKeepAlive::PreOnReceive( CMEMessageBlock*& pmbBloc
 
 DWORD CMETransportOperatorKeepAlive::GetType()
 {
-	return IMEConnectionManager::CONNECTION_TYPE_KEEP_ALIVE;
+	return IConnectionManager::CONNECTION_TYPE_KEEP_ALIVE;
 }
 
 ME_Result CMETransportOperatorKeepAlive::SetOption( DWORD dwOptionType, VOID* pOptionValue )
@@ -145,14 +145,14 @@ ME_Result CMETransportOperatorKeepAlive::SetOption( DWORD dwOptionType, VOID* pO
 
 	switch( dwOptionType )
 	{
-	case IMETransport::OPTION_TYPE_SET_KEEPALIVE_INTERVEL:
+	case ITransport::OPTION_TYPE_SET_KEEPALIVE_INTERVEL:
 	{	
 		SetInterval( *pValue );
 
 		break;
 	}
 
-	case IMETransport::OPTION_TYPE_SET_KEEPALIVE_CHECKNUM:
+	case ITransport::OPTION_TYPE_SET_KEEPALIVE_CHECKNUM:
 	{
 		SetCheckNum( *pValue );
 
@@ -252,7 +252,7 @@ BOOL CMETransportOperatorKeepAlive::Idle()
 	* 2，前1s发送或接收了数据
 	*/
 	if ( FALSE == m_bLastSendOK ||
-		 CMETimeValue::TimeOfDay().GetSecond() - m_tvActiveTime.GetSecond() <= 1 )
+		 CTimeValue::TimeOfDay().GetSecond() - m_tvActiveTime.GetSecond() <= 1 )
 	{
 		return FALSE;
 	}
@@ -341,7 +341,7 @@ CHAR* CMETransportOperatorKeepAlive::SelfInfo()
 		<< ", LastSendResult=" << m_bLastSendOK
 		<< ", MaxCheckNum=" << m_nMaxCheckNum
 		<< ", CheckNum=" << m_nCheckNum
-		<< ", TimeNow" << CMETimeValue::TimeOfDay().GetSecond();
+		<< ", TimeNow" << CTimeValue::TimeOfDay().GetSecond();
 
 	return selfInfo;
 }

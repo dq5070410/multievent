@@ -99,7 +99,7 @@ ME_Result CMEConnectionOperatorSSL::GetOption(
 
 DWORD CMEConnectionOperatorSSL::GetType() const
 {
-    return IMEConnectionManager::CONNECTION_TYPE_SSL;
+    return IConnectionManager::CONNECTION_TYPE_SSL;
 }
 
 ME_NAME_SPACE_END

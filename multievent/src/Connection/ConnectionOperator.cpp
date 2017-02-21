@@ -22,7 +22,7 @@ CMEConnectionOperator::~CMEConnectionOperator()
 
 ME_Result CMEConnectionOperator::PreOnConnect(
     ME_HANDLE hSocket,
-    CMETransportAutoPtr& pTransportAutoPtr )
+    CTransportAutoPtr& pTransportAutoPtr )
 {
     ///< 默认不做任何处理就返回成功
     return ME_OK;

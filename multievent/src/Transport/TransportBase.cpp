@@ -8,30 +8,30 @@
 
 ME_NAME_SPACE_BEGIN
 
-CMETransportBase::CMETransportBase( 
+CTransportBase::CTransportBase( 
 	DWORD dwType, 
 	ME_HANDLE hSocketHandle )
 	: m_pSink( NULL )
 	, m_pReactor( NULL )
 	, m_iIndex( -1 )
 {
-	if ( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_TCP) )
+	if ( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_TCP) )
 	{
 		m_pSocket = new CMESocketTcp( hSocketHandle );
 	}
-	else if ( ME_BIT_ENABLED(dwType, IMEConnectionManager::CONNECTION_TYPE_UDP) )
+	else if ( ME_BIT_ENABLED(dwType, IConnectionManager::CONNECTION_TYPE_UDP) )
 	{
 		m_pSocket = new CMESocketUdp( hSocketHandle );
 	}
 }
 
-CMETransportBase::~CMETransportBase()
+CTransportBase::~CTransportBase()
 {
 	Close( m_pReactor );
 	ME_DELETE( m_pSocket );
 }
 
-ME_Result CMETransportBase::Open( 
+ME_Result CTransportBase::Open( 
 	CMEReactor* pReactor, 
 	IMETransportImplSink* pSink )
 {
@@ -59,7 +59,7 @@ ME_Result CMETransportBase::Open(
 	return ME_OK;
 }
 
-ME_Result CMETransportBase::Close( 
+ME_Result CTransportBase::Close( 
 	CMEReactor* pReactor, 
 	ME_Result hReason /* = ME_OK */ )
 {
@@ -82,7 +82,7 @@ ME_Result CMETransportBase::Close(
 	return hResult;
 }
 
-ME_Result CMETransportBase::SetOption( 
+ME_Result CTransportBase::SetOption( 
 	DWORD dwOptionType, 
 	void* pOptionValue )
 {
@@ -90,7 +90,7 @@ ME_Result CMETransportBase::SetOption(
 
 	switch ( dwOptionType )
 	{
-	case IMETransport::OPTION_TYPE_SEND_BUF_LENGTH:
+	case ITransport::OPTION_TYPE_SEND_BUF_LENGTH:
 		{
 			hResult = m_pSocket->SetOption(
 				SOL_SOCKET, 
@@ -101,7 +101,7 @@ ME_Result CMETransportBase::SetOption(
 			return SOCKET_ERROR == hResult ? ME_ERROR_NETWORK_SOCKET_ERROR : ME_OK;
 		}
 
-	case IMETransport::OPTION_TYPE_RECEIVE_BUF_LENGTH:
+	case ITransport::OPTION_TYPE_RECEIVE_BUF_LENGTH:
 		{
 			hResult = m_pSocket->SetOption(
 				SOL_SOCKET, 
@@ -123,7 +123,7 @@ ME_Result CMETransportBase::SetOption(
 	return ME_ERROR_NOT_FOUND;
 }
 
-ME_Result CMETransportBase::GetOption( 
+ME_Result CTransportBase::GetOption( 
 	DWORD dwOptionType, 
 	void*& pOptionValue )
 {
@@ -131,28 +131,28 @@ ME_Result CMETransportBase::GetOption(
 
 	switch ( dwOptionType )
 	{
-	case IMETransport::OPTION_TYPE_SOCKET_STILL_ALIVE:
+	case ITransport::OPTION_TYPE_SOCKET_STILL_ALIVE:
 		{
 			*(static_cast<BOOL*>(pOptionValue)) = ME_INVALID_HANDLE == m_pSocket->GetHandle() ? FALSE : TRUE;
 
 			return ME_OK;
 		}
 
-	case IMETransport::OPTION_TYPE_LOCAL_ADDRESS:
+	case ITransport::OPTION_TYPE_LOCAL_ADDRESS:
 		{
 			hResult = m_pSocket->GetLoacalAddress( *(static_cast<CMEInetAddress*>(pOptionValue)) );
 
 			return SOCKET_ERROR == hResult ? ME_ERROR_NETWORK_SOCKET_ERROR : ME_OK;
 		}
 
-	case IMETransport::OPTION_TYPE_PEER_ADDRESS:
+	case ITransport::OPTION_TYPE_PEER_ADDRESS:
 		{
 			hResult = m_pSocket->GetRemoteAddress( *(static_cast<CMEInetAddress*>(pOptionValue)) );
 
 			return SOCKET_ERROR == hResult ? ME_ERROR_NETWORK_SOCKET_ERROR : ME_OK;
 		}
 
-	case IMETransport::OPTION_TYPE_SEND_BUF_LENGTH:
+	case ITransport::OPTION_TYPE_SEND_BUF_LENGTH:
 		{
 			int iLength = sizeof(DWORD);
 			hResult = m_pSocket->GetOption(
@@ -164,7 +164,7 @@ ME_Result CMETransportBase::GetOption(
 			return SOCKET_ERROR == hResult ? ME_ERROR_NETWORK_SOCKET_ERROR : ME_OK;
 		}
 
-	case IMETransport::OPTION_TYPE_RECEIVE_BUF_LENGTH:
+	case ITransport::OPTION_TYPE_RECEIVE_BUF_LENGTH:
 		{
 			int iLength = sizeof(DWORD);
 			hResult = m_pSocket->GetOption(
@@ -176,7 +176,7 @@ ME_Result CMETransportBase::GetOption(
 			return SOCKET_ERROR == hResult ? ME_ERROR_NETWORK_SOCKET_ERROR : ME_OK;
 		}
 
-	case IMETransport::OPTION_TYPE_GET_SOCKET:
+	case ITransport::OPTION_TYPE_GET_SOCKET:
 		{
 			pOptionValue = m_pSocket;
 
@@ -194,17 +194,17 @@ ME_Result CMETransportBase::GetOption(
 	return ME_ERROR_NOT_FOUND;
 }
 
-void CMETransportBase::SetHandle( ME_HANDLE hHandle )
+void CTransportBase::SetHandle( ME_HANDLE hHandle )
 {
 	m_pSocket->SetHandle( hHandle );
 }
 
-ME_HANDLE CMETransportBase::GetHandle() const
+ME_HANDLE CTransportBase::GetHandle() const
 {
 	return m_pSocket->GetHandle();
 }
 
-void CMETransportBase::OnInput( 
+void CTransportBase::OnInput( 
 	ME_HANDLE hHandle, 
 	int iEvent )
 {
@@ -259,7 +259,7 @@ void CMETransportBase::OnInput(
 		&mbBlock );
 }
 
-void CMETransportBase::OnOutput( 
+void CTransportBase::OnOutput( 
 	ME_HANDLE hHandle, 
 	int iEvent )
 {
@@ -277,7 +277,7 @@ void CMETransportBase::OnOutput(
 		ME_OK );
 }
 
-void CMETransportBase::OnClose( 
+void CTransportBase::OnClose( 
 	ME_HANDLE hHandle, 
 	int iEvent )
 {
@@ -305,18 +305,18 @@ void CMETransportBase::OnClose(
 		ME_ERROR_NETWORK_SOCKET_CLOSE );
 }
 
-void CMETransportBase::SetBuffSize()
+void CTransportBase::SetBuffSize()
 {
 	DWORD dwBufSize = ME_CONNECTION_SEND_BUF_SIZE;
 	ME_Result hResult = SetOption(
-		IMETransport::OPTION_TYPE_SEND_BUF_LENGTH,
+		ITransport::OPTION_TYPE_SEND_BUF_LENGTH,
 		(void*)&dwBufSize );
 
 	ME_ASSERTE_RETURN_VOID( ME_SUCCEEDED(hResult) );
 
 	dwBufSize = ME_CONNECTION_RECV_BUF_SIZE;
 	SetOption(
-		IMETransport::OPTION_TYPE_RECEIVE_BUF_LENGTH,
+		ITransport::OPTION_TYPE_RECEIVE_BUF_LENGTH,
 		(void*)&dwBufSize );
 
 	ME_ASSERTE_RETURN_VOID( ME_SUCCEEDED(hResult) );
