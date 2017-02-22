@@ -6,9 +6,10 @@
 
 
 #include "SSLContext.h"
-
+extern "C" {
 #include "openssl/ssl.h"
 #include "openssl/err.h"
+}
 
 ME_NAME_SPACE_CRYPTO_BEGIN
 
