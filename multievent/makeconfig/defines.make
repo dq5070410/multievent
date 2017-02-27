@@ -8,7 +8,7 @@
 # ----------------------------------------------------------
 # 默认编译参数
 # ----------------------------------------------------------
-ME_COMPILE_DEFAULT += $(ME_COMPILE_PIPE) $(ME_COMPILE_WARNING)
+ME_COMPILE_DEFAULT += $(ME_COMPILE_PIPE) $(ME_COMPILE_WARNING) $(ME_LINK_PIC)
 
 ifeq ($(ME_DEBUG), 1)
   ME_COMPILE_DEFAULT += $(ME_COMPILE_DEBUG)
