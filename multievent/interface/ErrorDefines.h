@@ -10,7 +10,7 @@
 
 /**
 * this file is user self define error,you can see sys error at
-* "HikErrorSysDefines.h"
+* "ErrorSysDefines.h"
 *
 * 为了避免32/64位的困扰，错误码最好不用long类型的
 * 推荐使用int

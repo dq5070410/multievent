@@ -40,7 +40,6 @@ public:
 		const char* pszHostName,
 		WORD wPort );
 
-	/* 2013.9.5 added by Î¤çæ */
 	CMEInetAddress( const ME_SOCK_ADDR& hsaAddress );
 
 public:
