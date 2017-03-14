@@ -28,7 +28,7 @@ ME_NAME_SPACE_BEGIN
 * 
 * 继承于OVERLAPPED，并加入了一些必要数据类型
 */
-typedef struct tagHikAsyncIoInfo : public ME_OVERLAPPED
+typedef struct tagMEAsyncIoInfo : public ME_OVERLAPPED
 {
 	int iIoType;			// 本次IO的类型
 	ME_HANDLE hHandle;		// IO操作相关句柄
