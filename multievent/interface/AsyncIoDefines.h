@@ -24,7 +24,7 @@ ME_NAME_SPACE_BEGIN
 	const DWORD ME_MS_ACCEPTEX_FUNC_REMAIN_LENGTH = 16;			// ::AcceptEx函数需要的地址保留长度，详见MSDN
 #endif	// ME_WIN
 /**
-* HikUtility异步IO使用的数据结构
+* multievent异步IO使用的数据结构
 * 
 * 继承于OVERLAPPED，并加入了一些必要数据类型
 */
